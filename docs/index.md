@@ -4,19 +4,26 @@ hide:
   - toc
 ---
 
-<h1 class="pt-sr">TRIBES</h1>
+<h1 class="tb-sr">TRIBES</h1>
 
-<div class="pt-hero" markdown>
+<div class="tb-hero" markdown>
 
-![TRIBES](assets/lockup-light.png#only-light){ .pt-lockup }
-![TRIBES](assets/lockup-dark.png#only-dark){ .pt-lockup }
+![TRIBES](assets/lockup-light.png#only-light){ .tb-lockup }
+![TRIBES](assets/lockup-dark.png#only-dark){ .tb-lockup }
 
-<p class="pt-tagline">Inference-time answer selection for optimized DSPy programs</p>
+<p class="tb-tagline">Inference-time answer selection for optimized DSPy programs</p>
 
 [Get started](guides/quickstart.md){ .md-button .md-button--primary }
+[Results](results.md){ .md-button }
 [GitHub](https://github.com/daglar-dragomirov/tribes){ .md-button }
-[PyPI](https://pypi.org/project/tribes/){ .md-button }
 
+</div>
+
+<div class="tb-stats" markdown>
+<div class="tb-stat"><b>+4.7 pp</b><span>fresh test · 1,010 items</span></div>
+<div class="tb-stat"><b>+7.1 pp</b><span>sealed test · 15 cells</span></div>
+<div class="tb-stat"><b>3</b><span>optimizers · GEPA, MIPROv2, SIMBA</span></div>
+<div class="tb-stat"><b>0</b><span>extra optimization cost</span></div>
 </div>
 
 TRIBES is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
@@ -99,7 +106,7 @@ pip install tribes
 
     ---
 
-    36 development cells and a sealed test opened once, with every number per cell.
+    36 development cells, a sealed test opened once and a pre-registered test on fresh items, every number per cell.
 
     [:octicons-arrow-right-24: Results](results.md)
 

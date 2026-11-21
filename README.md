@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/lockup-dark.png">
-    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/lockup-light.png" alt="TRIBES" width="460">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/lockup-light.png" alt="TRIBES" width="520">
   </picture>
 </p>
 
@@ -18,10 +18,10 @@ Inference-time answer selection for optimized DSPy programs
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/tribes/"><img src="https://img.shields.io/pypi/v/tribes?logo=pypi&logoColor=white&label=pypi" alt="PyPI"></a>
-  <a href="https://pypi.org/project/tribes/"><img src="https://img.shields.io/pypi/pyversions/tribes?logo=python&logoColor=white" alt="Python"></a>
-  <a href="https://github.com/daglar-dragomirov/tribes/stargazers"><img src="https://img.shields.io/github/stars/daglar-dragomirov/tribes?logo=github&label=stars" alt="Stars"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT"></a>
+  <a href="https://pypi.org/project/tribes/"><img src="https://img.shields.io/pypi/v/tribes?logo=pypi&logoColor=white&label=pypi&labelColor=0A0A0B&color=A0000C" alt="PyPI"></a>
+  <a href="https://pypi.org/project/tribes/"><img src="https://img.shields.io/pypi/pyversions/tribes?logo=python&logoColor=white&labelColor=0A0A0B&color=A0000C" alt="Python"></a>
+  <a href="https://github.com/daglar-dragomirov/tribes/stargazers"><img src="https://img.shields.io/github/stars/daglar-dragomirov/tribes?logo=github&label=stars&labelColor=0A0A0B&color=A0000C" alt="Stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-A0000C?labelColor=0A0A0B" alt="License MIT"></a>
 </p>
 
 ---
@@ -121,6 +121,11 @@ optimizer's own program on the same items.
 
 **Fresh test (TEST-B, TRIBES 1.1)** — 1,010 new items, used nowhere in development or in the sealed test; the 1.1
 policy and the analysis were pre-registered before any model saw them:
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-dark.png">
+  <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-light.png" alt="TEST-B: TRIBES 1.1 minus the program per benchmark, 95 % CI" width="760">
+</picture>
 
 | benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
 |---|---|---|---|---|

@@ -9,6 +9,11 @@ optimizer's own program on the same items, in percentage points.
 GPQA and HotpotQA, `full` for HoVer and ToolHop, the do-no-harm switch) and the analysis were pre-registered before
 any model saw them, and the items were opened once.
 
+<figure class="tb-figure" markdown>
+![TEST-B: TRIBES 1.1 minus the program per benchmark](assets/chart-testb-light.png#only-light)
+![TEST-B: TRIBES 1.1 minus the program per benchmark](assets/chart-testb-dark.png#only-dark)
+</figure>
+
 | benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | HoVer (150) | +12.7 | +8.0 | +16.7 | **+12.4** [+8.9, +16.4] |

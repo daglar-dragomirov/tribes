@@ -10,6 +10,8 @@ theme:
   name: material
   logo: assets/logo-header.png
   favicon: assets/favicon-32.png
+  icon:
+    repo: fontawesome/brands/github
   font:
     text: Inter
     code: JetBrains Mono
@@ -19,14 +21,14 @@ theme:
       primary: custom
       accent: custom
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-4
         name: Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: custom
       accent: custom
       toggle:
-        icon: material/weather-sunny
+        icon: material/brightness-7
         name: Light mode
   features:
     - navigation.tabs
@@ -40,7 +42,7 @@ theme:
     - toc.follow
 
 extra_css:
-  - stylesheets/extra.css?v=10b
+  - stylesheets/extra.css?v=20
 
 extra:
   social:
