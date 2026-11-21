@@ -21,10 +21,12 @@ RED = "#A0000C"     # blood red on white
 RED_D = "#C4001A"   # the same red, lifted to stay blood-red on black
 FONT = "C:/Windows/Fonts/bahnschrift.ttf"
 
-CUT, R = 14, 3.5      # signature cut (top-right, bottom-left) and the small chamfer on every other corner
+CUT, R = 14, 0        # the one cut: top-right and bottom-left, 45 degrees; every other corner square
 
 
 def chamfer(g, r=R):
+    if not r:
+        return g
     return g.buffer(-r, join_style="mitre", mitre_limit=10).buffer(r, join_style="bevel")
 
 
@@ -79,17 +81,27 @@ def wordmark(gap=16):
 
 # ---------- the mark: three forms, one chosen (red), on one base, in a cut frame ----------
 def mark():
+    """The frame: big cuts top-right and bottom-left, small ones elsewhere. Inside, everything leans the same way: the U's
+    arms slashed at top-right, its base cut bottom-left parallel to the frame, the red blade a parallelogram."""
     big, small = 24, 8
     outer = Polygon([(small, 0), (100 - big, 0), (100, big), (100, 100 - small), (100 - small, 100), (big, 100),
                      (0, 100 - big), (0, small)])
     ring = outer.difference(outer.buffer(-7, join_style="mitre"))
     ring = ring.difference(box(-1, 44, 8, 56)).difference(box(92, 44, 101, 56))   # HUD gaps
-    left = Polygon([(23, 46), (36, 34), (36, 72), (23, 72)])
-    right = Polygon([(64, 34), (77, 46), (77, 72), (64, 72)])
-    base = Polygon([(23, 72), (77, 72), (77, 76), (73, 80), (23, 80)])
-    mono = unary_union([ring, chamfer(unary_union([left, right, base]), 1.2)])
-    red = Polygon([(43, 31), (50, 19), (57, 31), (57, 66), (43, 66)])
-    return mono, red
+    u = Polygon([(22, 34), (36, 48), (36, 66), (64, 66), (64, 34), (78, 48), (78, 82), (40, 82), (22, 64)])
+    gussets = unary_union([Polygon([(36, 57), (36, 66), (45, 66)]), Polygon([(55, 66), (64, 66), (64, 57)])])
+    notch = Polygon([(78, 62), (72, 68), (78, 74)])  # a cut into the U's right side, pointing at the blade
+    u = unary_union([u, gussets]).difference(notch)
+    red = Polygon([(43, 14), (57, 28), (57, 58), (43, 44)])
+    return unary_union([ring, u]), red
+
+
+def lean(g, deg=14):
+    """The whole mark leans forward; refit into the 100-unit box (width 125 -> 100, centred vertically)."""
+    g = affinity.skew(g, xs=-deg, origin=(50, 50))
+    g = affinity.translate(g, 12.47, 0)
+    g = affinity.scale(g, 0.8, 0.8, origin=(0, 0))
+    return affinity.translate(g, 0, 10)
 
 
 # ---------- output ----------
@@ -167,7 +179,7 @@ write_svg(OUT / "tribes-mark-small.svg", [(tile, INK, 0, 0)] + mark_layers(WHITE
 # lockup: mark (110 units tall) + wordmark (cap 62 units), red rule under the word
 WS = 0.62
 word = affinity.scale(WORD, WS, WS, origin=(0, 0))
-rule = Polygon([(0, 0), (WW * WS * 0.30, 0), (WW * WS * 0.30 - 4, 4), (0, 4)])
+rule = Polygon([(0, 0), (WW * WS * 0.30 - 4, 0), (WW * WS * 0.30, 4), (0, 4)])
 LW, LH = 110 + 26 + WW * WS + 6, 106
 
 
@@ -198,12 +210,12 @@ lk = render(lockup_layers(WHITE, RED_D), int(LW * 1.85), int(LH * 1.85), 1.85)
 img.alpha_composite(lk, (96, 104))
 d.text((100, 104 + lk.size[1] + 22), "INFERENCE-TIME ANSWER SELECTION", font=font(30, "SemiBold"), fill=WHITE)
 d.text((100, 104 + lk.size[1] + 62), "FOR OPTIMIZED DSPY PROGRAMS  ·  GEPA  ·  MIPROv2  ·  SIMBA", font=font(22, "SemiBold"), fill=ASH)
-stats = (("+4.7 pp", "FRESH TEST  ·  1,010 ITEMS"), ("+7.1 pp", "SEALED TEST  ·  15 CELLS"))
+stats = (("+4.7 pp", "FRESH TEST  ·  1,010 ITEMS"), ("+7.1 pp", "SEALED TEST  ·  15 CELLS"), ("+11.6 pp", "DEVELOPMENT  ·  36 CELLS"))
 for i, (big, small) in enumerate(stats):
-    x, y = 100 + 330 * i, 450
+    x, y = 100 + 262 * i, 450
     d.polygon([(x, y), (x + 6, y), (x + 6, y + 96), (x, y + 96)], fill=RED_D)
-    d.text((x + 24, y - 6), big, font=font(58), fill=WHITE)
-    d.text((x + 24, y + 72), small, font=font(19, "SemiBold"), fill=ASH)
+    d.text((x + 24, y - 6), big, font=font(52), fill=WHITE)
+    d.text((x + 24, y + 72), small, font=font(17, "SemiBold"), fill=ASH)
 d.text((W - 100, H - 62), "pip install tribes", font=font(24, "SemiBold"), fill=WHITE, anchor="rs")
 img.convert("RGB").save(OUT / "social-preview.png", optimize=True)
 print("ok", sorted(p.name for p in OUT.iterdir()))

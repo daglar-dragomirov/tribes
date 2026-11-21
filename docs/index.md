@@ -20,9 +20,9 @@ hide:
 </div>
 
 <div class="tb-stats" markdown>
+<div class="tb-stat"><b>+11.6 pp</b><span>development · 36 cells</span></div>
 <div class="tb-stat"><b>+4.7 pp</b><span>fresh test · 1,010 items</span></div>
 <div class="tb-stat"><b>+7.1 pp</b><span>sealed test · 15 cells</span></div>
-<div class="tb-stat"><b>3</b><span>optimizers · GEPA, MIPROv2, SIMBA</span></div>
 <div class="tb-stat"><b>0</b><span>extra optimization cost</span></div>
 </div>
 

@@ -23,6 +23,7 @@ program on the same items.
 | decisions frozen | the per-task decision (use the layer or not) fixed on FIT + PARETO + DEV *before* the test was opened | `results/frozen_decisions.json`, `results/decisions_PFD.json` |
 | sealed test | 15 cells (5 benchmarks with a held-out set × 3 optimizers), opened once: **+7.1 pp**, 7 cells significantly above the program, none significantly below | `analysis/test_v1.py`, `results/test_result.json` |
 | FNXL | GEPA vs GEPA + PeachTrees 1.0 on financial token labeling: item score 0.600 → 0.605, apo macro-F1 0.376 → 0.437 | `analysis/fnxl_v1.py`, `results/fnxl_result.json` |
+| 1.1 development | the 1.1 components (BIRD agents with `run_sql`, HoVer set merge, ToolHop abstention check, the verifier, a per-task `lite` / `full` choice), every decision on selection data: **+11.6 pp** over the programs on 36 cells (post hoc; 1.0: +9.5) | `reports/FABLE-FREEZE-TESTB-20261120.md` |
 | TEST-B (1.1) | 1,010 fresh items (BIRD dev minus Mini-Dev, unused ToolHop, GPQA-main minus Diamond, unused HoVer and HotpotQA test pools), 15 cells, design and analysis pre-registered: **+4.73 pp** [+3.43, +6.07] over the programs; every secondary step confirmed (1.1 − 1.0-lite +2.24; BIRD 1.1 − 1.0-lite +2.56; HoVer merge − reviewer +7.33, − program × 3 +7.11); significant alone: HoVer +12.4, HotpotQA +4.2, BIRD +3.2 | `reports/PREREG-TESTB-20261121.md`, `reports/RESULT-TRIBES11-TESTB-20261121.md`, `results/testb_result.json` |
 
 ## Why the test number is lower than the development number

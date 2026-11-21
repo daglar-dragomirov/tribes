@@ -11,6 +11,7 @@ How the 1.0 rule was found, frozen and tested, and how 1.1 was confirmed on fres
 | decisions frozen | the per-task decision fixed on FIT + PARETO + DEV before the test was opened |
 | sealed test | 15 cells opened once: +7.1 pp, 7 significantly above the program, none significantly below |
 | FNXL | GEPA vs GEPA + TRIBES: macro-F1 0.376 → 0.437 |
+| 1.1 development | the 1.1 components (BIRD agents with `run_sql`, HoVer set merge, ToolHop abstention check, the verifier, a per-task `lite` / `full` choice), every decision on selection data: **+11.6 pp** over the programs on 36 cells (post hoc; 1.0: +9.5) |
 | TEST-B (1.1) | 1,010 fresh items, 15 cells, pre-registered: **+4.7 pp** [+3.4, +6.1] over the programs, +2.2 pp over 1.0-lite; HoVer, HotpotQA and BIRD significant on their own |
 
 ## Reproduce the development table

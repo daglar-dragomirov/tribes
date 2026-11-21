@@ -4,7 +4,8 @@
 |---|---|---|
 | runs per input | reviewer (whose draft is one program run) | program + reviewer; agent only on disagreement |
 | inference cost | about 2.6× the program | about 4.6× the program |
-| development gain (36 cells) | +8.9 pp | +9.5 pp |
+| development gain, 1.1 (36 cells, post hoc) | +10.1 pp | +11.8 pp (with the verifier) |
+| development gain, 1.0 (36 cells, post hoc) | +8.9 pp | +9.5 pp |
 | sealed-test gain (15 cells) | +7.1 pp | not measured |
 
 On fresh items (TEST-B, 15 cells, TRIBES 1.1) `full` beat `lite` by +2.0 pp [+1.2, +2.7] on the same forms. The

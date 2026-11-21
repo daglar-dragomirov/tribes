@@ -42,7 +42,7 @@ theme:
     - toc.follow
 
 extra_css:
-  - stylesheets/extra.css?v=20
+  - stylesheets/extra.css?v=21
 
 extra:
   social:
