@@ -1,6 +1,6 @@
 # How it works
 
-PeachTrees never changes the optimized program. It adds two forms around it and a rule that picks one output.
+TRIBES never changes the optimized program. It adds two forms around it and a rule that picks one output.
 
 ## The three forms
 
@@ -27,7 +27,7 @@ draft. In `full` mode the agent runs only when the program and the reviewer disa
 
 ## Never worse than the program
 
-`fit` compares PeachTrees with the program item by item on labeled selection data. Let *d* be the mean difference and
+`fit` compares TRIBES with the program item by item on labeled selection data. Let *d* be the mean difference and
 *se* its standard error (clustered when items repeat). The layer is used only if
 
 **d + 1.0 × se ≥ 0**

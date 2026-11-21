@@ -3,10 +3,10 @@
 ## Install
 
 ```bash
-pip install peachtrees
+pip install tribes
 ```
 
-PeachTrees needs Python 3.10+ and DSPy 3. It works with any language model DSPy supports.
+TRIBES needs Python 3.10+ and DSPy 3. It works with any language model DSPy supports.
 
 ## 1. Get a program
 
@@ -22,9 +22,9 @@ program = dspy.GEPA(metric=metric, auto="medium").compile(student, trainset=trai
 ## 2. Wrap it
 
 ```python
-from peachtrees import PeachTrees
+from tribes import Tribes
 
-pt = PeachTrees(program, mode="full", examples=train)
+pt = Tribes(program, mode="full", examples=train)
 ```
 
 `examples` are a few labeled items whose correct outputs are shown to the agents, so they follow the expected format.
@@ -37,7 +37,7 @@ pt.fit(train + val, metric, num_threads=8)
 print(pt.report["use_layer"], pt.report["mean_gain"], pt.report["se"])
 ```
 
-`fit` runs the three forms on labeled data and checks that PeachTrees is not worse than the program by more than one
+`fit` runs the three forms on labeled data and checks that TRIBES is not worse than the program by more than one
 standard error. The data the optimizer already saw is fine here. If the answer is no, `pt` behaves exactly like the
 program.
 

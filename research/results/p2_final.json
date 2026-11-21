@@ -1,0 +1,1098 @@
+{
+  "lite": {
+    "j6h": {
+      "opt": "gepa",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.042222222222222223,
+      "select_se": 0.013009766909127661,
+      "report_gain": 0.02666666666666667,
+      "report_n": 300,
+      "program": 0.7566666666666667,
+      "ci95": [
+        -0.0033333333333333335,
+        0.056666666666666664
+      ]
+    },
+    "j6v": {
+      "opt": "gepa",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.08666666666666667,
+      "select_se": 0.01829397814114405,
+      "report_gain": 0.06666666666666667,
+      "report_n": 300,
+      "program": 0.7066666666666667,
+      "ci95": [
+        0.02666666666666667,
+        0.11
+      ]
+    },
+    "j6i": {
+      "opt": "gepa",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.005138888888888889,
+      "select_se": 0.0069401094798515,
+      "report_gain": 0.022333333333333334,
+      "report_n": 300,
+      "program": 0.8997777777777778,
+      "ci95": [
+        0.0023333333333333335,
+        0.043333333333333335
+      ]
+    },
+    "j6p": {
+      "opt": "gepa",
+      "ds": "pupa",
+      "use_layer": true,
+      "select_mean": 0.008835758835758835,
+      "select_se": 0.006872827783369709,
+      "report_gain": 0.01689291101055807,
+      "report_n": 221,
+      "program": 0.9702865761689291,
+      "ci95": [
+        0.00037707390648567186,
+        0.034539969834087476
+      ]
+    },
+    "j6a": {
+      "opt": "gepa",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.2111111111111111,
+      "select_se": 0.05585437737341091,
+      "report_gain": 0.28,
+      "report_n": 150,
+      "program": 0.58,
+      "ci95": [
+        0.18,
+        0.38666666666666666
+      ]
+    },
+    "j6g": {
+      "opt": "gepa",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.07777777777777778,
+      "select_se": 0.048000670453541144,
+      "report_gain": 0.00847457627118644,
+      "report_n": 118,
+      "program": 0.8135593220338984,
+      "ci95": [
+        -0.06779661016949153,
+        0.0847457627118644
+      ]
+    },
+    "j6l": {
+      "opt": "gepa",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.08168093563125045,
+      "select_se": 0.023022506758922468,
+      "report_gain": 0.11365426685600556,
+      "report_n": 126,
+      "program": 0.6128872199805362,
+      "ci95": [
+        0.03881782280808063,
+        0.1936174129381455
+      ]
+    },
+    "j6c": {
+      "opt": "gepa",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.2125,
+      "select_se": 0.034780872897281566,
+      "report_gain": 0.17,
+      "report_n": 100,
+      "program": 0.54,
+      "ci95": [
+        0.09,
+        0.26
+      ]
+    },
+    "j7b": {
+      "opt": "gepa",
+      "ds": "bfcl",
+      "use_layer": false,
+      "select_mean": -0.06060606060606061,
+      "select_se": 0.03151562722632259,
+      "report_gain": 0.0,
+      "report_n": 49,
+      "program": 0.7551020408163265,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "u8j": {
+      "opt": "gepa",
+      "ds": "tau2",
+      "use_layer": true,
+      "select_mean": 0.0,
+      "select_se": 0.0,
+      "report_gain": 0.0,
+      "report_n": 150,
+      "program": 0.9933333333333333,
+      "ci95": [
+        -0.02,
+        0.02
+      ]
+    },
+    "ptnp": {
+      "opt": "gepa",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.16,
+      "select_se": 0.03949172013974524,
+      "report_gain": 0.24,
+      "report_n": 200,
+      "program": 0.73,
+      "ci95": [
+        0.18,
+        0.3
+      ]
+    },
+    "ptbr": {
+      "opt": "gepa",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": -0.01,
+      "select_se": 0.05221362491019586,
+      "report_gain": 0.205,
+      "report_n": 200,
+      "program": 0.4,
+      "ci95": [
+        0.135,
+        0.275
+      ]
+    },
+    "ptth": {
+      "opt": "gepa",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.06,
+      "select_se": 0.037118429085533484,
+      "report_gain": 0.06,
+      "report_n": 200,
+      "program": 0.515,
+      "ci95": [
+        0.01,
+        0.11
+      ]
+    },
+    "pt1l": {
+      "opt": "gepa1",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.12768871048775518,
+      "select_se": 0.022976926465075615,
+      "report_gain": 0.11947177545453058,
+      "report_n": 126,
+      "program": 0.672000567789057,
+      "ci95": [
+        0.0646064390770475,
+        0.18144048184500536
+      ]
+    },
+    "pt1i": {
+      "opt": "gepa1",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.004722222222222222,
+      "select_se": 0.008751863946001354,
+      "report_gain": 0.014555555555555558,
+      "report_n": 300,
+      "program": 0.8606666666666666,
+      "ci95": [
+        -0.014722222222222223,
+        0.0425
+      ]
+    },
+    "pt1h": {
+      "opt": "gepa1",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.024444444444444446,
+      "select_se": 0.010606715132175959,
+      "report_gain": 0.006666666666666667,
+      "report_n": 300,
+      "program": 0.78,
+      "ci95": [
+        -0.016666666666666666,
+        0.03
+      ]
+    },
+    "ptma": {
+      "opt": "mipro",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.2,
+      "select_se": 0.05740975657336246,
+      "report_gain": 0.19333333333333333,
+      "report_n": 150,
+      "program": 0.6533333333333333,
+      "ci95": [
+        0.11333333333333333,
+        0.2733333333333333
+      ]
+    },
+    "ptmg": {
+      "opt": "mipro",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.07777777777777778,
+      "select_se": 0.042481626425018154,
+      "report_gain": 0.09322033898305085,
+      "report_n": 118,
+      "program": 0.7372881355932204,
+      "ci95": [
+        0.01694915254237288,
+        0.1694915254237288
+      ]
+    },
+    "ptml": {
+      "opt": "mipro",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.10071582552011953,
+      "select_se": 0.0239804181150009,
+      "report_gain": 0.19044998505384733,
+      "report_n": 126,
+      "program": 0.576317093109978,
+      "ci95": [
+        0.11605152921893745,
+        0.26210281440696187
+      ]
+    },
+    "ptmh": {
+      "opt": "mipro",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.015555555555555555,
+      "select_se": 0.01109922650718121,
+      "report_gain": 0.016666666666666666,
+      "report_n": 300,
+      "program": 0.7733333333333333,
+      "ci95": [
+        -0.016666666666666666,
+        0.05
+      ]
+    },
+    "ptmc": {
+      "opt": "mipro",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.13125,
+      "select_se": 0.03331981840800064,
+      "report_gain": 0.17,
+      "report_n": 100,
+      "program": 0.56,
+      "ci95": [
+        0.09,
+        0.26
+      ]
+    },
+    "ptmnp": {
+      "opt": "mipro",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.17,
+      "select_se": 0.040339468604243256,
+      "report_gain": 0.18,
+      "report_n": 200,
+      "program": 0.79,
+      "ci95": [
+        0.13,
+        0.235
+      ]
+    },
+    "ptmbr": {
+      "opt": "mipro",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": 0.04,
+      "select_se": 0.04696871944241834,
+      "report_gain": 0.04,
+      "report_n": 200,
+      "program": 0.475,
+      "ci95": [
+        -0.025,
+        0.1
+      ]
+    },
+    "ptmth": {
+      "opt": "mipro",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.02,
+      "select_se": 0.040151229272853056,
+      "report_gain": 0.005,
+      "report_n": 200,
+      "program": 0.735,
+      "ci95": [
+        -0.045,
+        0.055
+      ]
+    },
+    "ptmi": {
+      "opt": "mipro",
+      "ds": "ifbench",
+      "use_layer": false,
+      "select_mean": -0.023472222222222224,
+      "select_se": 0.009988436952856354,
+      "report_gain": 0.0,
+      "report_n": 300,
+      "program": 0.9107222222222221,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "ptmv": {
+      "opt": "mipro",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.05555555555555555,
+      "select_se": 0.01628913327836117,
+      "report_gain": 0.03666666666666667,
+      "report_n": 300,
+      "program": 0.7133333333333334,
+      "ci95": [
+        -0.0033333333333333335,
+        0.07666666666666666
+      ]
+    },
+    "ptmp": {
+      "opt": "mipro",
+      "ds": "pupa",
+      "use_layer": false,
+      "select_mean": -0.027134895884895885,
+      "select_se": 0.013951230592840156,
+      "report_gain": 0.0,
+      "report_n": 221,
+      "program": 0.8810493428140487,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "ptsa": {
+      "opt": "simba",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.32222222222222224,
+      "select_se": 0.05659452949255644,
+      "report_gain": 0.24,
+      "report_n": 150,
+      "program": 0.62,
+      "ci95": [
+        0.13333333333333333,
+        0.35333333333333333
+      ]
+    },
+    "ptsg": {
+      "opt": "simba",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.1,
+      "select_se": 0.04483288431057602,
+      "report_gain": 0.00847457627118644,
+      "report_n": 118,
+      "program": 0.7627118644067796,
+      "ci95": [
+        -0.06779661016949153,
+        0.07627118644067797
+      ]
+    },
+    "ptsl2": {
+      "opt": "simba",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.10682448737669022,
+      "select_se": 0.02039270949917024,
+      "report_gain": 0.13258672138610555,
+      "report_n": 126,
+      "program": 0.6118418750545775,
+      "ci95": [
+        0.07256846717953529,
+        0.19243648922357365
+      ]
+    },
+    "ptsh": {
+      "opt": "simba",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.044444444444444446,
+      "select_se": 0.011583618105724057,
+      "report_gain": 0.056666666666666664,
+      "report_n": 300,
+      "program": 0.7433333333333333,
+      "ci95": [
+        0.03,
+        0.08333333333333333
+      ]
+    },
+    "ptsc": {
+      "opt": "simba",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.16875,
+      "select_se": 0.030997406819922024,
+      "report_gain": 0.18,
+      "report_n": 100,
+      "program": 0.59,
+      "ci95": [
+        0.11,
+        0.26
+      ]
+    },
+    "ptsnp": {
+      "opt": "simba",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.19,
+      "select_se": 0.03942772444036626,
+      "report_gain": 0.215,
+      "report_n": 200,
+      "program": 0.775,
+      "ci95": [
+        0.16,
+        0.275
+      ]
+    },
+    "ptsbr": {
+      "opt": "simba",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": 0.04,
+      "select_se": 0.044766509848774276,
+      "report_gain": 0.055,
+      "report_n": 200,
+      "program": 0.42,
+      "ci95": [
+        0.0,
+        0.11
+      ]
+    },
+    "ptsth": {
+      "opt": "simba",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.01,
+      "select_se": 0.036223213718846264,
+      "report_gain": 0.04,
+      "report_n": 200,
+      "program": 0.73,
+      "ci95": [
+        -0.005,
+        0.085
+      ]
+    },
+    "ptsi": {
+      "opt": "simba",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.002777777777777778,
+      "select_se": 0.0064683289540291705,
+      "report_gain": 0.025555555555555557,
+      "report_n": 300,
+      "program": 0.8871111111111111,
+      "ci95": [
+        -0.0005555555555555554,
+        0.05222222222222222
+      ]
+    },
+    "ptsv": {
+      "opt": "simba",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.08222222222222222,
+      "select_se": 0.018339612581650337,
+      "report_gain": 0.1,
+      "report_n": 300,
+      "program": 0.6933333333333334,
+      "ci95": [
+        0.06,
+        0.14
+      ]
+    },
+    "ptsp": {
+      "opt": "simba",
+      "ds": "pupa",
+      "use_layer": true,
+      "select_mean": 0.00533033033033033,
+      "select_se": 0.008168618563113433,
+      "report_gain": 0.0175976272862086,
+      "report_n": 221,
+      "program": 0.9695818598932786,
+      "ci95": [
+        0.0022928628464960648,
+        0.0336717492426835
+      ]
+    },
+    "ptsb": {
+      "opt": "simba",
+      "ds": "bfcl",
+      "use_layer": false,
+      "select_mean": -0.030303030303030304,
+      "select_se": 0.02249416633206334,
+      "report_gain": 0.0,
+      "report_n": 49,
+      "program": 0.7959183673469388,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "full": {
+    "j6h": {
+      "opt": "gepa",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.044444444444444446,
+      "select_se": 0.011583618105724057,
+      "report_gain": 0.04,
+      "report_n": 300,
+      "program": 0.7566666666666667,
+      "ci95": [
+        0.016666666666666666,
+        0.06666666666666667
+      ]
+    },
+    "j6v": {
+      "opt": "gepa",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.08666666666666667,
+      "select_se": 0.01829397814114405,
+      "report_gain": 0.06666666666666667,
+      "report_n": 300,
+      "program": 0.7066666666666667,
+      "ci95": [
+        0.02666666666666667,
+        0.11
+      ]
+    },
+    "j6i": {
+      "opt": "gepa",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.005138888888888889,
+      "select_se": 0.0069401094798515,
+      "report_gain": 0.022333333333333334,
+      "report_n": 300,
+      "program": 0.8997777777777778,
+      "ci95": [
+        0.0023333333333333335,
+        0.043333333333333335
+      ]
+    },
+    "j6p": {
+      "opt": "gepa",
+      "ds": "pupa",
+      "use_layer": true,
+      "select_mean": 0.008835758835758835,
+      "select_se": 0.006872827783369709,
+      "report_gain": 0.01689291101055807,
+      "report_n": 221,
+      "program": 0.9702865761689291,
+      "ci95": [
+        0.00037707390648567186,
+        0.034539969834087476
+      ]
+    },
+    "j6a": {
+      "opt": "gepa",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.26666666666666666,
+      "select_se": 0.0468748699540435,
+      "report_gain": 0.29333333333333333,
+      "report_n": 150,
+      "program": 0.58,
+      "ci95": [
+        0.2,
+        0.4
+      ]
+    },
+    "j6g": {
+      "opt": "gepa",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.03333333333333333,
+      "select_se": 0.04312974358285818,
+      "report_gain": 0.05084745762711865,
+      "report_n": 118,
+      "program": 0.8135593220338984,
+      "ci95": [
+        0.0,
+        0.11016949152542373
+      ]
+    },
+    "j6l": {
+      "opt": "gepa",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.09024055782723629,
+      "select_se": 0.020383284145391097,
+      "report_gain": 0.14766787229818243,
+      "report_n": 126,
+      "program": 0.6128872199805362,
+      "ci95": [
+        0.07874772294411497,
+        0.21717743379610993
+      ]
+    },
+    "j6c": {
+      "opt": "gepa",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.2125,
+      "select_se": 0.034780872897281566,
+      "report_gain": 0.17,
+      "report_n": 100,
+      "program": 0.54,
+      "ci95": [
+        0.09,
+        0.26
+      ]
+    },
+    "j7b": {
+      "opt": "gepa",
+      "ds": "bfcl",
+      "use_layer": false,
+      "select_mean": -0.06060606060606061,
+      "select_se": 0.03151562722632259,
+      "report_gain": 0.0,
+      "report_n": 49,
+      "program": 0.7551020408163265,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "u8j": {
+      "opt": "gepa",
+      "ds": "tau2",
+      "use_layer": true,
+      "select_mean": 0.0,
+      "select_se": 0.0,
+      "report_gain": 0.0,
+      "report_n": 150,
+      "program": 0.9933333333333333,
+      "ci95": [
+        -0.02,
+        0.02
+      ]
+    },
+    "ptnp": {
+      "opt": "gepa",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.16,
+      "select_se": 0.03949172013974524,
+      "report_gain": 0.24,
+      "report_n": 200,
+      "program": 0.73,
+      "ci95": [
+        0.18,
+        0.3
+      ]
+    },
+    "ptbr": {
+      "opt": "gepa",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": 0.04,
+      "select_se": 0.04245020850384839,
+      "report_gain": 0.185,
+      "report_n": 200,
+      "program": 0.4,
+      "ci95": [
+        0.125,
+        0.245
+      ]
+    },
+    "ptth": {
+      "opt": "gepa",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.09,
+      "select_se": 0.032082595426382345,
+      "report_gain": 0.08,
+      "report_n": 200,
+      "program": 0.515,
+      "ci95": [
+        0.035,
+        0.125
+      ]
+    },
+    "pt1l": {
+      "opt": "gepa1",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.13154545979904994,
+      "select_se": 0.02250707007516231,
+      "report_gain": 0.11814902413177925,
+      "report_n": 126,
+      "program": 0.672000567789057,
+      "ci95": [
+        0.06320903582712929,
+        0.18107352078439665
+      ]
+    },
+    "pt1i": {
+      "opt": "gepa1",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.004722222222222222,
+      "select_se": 0.008751863946001354,
+      "report_gain": 0.014555555555555558,
+      "report_n": 300,
+      "program": 0.8606666666666666,
+      "ci95": [
+        -0.014722222222222223,
+        0.0425
+      ]
+    },
+    "pt1h": {
+      "opt": "gepa1",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.017777777777777778,
+      "select_se": 0.00885914349965767,
+      "report_gain": 0.01,
+      "report_n": 300,
+      "program": 0.78,
+      "ci95": [
+        -0.01,
+        0.03
+      ]
+    },
+    "ptma": {
+      "opt": "mipro",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.2222222222222222,
+      "select_se": 0.054228852872245464,
+      "report_gain": 0.23333333333333334,
+      "report_n": 150,
+      "program": 0.6533333333333333,
+      "ci95": [
+        0.14666666666666667,
+        0.32
+      ]
+    },
+    "ptmg": {
+      "opt": "mipro",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.1111111111111111,
+      "select_se": 0.033312519510927174,
+      "report_gain": 0.0847457627118644,
+      "report_n": 118,
+      "program": 0.7372881355932204,
+      "ci95": [
+        0.025423728813559324,
+        0.15254237288135594
+      ]
+    },
+    "ptml": {
+      "opt": "mipro",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.12463927049619608,
+      "select_se": 0.020365671802113926,
+      "report_gain": 0.19271755874999244,
+      "report_n": 126,
+      "program": 0.576317093109978,
+      "ci95": [
+        0.12274337072724169,
+        0.2616188769414576
+      ]
+    },
+    "ptmh": {
+      "opt": "mipro",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.02,
+      "select_se": 0.009651179258204232,
+      "report_gain": 0.03,
+      "report_n": 300,
+      "program": 0.7733333333333333,
+      "ci95": [
+        0.0,
+        0.06
+      ]
+    },
+    "ptmc": {
+      "opt": "mipro",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.13125,
+      "select_se": 0.03331981840800064,
+      "report_gain": 0.17,
+      "report_n": 100,
+      "program": 0.56,
+      "ci95": [
+        0.09,
+        0.26
+      ]
+    },
+    "ptmnp": {
+      "opt": "mipro",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.18,
+      "select_se": 0.03861229196653691,
+      "report_gain": 0.18,
+      "report_n": 200,
+      "program": 0.79,
+      "ci95": [
+        0.13,
+        0.235
+      ]
+    },
+    "ptmbr": {
+      "opt": "mipro",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": 0.01,
+      "select_se": 0.036223213718846264,
+      "report_gain": 0.025,
+      "report_n": 200,
+      "program": 0.475,
+      "ci95": [
+        -0.035,
+        0.075
+      ]
+    },
+    "ptmth": {
+      "opt": "mipro",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.06,
+      "select_se": 0.03428932159955306,
+      "report_gain": 0.005,
+      "report_n": 200,
+      "program": 0.735,
+      "ci95": [
+        -0.04,
+        0.05
+      ]
+    },
+    "ptmi": {
+      "opt": "mipro",
+      "ds": "ifbench",
+      "use_layer": false,
+      "select_mean": -0.023472222222222224,
+      "select_se": 0.009988436952856354,
+      "report_gain": 0.0,
+      "report_n": 300,
+      "program": 0.9107222222222221,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "ptmv": {
+      "opt": "mipro",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.05555555555555555,
+      "select_se": 0.01628913327836117,
+      "report_gain": 0.03666666666666667,
+      "report_n": 300,
+      "program": 0.7133333333333334,
+      "ci95": [
+        -0.0033333333333333335,
+        0.07666666666666666
+      ]
+    },
+    "ptmp": {
+      "opt": "mipro",
+      "ds": "pupa",
+      "use_layer": false,
+      "select_mean": -0.027134895884895885,
+      "select_se": 0.013951230592840156,
+      "report_gain": 0.0,
+      "report_n": 221,
+      "program": 0.8810493428140487,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "ptsa": {
+      "opt": "simba",
+      "ds": "aime",
+      "use_layer": true,
+      "select_mean": 0.3333333333333333,
+      "select_se": 0.05473805515039734,
+      "report_gain": 0.26,
+      "report_n": 150,
+      "program": 0.62,
+      "ci95": [
+        0.16666666666666666,
+        0.36
+      ]
+    },
+    "ptsg": {
+      "opt": "simba",
+      "ds": "gpqa",
+      "use_layer": true,
+      "select_mean": 0.05555555555555555,
+      "select_se": 0.03658694469513847,
+      "report_gain": 0.05084745762711865,
+      "report_n": 118,
+      "program": 0.7627118644067796,
+      "ci95": [
+        0.0,
+        0.1016949152542373
+      ]
+    },
+    "ptsl2": {
+      "opt": "simba",
+      "ds": "livebench",
+      "use_layer": true,
+      "select_mean": 0.09442779316181418,
+      "select_se": 0.018452202775318872,
+      "report_gain": 0.13496767376705793,
+      "report_n": 126,
+      "program": 0.6118418750545775,
+      "ci95": [
+        0.07550509866013298,
+        0.19478276353276355
+      ]
+    },
+    "ptsh": {
+      "opt": "simba",
+      "ds": "hotpotqa",
+      "use_layer": true,
+      "select_mean": 0.042222222222222223,
+      "select_se": 0.00999821260387812,
+      "report_gain": 0.056666666666666664,
+      "report_n": 300,
+      "program": 0.7433333333333333,
+      "ci95": [
+        0.03,
+        0.08333333333333333
+      ]
+    },
+    "ptsc": {
+      "opt": "simba",
+      "ds": "lcb",
+      "use_layer": true,
+      "select_mean": 0.16875,
+      "select_se": 0.030997406819922024,
+      "report_gain": 0.18,
+      "report_n": 100,
+      "program": 0.59,
+      "ci95": [
+        0.11,
+        0.26
+      ]
+    },
+    "ptsnp": {
+      "opt": "simba",
+      "ds": "natplan",
+      "use_layer": true,
+      "select_mean": 0.19,
+      "select_se": 0.03942772444036626,
+      "report_gain": 0.21,
+      "report_n": 200,
+      "program": 0.775,
+      "ci95": [
+        0.155,
+        0.27
+      ]
+    },
+    "ptsbr": {
+      "opt": "simba",
+      "ds": "bird",
+      "use_layer": true,
+      "select_mean": 0.05,
+      "select_se": 0.041132945334843116,
+      "report_gain": 0.065,
+      "report_n": 200,
+      "program": 0.42,
+      "ci95": [
+        0.02,
+        0.115
+      ]
+    },
+    "ptsth": {
+      "opt": "simba",
+      "ds": "toolhop",
+      "use_layer": true,
+      "select_mean": 0.03,
+      "select_se": 0.03319668962442192,
+      "report_gain": 0.045,
+      "report_n": 200,
+      "program": 0.73,
+      "ci95": [
+        0.0,
+        0.09
+      ]
+    },
+    "ptsi": {
+      "opt": "simba",
+      "ds": "ifbench",
+      "use_layer": true,
+      "select_mean": 0.002777777777777778,
+      "select_se": 0.0064683289540291705,
+      "report_gain": 0.028888888888888888,
+      "report_n": 300,
+      "program": 0.8871111111111111,
+      "ci95": [
+        0.003888888888888889,
+        0.055
+      ]
+    },
+    "ptsv": {
+      "opt": "simba",
+      "ds": "hover",
+      "use_layer": true,
+      "select_mean": 0.08222222222222222,
+      "select_se": 0.018339612581650337,
+      "report_gain": 0.1,
+      "report_n": 300,
+      "program": 0.6933333333333334,
+      "ci95": [
+        0.06,
+        0.14
+      ]
+    },
+    "ptsp": {
+      "opt": "simba",
+      "ds": "pupa",
+      "use_layer": true,
+      "select_mean": 0.00533033033033033,
+      "select_se": 0.008168618563113433,
+      "report_gain": 0.0175976272862086,
+      "report_n": 221,
+      "program": 0.9695818598932786,
+      "ci95": [
+        0.0022928628464960648,
+        0.0336717492426835
+      ]
+    },
+    "ptsb": {
+      "opt": "simba",
+      "ds": "bfcl",
+      "use_layer": false,
+      "select_mean": -0.030303030303030304,
+      "select_se": 0.02249416633206334,
+      "report_gain": 0.0,
+      "report_n": 49,
+      "program": 0.7959183673469388,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

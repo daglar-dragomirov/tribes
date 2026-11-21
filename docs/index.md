@@ -4,41 +4,48 @@ hide:
   - toc
 ---
 
-<h1 class="pt-sr">PeachTrees</h1>
+<h1 class="tb-sr">TRIBES</h1>
 
-<div class="pt-hero" markdown>
+<div class="tb-hero" markdown>
 
-![PeachTrees](assets/lockup-light.png#only-light){ .pt-lockup }
-![PeachTrees](assets/lockup-dark.png#only-dark){ .pt-lockup }
+![TRIBES](assets/lockup-light.png#only-light){ .tb-lockup }
+![TRIBES](assets/lockup-dark.png#only-dark){ .tb-lockup }
 
-<p class="pt-tagline">Inference-time answer selection for optimized DSPy programs</p>
+<p class="tb-tagline">Inference-time answer selection for optimized DSPy programs</p>
 
 [Get started](guides/quickstart.md){ .md-button .md-button--primary }
-[GitHub](https://github.com/daglar-dragomirov/PeachTrees){ .md-button }
-[PyPI](https://pypi.org/project/peachtrees/){ .md-button }
+[Results](results.md){ .md-button }
+[GitHub](https://github.com/daglar-dragomirov/tribes){ .md-button }
 
 </div>
 
-PeachTrees is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
+<div class="tb-stats" markdown>
+<div class="tb-stat"><b>+4.7 pp</b><span>fresh test · 1,010 items</span></div>
+<div class="tb-stat"><b>+7.1 pp</b><span>sealed test · 15 cells</span></div>
+<div class="tb-stat"><b>3</b><span>optimizers · GEPA, MIPROv2, SIMBA</span></div>
+<div class="tb-stat"><b>0</b><span>extra optimization cost</span></div>
+</div>
+
+TRIBES is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
 adds a reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches
 itself off on any task where it is not at least as good as the program.
 
 ## Get started
 
 ```bash
-pip install peachtrees
+pip install tribes
 ```
 
 === "GEPA"
 
     ```python
     import dspy
-    from peachtrees import PeachTrees
+    from tribes import Tribes
 
     dspy.configure(lm=dspy.LM("openrouter/z-ai/glm-5.3-flash"))
     program = dspy.GEPA(metric=metric, auto="medium").compile(student, trainset=train, valset=val)
 
-    pt = PeachTrees(program, examples=train).fit(train + val, metric)
+    pt = Tribes(program, examples=train).fit(train + val, metric)
     print(pt(question="...").answer)
     ```
 
@@ -47,7 +54,7 @@ pip install peachtrees
     ```python
     program = dspy.MIPROv2(metric=metric, auto="heavy").compile(student, trainset=train)
 
-    pt = PeachTrees(program, examples=train).fit(train + val, metric)
+    pt = Tribes(program, examples=train).fit(train + val, metric)
     ```
 
 === "SIMBA"
@@ -55,7 +62,7 @@ pip install peachtrees
     ```python
     program = dspy.SIMBA(metric=metric).compile(student, trainset=train)
 
-    pt = PeachTrees(program, examples=train).fit(train + val, metric)
+    pt = Tribes(program, examples=train).fit(train + val, metric)
     ```
 
 === "Any DSPy program"
@@ -63,7 +70,7 @@ pip install peachtrees
     ```python
     program = dspy.ChainOfThought("question -> answer")
 
-    pt = PeachTrees(program, mode="lite").fit(labeled, metric)
+    pt = Tribes(program, mode="lite").fit(labeled, metric)
     ```
 
 ## How it works
@@ -99,7 +106,7 @@ pip install peachtrees
 
     ---
 
-    36 development cells and a sealed test opened once, with every number per cell.
+    36 development cells, a sealed test opened once and a pre-registered test on fresh items, every number per cell.
 
     [:octicons-arrow-right-24: Results](results.md)
 
@@ -108,10 +115,10 @@ pip install peachtrees
 ## Citation
 
 ```bibtex
-@software{dragomirov2026peachtrees,
+@software{dragomirov2026tribes,
   author = {Dragomirov, Daglar},
-  title  = {PeachTrees: Inference-time answer selection for optimized DSPy programs},
+  title  = {TRIBES: Inference-time answer selection for optimized DSPy programs},
   year   = {2026},
-  url    = {https://github.com/daglar-dragomirov/PeachTrees}
+  url    = {https://github.com/daglar-dragomirov/tribes}
 }
 ```

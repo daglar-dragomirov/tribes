@@ -1,27 +1,77 @@
 # API reference
 
-## PeachTrees
+## Tribes
 
-::: peachtrees.PeachTrees
+::: tribes.Tribes
     options:
       members:
         - fit
         - forward
+        - explain
+        - run_batch
+        - abatch
+        - cost_report
+        - save_fit
+        - load_fit
 
-## Selection rules
+::: tribes.Selection
 
-::: peachtrees.pick
+## Task adapters
 
-::: peachtrees.non_inferior
+::: tribes.tasks
+    options:
+      members:
+        - Task
+        - math
+        - choice
+        - sql
+        - code
+        - plan
+        - free_text
+        - SQLiteDB
 
-::: peachtrees.paired_stats
+## Verifier
 
-::: peachtrees.text_key
+::: tribes.Verifier
+
+::: tribes.VerifierGate
+
+## Selection rules and task switches
+
+::: tribes.pick
+
+::: tribes.contested
+
+::: tribes.do_no_harm
+
+::: tribes.non_inferiority
+
+::: tribes.switch_power
+
+::: tribes.paired_stats
+
+::: tribes.text_key
+
+## Observability and cost
+
+::: tribes.Callback
+
+::: tribes.LoggingCallback
+
+::: tribes.JSONLCallback
+
+::: tribes.Ledger
+
+## Offline replay
+
+::: tribes.replay
 
 ## Forms and tools
 
-::: peachtrees.Assembled
+::: tribes.Assembled
 
-::: peachtrees.Liquid
+::: tribes.Liquid
 
-::: peachtrees.run_python
+::: tribes.run_python
+
+::: tribes.item_tool

@@ -1,7 +1,7 @@
 import dspy
 import pytest
 
-from peachtrees import PeachTrees, non_inferior, paired_stats, pick, text_key
+from tribes import Tribes, non_inferior, paired_stats, pick, text_key
 
 
 def test_vote_majority_and_reviewer_default():
@@ -50,7 +50,7 @@ class _Fixed:
 
 def _pt(rigid, assembled, liquid, mode="full"):
     prog = dspy.Predict("question -> answer")
-    return PeachTrees(prog, mode=mode, forms={"rigid": _Fixed(rigid), "assembled": _Fixed(assembled),
+    return Tribes(prog, mode=mode, forms={"rigid": _Fixed(rigid), "assembled": _Fixed(assembled),
                                               "liquid": _Fixed(liquid)}, retries=0)
 
 
@@ -67,4 +67,26 @@ def test_fit_switches_layer_off_when_worse():
     pt = _pt("x", "y", "z").fit(data, metric, num_threads=2)
     assert pt.use_layer is False and pt.report["mean_gain"] == pytest.approx(-1.0)
     pt = _pt("y", "x", "z").fit(data, metric, num_threads=2)
-    assert pt.use_layer is True and pt.report["peachtrees_score"] == 1.0
+    assert pt.use_layer is True and pt.report["tribes_score"] == 1.0
+
+
+def test_named_switches():
+    from tribes import do_no_harm, non_inferiority, task_switch
+    deltas = [(i, d) for i, d in enumerate([0.0] * 80 + [-1.0] * 10 + [1.0] * 6)]
+    use, m, se = do_no_harm(deltas)
+    assert use is (m + se >= 0)
+    assert non_inferiority(deltas, margin=0.0)[0] is False
+    assert task_switch(deltas, "non_inferiority", margin=0.5)[0] is True
+    with pytest.raises(ValueError):
+        task_switch(deltas, "vibes")
+
+
+def test_switch_power_matches_the_known_operating_point():
+    from tribes import switch_power
+    # n = 100 binary differences (sd ~ 0.45): a layer truly 5 pp worse passes the 1.0 switch about 46 % of the time
+    assert switch_power(-0.05, 0.45, 100) == pytest.approx(0.456, abs=0.01)
+    assert switch_power(-0.05, 0.45, 300) < 0.2
+    assert switch_power(0.05, 0.45, 100) > 0.9
+    # the real non-inferiority test protects against a 5 pp loss
+    assert switch_power(-0.05, 0.45, 100, "non_inferiority") < 0.05
+    assert switch_power(0.0, 0.0, 10) == 1.0

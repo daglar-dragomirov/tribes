@@ -50,3 +50,35 @@ def public_tests(inputs, pred):
 Good checkers: the statement's public unit tests for code, "the SQL query runs and returns rows", a validator of the
 constraints stated in a planning problem. In the research evaluation they added about +0.3 pp on top of the vote; the
 layer works without them.
+
+## Ready-made adapters
+
+`tribes.tasks` bundles a key, a checker, tools and verifier evidence per task type; pass one as `task=`:
+
+| adapter | answers agree when | checker | tools |
+|---|---|---|---|
+| `math()` | the final number or expression is equal by value (`\boxed{}`, fractions, `1,000`) | - | `run_python` |
+| `choice("ABCD")` | the option letter is equal | - | - |
+| `sql(db_for)` | the queries return the same rows | the query runs | read-only `run_sql` on the item's database |
+| `code(tests_for)` | the programs print the same on the public-test inputs | passes the public tests | `run_public_tests`, `run_program` |
+| `plan(validate)` | normalised text | your validator of the stated constraints | - |
+| `tool_qa()` | normalised text | an abstention is not an answer | - |
+| `doc_set()` | (merged, not voted) | - | - |
+
+`db_for(inputs)` and `tests_for(inputs)` read the current item; tools that need it use `tribes.item_tool`.
+
+## Set-valued outputs: merge instead of select
+
+When the output is a set of items scored by recall (retrieved documents, cited sources, tags), choosing one form's set
+throws away what the others found. `tasks.doc_set()` merges them: every item gets the number of forms that returned it,
+items are ordered by that count, and the first *k* are kept, where *k* is the size of the program's own output (its
+budget). On HoVer this beat taking the reviewer's set by about +6 pp on development data for each of GEPA, MIPROv2 and
+SIMBA.
+
+## Contested inputs: the verifier
+
+`Tribes(program, verifier=True)` adds a verifier for inputs where no two forms agree. It must run one check whose
+result differs between the candidates (substituting an answer back, code on edge-case inputs, an auxiliary SQL query),
+and code - not the model - accepts a switch only if the quoted evidence matches a tool observation; a switch needs two of
+three votes. `fit` enables it per task only if, on the selection data, it gains more than 0.5 pp and wins at least two
+more items than it loses.

@@ -1,0 +1,1690 @@
+{
+ "primary": {
+  "cells": 15,
+  "mean_pp": 4.73,
+  "ci95_pp": [
+   3.43,
+   6.07
+  ],
+  "p_one_sided": 0.0001,
+  "claim": true
+ },
+ "secondary_sequence": [
+  {
+   "cells": 15,
+   "mean_pp": 2.24,
+   "ci95_pp": [
+    1.48,
+    3.03
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "label": "S1 1.1 - 1.0-lite, all cells",
+   "tested": true
+  },
+  {
+   "cells": 3,
+   "mean_pp": 2.56,
+   "ci95_pp": [
+    0.33,
+    4.89
+   ],
+   "p_one_sided": 0.0118,
+   "claim": true,
+   "label": "S2 BIRD: 1.1 - 1.0-lite",
+   "tested": true
+  },
+  {
+   "cells": 3,
+   "mean_pp": 7.33,
+   "ci95_pp": [
+    4.89,
+    10.22
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "label": "S3a HoVer: merge - reviewer",
+   "tested": true
+  },
+  {
+   "cells": 3,
+   "mean_pp": 7.11,
+   "ci95_pp": [
+    4.44,
+    10.22
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "label": "S3b HoVer: merge - program x 3 merged",
+   "tested": true
+  }
+ ],
+ "descriptive": {
+  "1.1 - 1.1-full (two-sided)": {
+   "cells": 15,
+   "mean_pp": -0.45,
+   "ci95_pp": [
+    -0.9,
+    0.0
+   ],
+   "p_one_sided": 0.9757,
+   "claim": false
+  },
+  "1.0-full - 1.0-lite (two-sided)": {
+   "cells": 15,
+   "mean_pp": 0.69,
+   "ci95_pp": [
+    0.14,
+    1.23
+   ],
+   "p_one_sided": 0.008,
+   "claim": true
+  },
+  "1.0-lite - program (TEST-A arm on TEST-B items)": {
+   "cells": 15,
+   "mean_pp": 2.49,
+   "ci95_pp": [
+    1.16,
+    3.84
+   ],
+   "p_one_sided": 0.0002,
+   "claim": true
+  },
+  "1.1-full - program": {
+   "cells": 15,
+   "mean_pp": 5.18,
+   "ci95_pp": [
+    3.94,
+    6.45
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "full - lite (1.1 forms)": {
+   "cells": 15,
+   "mean_pp": 1.95,
+   "ci95_pp": [
+    1.21,
+    2.71
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "agent alone - program": {
+   "cells": 15,
+   "mean_pp": -6.79,
+   "ci95_pp": [
+    -8.72,
+    -4.81
+   ],
+   "p_one_sided": 1.0,
+   "claim": false
+  }
+ },
+ "per_benchmark_holm": {
+  "bird": {
+   "cells": 3,
+   "mean_pp": 3.22,
+   "ci95_pp": [
+    0.89,
+    5.67
+   ],
+   "p_one_sided": 0.0033,
+   "claim": true,
+   "holm_claim": true
+  },
+  "toolhop": {
+   "cells": 3,
+   "mean_pp": 2.17,
+   "ci95_pp": [
+    -0.5,
+    5.0
+   ],
+   "p_one_sided": 0.06219,
+   "claim": false,
+   "holm_claim": false
+  },
+  "gpqa": {
+   "cells": 3,
+   "mean_pp": 1.67,
+   "ci95_pp": [
+    -1.46,
+    4.79
+   ],
+   "p_one_sided": 0.16728,
+   "claim": false,
+   "holm_claim": false
+  },
+  "hover": {
+   "cells": 3,
+   "mean_pp": 12.44,
+   "ci95_pp": [
+    8.89,
+    16.44
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "holm_claim": true
+  },
+  "hotpotqa": {
+   "cells": 3,
+   "mean_pp": 4.17,
+   "ci95_pp": [
+    1.83,
+    6.83
+   ],
+   "p_one_sided": 0.0003,
+   "claim": true,
+   "holm_claim": true
+  }
+ },
+ "bird_by_difficulty": {
+  "simple": {
+   "v11": 2.38,
+   "v10lite": 0.4,
+   "n_items": 84
+  },
+  "moderate": {
+   "v11": 2.93,
+   "v10lite": 0.37,
+   "n_items": 182
+  },
+  "challenging": {
+   "v11": 6.86,
+   "v10lite": 2.94,
+   "n_items": 34
+  }
+ },
+ "cells": [
+  {
+   "key": "gepa:bird",
+   "opt": "gepa",
+   "ds": "bird",
+   "name": "ptbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 300,
+    "t1": "f7893a92-cba7-437e-927a-adb0de78aa3d/repo/runs/fieldsuite-v04-x1ptbr/worker",
+    "t2": "9b4b4fd4-1c0d-4446-8b06-52e56bfcfdae/repo/runs/fieldsuite-v04-x2ptbr/worker",
+    "t4": "8ab1c724-9c3b-419b-bebd-f50f00bd718b/repo/runs/fieldsuite-v04-x4ptbr/worker",
+    "verifier_records": 300,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2803,
+       "lms": 2,
+       "usd": 0.63115
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.506667,
+          0.616667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.56
+        },
+        "liquid": {
+         "ci95": [
+          0.496667,
+          0.61
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.553333
+        },
+        "rigid": {
+         "ci95": [
+          0.503333,
+          0.62
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.56
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0010601,
+        "liquid": 0.0008525,
+        "rigid": 0.0001912
+       }
+      }
+     },
+     "t2": {
+      "stock_client": {
+       "calls": 1526,
+       "lms": 2,
+       "usd": 0.341087
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.496667,
+          0.61
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.553333
+        },
+        "liquid": {
+         "ci95": [
+          0.476667,
+          0.593333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.533333
+        },
+        "rigid": {
+         "ci95": [
+          0.503333,
+          0.62
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.56
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0006784,
+        "liquid": 0.0004586,
+        "rigid": 0.0
+       }
+      }
+     },
+     "t4": {
+      "stock_client": {
+       "calls": 195,
+       "lms": 2,
+       "usd": 0.074918
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.506667,
+          0.616667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.56
+        },
+        "liquid": {
+         "ci95": [
+          0.496667,
+          0.61
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.553333
+        },
+        "rigid": {
+         "ci95": [
+          0.503333,
+          0.62
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.56
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0,
+        "liquid": 0.0,
+        "rigid": 0.0
+       }
+      }
+     }
+    },
+    "prog": 56.0,
+    "v10lite": 55.67,
+    "v10full": 57.0,
+    "v11": 56.0,
+    "v11full": 56.67,
+    "l11": 56.0,
+    "f11": 56.67,
+    "agent": 55.33,
+    "reviewer": 56.0,
+    "gain_v11_pp": 0.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:bird",
+   "opt": "mipro",
+   "ds": "bird",
+   "name": "ptmbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 300,
+    "t1": "6cf3e45b-3c45-4b72-961e-a82de85a7137/repo/runs/fieldsuite-v04-x1ptmbr/worker",
+    "t2": "53b488ae-dbda-43bb-ba71-2d5aba814142/repo/runs/fieldsuite-v04-x2ptmbr/worker",
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2767,
+       "lms": 2,
+       "usd": 0.808237
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.526667,
+          0.64
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.583333
+        },
+        "liquid": {
+         "ci95": [
+          0.52,
+          0.633333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.576667
+        },
+        "rigid": {
+         "ci95": [
+          0.483333,
+          0.593333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.536667
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0013365,
+        "liquid": 0.0007311,
+        "rigid": 0.0006265
+       }
+      }
+     },
+     "t2": {
+      "stock_client": {
+       "calls": 1513,
+       "lms": 2,
+       "usd": 0.40671
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.49,
+          0.603333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.546667
+        },
+        "liquid": {
+         "ci95": [
+          0.506667,
+          0.62
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.563333
+        },
+        "rigid": {
+         "ci95": [
+          0.483333,
+          0.593333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.536667
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0009746,
+        "liquid": 0.0003811,
+        "rigid": 0.0
+       }
+      }
+     }
+    },
+    "prog": 53.67,
+    "v10lite": 55.0,
+    "v10full": 57.0,
+    "v11": 58.67,
+    "v11full": 59.0,
+    "l11": 58.67,
+    "f11": 59.0,
+    "agent": 57.67,
+    "reviewer": 58.33,
+    "gain_v11_pp": 5.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "simba:bird",
+   "opt": "simba",
+   "ds": "bird",
+   "name": "ptsbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 300,
+    "t1": "05403da1-560d-4fba-bd34-4ada8402e65d/repo/runs/fieldsuite-v04-x1ptsbr/worker",
+    "t2": "1b20ce02-547e-44bb-a0f4-2492655dbb77/repo/runs/fieldsuite-v04-x2ptsbr/worker",
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2735,
+       "lms": 2,
+       "usd": 0.602
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.573333,
+          0.683333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.626667
+        },
+        "liquid": {
+         "ci95": [
+          0.513333,
+          0.626667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.57
+        },
+        "rigid": {
+         "ci95": [
+          0.526667,
+          0.636667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.58
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0010383,
+        "liquid": 0.0006701,
+        "rigid": 0.0002983
+       }
+      }
+     },
+     "t2": {
+      "stock_client": {
+       "calls": 1571,
+       "lms": 2,
+       "usd": 0.331356
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.53,
+          0.643333
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.586667
+        },
+        "liquid": {
+         "ci95": [
+          0.523333,
+          0.636667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.58
+        },
+        "rigid": {
+         "ci95": [
+          0.526667,
+          0.636667
+         ],
+         "errors": 0,
+         "n": 300,
+         "score_mean": 0.58
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.000689,
+        "liquid": 0.0004156,
+        "rigid": 0.0
+       }
+      }
+     }
+    },
+    "prog": 58.0,
+    "v10lite": 59.0,
+    "v10full": 59.33,
+    "v11": 62.67,
+    "v11full": 62.67,
+    "l11": 62.67,
+    "f11": 62.67,
+    "agent": 57.0,
+    "reviewer": 62.67,
+    "gain_v11_pp": 4.67,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:toolhop",
+   "opt": "gepa",
+   "ds": "toolhop",
+   "name": "ptth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "a0df8525-eee9-408c-82cd-b297969f5968/repo/runs/fieldsuite-v04-x1ptth/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 4740,
+       "lms": 2,
+       "usd": 1.553325
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.395,
+          0.535
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.465
+        },
+        "liquid": {
+         "ci95": [
+          0.41,
+          0.55
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.48
+        },
+        "rigid": {
+         "ci95": [
+          0.385,
+          0.525
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.455
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0031987,
+        "liquid": 0.002635,
+        "rigid": 0.0019329
+       }
+      }
+     }
+    },
+    "prog": 45.5,
+    "v10lite": 46.5,
+    "v10full": 47.5,
+    "v11": 49.0,
+    "v11full": 49.0,
+    "l11": 48.5,
+    "f11": 49.0,
+    "agent": 48.0,
+    "reviewer": 46.5,
+    "gain_v11_pp": 3.5,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:toolhop",
+   "opt": "mipro",
+   "ds": "toolhop",
+   "name": "ptmth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "398aa984-e1ce-4969-96d9-e4fa82b58beb/repo/runs/fieldsuite-v04-x1ptmth/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 5247,
+       "lms": 2,
+       "usd": 1.603072
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.66,
+          0.785
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.725
+        },
+        "liquid": {
+         "ci95": [
+          0.39,
+          0.53
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.46
+        },
+        "rigid": {
+         "ci95": [
+          0.645,
+          0.77
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.71
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0034133,
+        "liquid": 0.0022201,
+        "rigid": 0.0023819
+       }
+      }
+     }
+    },
+    "prog": 71.0,
+    "v10lite": 72.5,
+    "v10full": 73.5,
+    "v11": 74.5,
+    "v11full": 74.5,
+    "l11": 73.5,
+    "f11": 74.5,
+    "agent": 46.0,
+    "reviewer": 72.5,
+    "gain_v11_pp": 3.5,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "simba:toolhop",
+   "opt": "simba",
+   "ds": "toolhop",
+   "name": "ptsth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "4adaa649-8788-43e5-9e90-7361d457d0fa/repo/runs/fieldsuite-v04-x1ptsth/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 5408,
+       "lms": 2,
+       "usd": 1.547047
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.67,
+          0.795
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.735
+        },
+        "liquid": {
+         "ci95": [
+          0.365,
+          0.5
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.435
+        },
+        "rigid": {
+         "ci95": [
+          0.67,
+          0.795
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.735
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0033742,
+        "liquid": 0.0022788,
+        "rigid": 0.0020822
+       }
+      }
+     }
+    },
+    "prog": 73.5,
+    "v10lite": 73.5,
+    "v10full": 73.0,
+    "v11": 73.0,
+    "v11full": 73.0,
+    "l11": 73.5,
+    "f11": 73.0,
+    "agent": 43.5,
+    "reviewer": 73.5,
+    "gain_v11_pp": -0.5,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:gpqa",
+   "opt": "gepa",
+   "ds": "gpqa",
+   "name": "j6g",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 160,
+    "t1": "78f77d2f-74a8-4528-a66f-ba1fda2ce1e5/repo/runs/fieldsuite-v04-x1j6g/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 1165,
+       "lms": 2,
+       "usd": 0.694184
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.6625,
+          0.8
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.73125
+        },
+        "liquid": {
+         "ci95": [
+          0.6625,
+          0.8
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.73125
+        },
+        "rigid": {
+         "ci95": [
+          0.65625,
+          0.79375
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.725
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0023519,
+        "liquid": 0.0013147,
+        "rigid": 0.0006721
+       }
+      }
+     }
+    },
+    "prog": 72.5,
+    "v10lite": 73.12,
+    "v10full": 73.12,
+    "v11": 73.12,
+    "v11full": 73.12,
+    "l11": 73.12,
+    "f11": 73.12,
+    "agent": 73.12,
+    "reviewer": 73.12,
+    "gain_v11_pp": 0.62,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:gpqa",
+   "opt": "mipro",
+   "ds": "gpqa",
+   "name": "ptmg",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 160,
+    "t1": "9aa14250-d058-4159-abf2-ff1035c90013/repo/runs/fieldsuite-v04-x1ptmg/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 1133,
+       "lms": 2,
+       "usd": 0.435794
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.6625,
+          0.80625
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.7375
+        },
+        "liquid": {
+         "ci95": [
+          0.66875,
+          0.80625
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.7375
+        },
+        "rigid": {
+         "ci95": [
+          0.625,
+          0.7625
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.69375
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0009336,
+        "liquid": 0.0013996,
+        "rigid": 0.0003905
+       }
+      }
+     }
+    },
+    "prog": 69.38,
+    "v10lite": 73.75,
+    "v10full": 75.62,
+    "v11": 73.75,
+    "v11full": 75.62,
+    "l11": 73.75,
+    "f11": 75.62,
+    "agent": 73.75,
+    "reviewer": 73.75,
+    "gain_v11_pp": 4.37,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "simba:gpqa",
+   "opt": "simba",
+   "ds": "gpqa",
+   "name": "ptsg",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 160,
+    "t1": "6e90e60e-010b-45e5-8d83-2b315edcc6cc/repo/runs/fieldsuite-v04-x1ptsg/worker",
+    "t2": null,
+    "t4": "a89bdcc6-26f0-4123-97a7-53d7a1a56fca/repo/runs/fieldsuite-v04-x4ptsg/worker",
+    "verifier_records": 160,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 1140,
+       "lms": 2,
+       "usd": 0.46199
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.625,
+          0.76875
+         ],
+         "errors": 1,
+         "n": 160,
+         "score_mean": 0.7
+        },
+        "liquid": {
+         "ci95": [
+          0.64375,
+          0.78125
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.7125
+        },
+        "rigid": {
+         "ci95": [
+          0.63125,
+          0.775
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.70625
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0016877,
+        "liquid": 0.0007028,
+        "rigid": 0.000497
+       }
+      }
+     },
+     "t4": {
+      "stock_client": {
+       "calls": 18,
+       "lms": 2,
+       "usd": 0.039727
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.625,
+          0.76875
+         ],
+         "errors": 1,
+         "n": 160,
+         "score_mean": 0.7
+        },
+        "liquid": {
+         "ci95": [
+          0.64375,
+          0.78125
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.7125
+        },
+        "rigid": {
+         "ci95": [
+          0.63125,
+          0.775
+         ],
+         "errors": 0,
+         "n": 160,
+         "score_mean": 0.70625
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0,
+        "liquid": 0.0,
+        "rigid": 0.0
+       }
+      }
+     }
+    },
+    "prog": 70.62,
+    "v10lite": 70.62,
+    "v10full": 72.5,
+    "v11": 70.62,
+    "v11full": 72.5,
+    "l11": 70.62,
+    "f11": 72.5,
+    "agent": 71.25,
+    "reviewer": 70.0,
+    "gain_v11_pp": 0.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 1
+    }
+   }
+  },
+  {
+   "key": "gepa:hover",
+   "opt": "gepa",
+   "ds": "hover",
+   "name": "j6v",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 150,
+    "t1": "fa836e07-1d07-44c4-add5-1e91f1035a83/repo/runs/fieldsuite-v04-x1j6v/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {
+     "x1-liquid": 2,
+     "x1-assembled": 1
+    },
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 3725,
+       "lms": 2,
+       "usd": 0.810928
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.72,
+          0.846667
+         ],
+         "errors": 1,
+         "n": 150,
+         "score_mean": 0.786667
+        },
+        "liquid": {
+         "ci95": [
+          0.453333,
+          0.613333
+         ],
+         "errors": 2,
+         "n": 150,
+         "score_mean": 0.533333
+        },
+        "rigid": {
+         "ci95": [
+          0.673333,
+          0.813333
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.746667
+        },
+        "rigid2": {
+         "ci95": [
+          0.633333,
+          0.78
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.706667
+        },
+        "rigid3": {
+         "ci95": [
+          0.646667,
+          0.786667
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.72
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0019532,
+        "liquid": 0.0012768,
+        "rigid": 0.0007456,
+        "rigid2": 0.0007014,
+        "rigid3": 0.0007293
+       }
+      }
+     }
+    },
+    "prog": 74.67,
+    "v10lite": 79.33,
+    "v10full": 79.33,
+    "v11": 87.33,
+    "v11full": 87.33,
+    "l11": 79.33,
+    "f11": 87.33,
+    "agent": 54.0,
+    "reviewer": 79.33,
+    "prog_x3": 82.0,
+    "gain_v11_pp": 12.66,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:hover",
+   "opt": "mipro",
+   "ds": "hover",
+   "name": "ptmv",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 150,
+    "t1": "1853b2ff-8788-4eb1-9717-881de0c03ee1/repo/runs/fieldsuite-v04-x1ptmv/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 3686,
+       "lms": 2,
+       "usd": 1.140751
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.66,
+          0.8
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.733333
+        },
+        "liquid": {
+         "ci95": [
+          0.206667,
+          0.346667
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.273333
+        },
+        "rigid": {
+         "ci95": [
+          0.66,
+          0.806667
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.733333
+        },
+        "rigid2": {
+         "ci95": [
+          0.62,
+          0.766667
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.693333
+        },
+        "rigid3": {
+         "ci95": [
+          0.586667,
+          0.733333
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.66
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0030206,
+        "liquid": 0.0025339,
+        "rigid": 0.0007153,
+        "rigid2": 0.0006672,
+        "rigid3": 0.0006681
+       }
+      }
+     }
+    },
+    "prog": 73.33,
+    "v10lite": 73.33,
+    "v10full": 73.33,
+    "v11": 81.33,
+    "v11full": 81.33,
+    "l11": 73.33,
+    "f11": 81.33,
+    "agent": 27.33,
+    "reviewer": 73.33,
+    "prog_x3": 78.0,
+    "gain_v11_pp": 8.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "simba:hover",
+   "opt": "simba",
+   "ds": "hover",
+   "name": "ptsv",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 150,
+    "t1": "f609cdf8-e3d0-4556-bef3-215b256381b7/repo/runs/fieldsuite-v04-x1ptsv/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 3618,
+       "lms": 2,
+       "usd": 0.71454
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.773333,
+          0.893333
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.833333
+        },
+        "liquid": {
+         "ci95": [
+          0.58,
+          0.733333
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.66
+        },
+        "rigid": {
+         "ci95": [
+          0.653333,
+          0.8
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.726667
+        },
+        "rigid2": {
+         "ci95": [
+          0.653333,
+          0.8
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.726667
+        },
+        "rigid3": {
+         "ci95": [
+          0.646667,
+          0.786667
+         ],
+         "errors": 0,
+         "n": 150,
+         "score_mean": 0.72
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.001753,
+        "liquid": 0.0011681,
+        "rigid": 0.000633,
+        "rigid2": 0.0006054,
+        "rigid3": 0.0006042
+       }
+      }
+     }
+    },
+    "prog": 72.67,
+    "v10lite": 83.33,
+    "v10full": 83.33,
+    "v11": 89.33,
+    "v11full": 89.33,
+    "l11": 83.33,
+    "f11": 89.33,
+    "agent": 66.0,
+    "reviewer": 83.33,
+    "prog_x3": 76.67,
+    "gain_v11_pp": 16.66,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:hotpotqa",
+   "opt": "gepa",
+   "ds": "hotpotqa",
+   "name": "j6h",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "6422caa6-d744-404e-a5f8-992f69d46a04/repo/runs/fieldsuite-v04-x1j6h/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {
+     "x1-rigid": 23,
+     "x1-liquid": 20,
+     "x1-assembled": 81
+    },
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2753,
+       "lms": 2,
+       "usd": 0.55353
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.36,
+          0.495
+         ],
+         "errors": 81,
+         "n": 200,
+         "score_mean": 0.425
+        },
+        "liquid": {
+         "ci95": [
+          0.57,
+          0.7
+         ],
+         "errors": 20,
+         "n": 200,
+         "score_mean": 0.635
+        },
+        "rigid": {
+         "ci95": [
+          0.515,
+          0.65
+         ],
+         "errors": 23,
+         "n": 200,
+         "score_mean": 0.585
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0013642,
+        "liquid": 0.0004927,
+        "rigid": 0.0009108
+       }
+      }
+     }
+    },
+    "prog": 65.0,
+    "v10lite": 72.0,
+    "v10full": 71.5,
+    "v11": 72.0,
+    "v11full": 71.5,
+    "l11": 72.0,
+    "f11": 71.5,
+    "agent": 72.0,
+    "reviewer": 72.0,
+    "gain_v11_pp": 7.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:hotpotqa",
+   "opt": "mipro",
+   "ds": "hotpotqa",
+   "name": "ptmh",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "203ff9e9-b663-41b0-804f-8b71c5a164b0/repo/runs/fieldsuite-v04-x1ptmh/worker",
+    "t2": null,
+    "t4": null,
+    "verifier_records": 0,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2810,
+       "lms": 2,
+       "usd": 0.381498
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.665,
+          0.79
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.73
+        },
+        "liquid": {
+         "ci95": [
+          0.685,
+          0.805
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.745
+        },
+        "rigid": {
+         "ci95": [
+          0.635,
+          0.76
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.7
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0008977,
+        "liquid": 0.0005183,
+        "rigid": 0.0004916
+       }
+      }
+     }
+    },
+    "prog": 70.0,
+    "v10lite": 73.0,
+    "v10full": 74.5,
+    "v11": 73.0,
+    "v11full": 74.5,
+    "l11": 73.0,
+    "f11": 74.5,
+    "agent": 74.5,
+    "reviewer": 73.0,
+    "gain_v11_pp": 3.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  },
+  {
+   "key": "simba:hotpotqa",
+   "opt": "simba",
+   "ds": "hotpotqa",
+   "name": "ptsh",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 200,
+    "t1": "25747dfb-fae0-416c-948d-a687972483b2/repo/runs/fieldsuite-v04-x1ptsh/worker",
+    "t2": null,
+    "t4": "4deeac2a-f4a6-4c60-90b3-d8fc396612b0/repo/runs/fieldsuite-v04-x4ptsh/worker",
+    "verifier_records": 200,
+    "repaired_rows": {},
+    "cost": {
+     "t1": {
+      "stock_client": {
+       "calls": 2800,
+       "lms": 2,
+       "usd": 0.328499
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.63,
+          0.755
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.695
+        },
+        "liquid": {
+         "ci95": [
+          0.65,
+          0.775
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.715
+        },
+        "rigid": {
+         "ci95": [
+          0.605,
+          0.735
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.67
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0008133,
+        "liquid": 0.00046,
+        "rigid": 0.0003693
+       }
+      }
+     },
+     "t4": {
+      "stock_client": {
+       "calls": 77,
+       "lms": 2,
+       "usd": 0.022023
+      },
+      "select": {
+       "forms_only": true,
+       "states": {
+        "assembled": {
+         "ci95": [
+          0.63,
+          0.755
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.695
+        },
+        "liquid": {
+         "ci95": [
+          0.65,
+          0.775
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.715
+        },
+        "rigid": {
+         "ci95": [
+          0.605,
+          0.735
+         ],
+         "errors": 0,
+         "n": 200,
+         "score_mean": 0.67
+        }
+       },
+       "usd_per_item_marginal": {
+        "assembled": 0.0,
+        "liquid": 0.0,
+        "rigid": 0.0
+       }
+      }
+     }
+    },
+    "prog": 67.0,
+    "v10lite": 69.5,
+    "v10full": 70.0,
+    "v11": 69.5,
+    "v11full": 70.5,
+    "l11": 69.5,
+    "f11": 70.0,
+    "agent": 71.5,
+    "reviewer": 69.5,
+    "gain_v11_pp": 2.5,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0
+    }
+   }
+  }
+ ],
+ "missing_cells": []
+}

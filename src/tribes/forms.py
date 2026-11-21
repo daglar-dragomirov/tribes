@@ -1,4 +1,4 @@
-"""The three PeachTrees forms around an optimized DSPy program.
+"""The three TRIBES forms around an optimized DSPy program.
 
 rigid      the optimized program itself (any optimizer: GEPA, MIPROv2, SIMBA, ...)
 assembled  the program's draft, then a ReAct reviewer that checks it and fixes it only if it finds a defect
@@ -16,7 +16,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from typing import Any, Callable, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
 import dspy
 
@@ -36,10 +36,12 @@ ASSEMBLED_TEMPLATE = (
     "return the draft unchanged; never replace it with a statement that the answer cannot be determined. Give the final "
     "output in the required format.")
 
+FINAL_TOOLS = ("submit", "finish")
+
 
 def run_python(code: str) -> str:
     """Run Python 3 code (standard library only, 10 s limit) and return what it prints; use print()."""
-    d = tempfile.mkdtemp(prefix="peachtrees_")
+    d = tempfile.mkdtemp(prefix="tribes_")
     try:
         p = os.path.join(d, "main.py")
         with open(p, "w", encoding="utf-8") as f:
@@ -56,7 +58,7 @@ def run_python(code: str) -> str:
 
 
 def task_text(program: dspy.Module, examples: str | None = None) -> str:
-    """The shared head of both agents' instructions: the program's predictor instructions (the task's purpose plus what
+    """The shared head of the agents' instructions: the program's predictor instructions (the task's purpose plus what
     the optimizer learned) and optional correct outputs of labeled examples."""
     parts = [p.signature.instructions.strip() for _, p in program.named_predictors()]
     h = "The task (with the guidance an optimizer learned for it):\n" + "\n\n".join(f"- {x}" for x in parts if x)
@@ -83,25 +85,86 @@ def clean(text: Any) -> Any:
     return re.sub(r"^(>\s*)+", "", t)
 
 
-def react_text(r: Any) -> str:
-    tr = getattr(r, "trajectory", None) or {}
-    steps, i = [], 0
-    while f"thought_{i}" in tr:
-        steps.append(f"thought: {str(tr.get(f'thought_{i}'))[:1200]}\ncall: {tr.get(f'tool_name_{i}')}"
-                     f"({tr.get(f'tool_args_{i}')}) -> {str(tr.get(f'observation_{i}'))[:400]}")
+def _get(obj: Any, name: str, default: Any = None) -> Any:
+    if obj is None:
+        return default
+    if isinstance(obj, Mapping):
+        return obj.get(name, default)
+    return getattr(obj, name, default)
+
+
+def steps(r: Any) -> list[dict[str, Any]]:
+    """The steps of a ReAct result as dicts ``{thought, tool, args, observation, error}``.
+
+    Reads both DSPy ReAct formats: the ``history`` of tool-call events (DSPy >= 3.5) and the older flat ``trajectory``
+    (thought_i / tool_name_i / tool_args_i / observation_i). The final ``submit`` / ``finish`` call is included; callers
+    that need evidence filter it out (see :func:`tool_observations`).
+    """
+    out: list[dict[str, Any]] = []
+    messages = _get(_get(r, "history"), "messages")
+    if messages:
+        for ev in messages:
+            if not isinstance(ev, Mapping):
+                continue
+            thought = ev.get("next_thought")
+            tc = ev.get("tool_calls")
+            calls = list(_get(tc, "tool_calls") or [])
+            results = list(_get(_get(tc, "tool_call_results"), "tool_call_results") or [])
+            if not calls and thought:
+                out.append({"thought": thought, "tool": None, "args": {}, "observation": None, "error": False})
+            for j, c in enumerate(calls):
+                res = results[j] if j < len(results) else None
+                out.append({"thought": thought if j == 0 else None, "tool": _get(c, "name"),
+                            "args": _get(c, "args") or {}, "observation": _get(res, "value"),
+                            "error": bool(_get(res, "is_error", False))})
+        return out
+    tr = _get(r, "trajectory") or {}
+    i = 0
+    while f"thought_{i}" in tr or f"tool_name_{i}" in tr:
+        obs = tr.get(f"observation_{i}")
+        out.append({"thought": tr.get(f"thought_{i}"), "tool": tr.get(f"tool_name_{i}"),
+                    "args": tr.get(f"tool_args_{i}") or {}, "observation": obs,
+                    "error": str(obs).startswith("Execution error")})
         i += 1
-    return "\n".join(steps + ["final reasoning: " + str(getattr(r, "reasoning", "") or "")[:4000]])
+    return out
+
+
+def tool_observations(r: Any) -> list[str]:
+    """Observations of successful, non-final tool calls: what the agent's checks actually returned."""
+    return [str(s["observation"]) for s in steps(r)
+            if s["tool"] and s["tool"] not in FINAL_TOOLS and not s["error"] and s["observation"] not in (None, "")]
+
+
+def react_text(r: Any) -> str:
+    """A compact rendering of a ReAct run: its tool steps and its final reasoning."""
+    lines = []
+    for s in steps(r):
+        if s["tool"] in FINAL_TOOLS:
+            continue
+        line = f"thought: {str(s['thought'] or '')[:1200]}"
+        if s["tool"]:
+            line += f"\ncall: {s['tool']}({s['args']}) -> {str(s['observation'])[:400]}"
+        lines.append(line)
+    return "\n".join(lines + ["final reasoning: " + str(getattr(r, "reasoning", "") or "")[:4000]])
+
+
+def _signature(input_fields: Sequence[str], extra: Mapping[str, str], output_field: str, instructions: str):
+    fields: dict[str, Any] = {k: (str, dspy.InputField()) for k in input_fields}
+    for name, desc in extra.items():
+        fields[name] = (str, dspy.InputField(desc=desc))
+    fields[output_field] = (str, dspy.OutputField(desc="the final output in the required format"))
+    return dspy.make_signature(fields, instructions)
 
 
 class Liquid(dspy.Module):
+    """A ReAct agent that solves the task from scratch with the task's instructions and tools."""
+
     def __init__(self, input_fields: Sequence[str], output_field: str, instructions: str,
                  tools: Sequence[Callable] = (), max_iters: int = 8):
         super().__init__()
-        fields = {k: (str, dspy.InputField()) for k in input_fields}
-        fields[output_field] = (str, dspy.OutputField(desc="the final output in the required format"))
-        sig = dspy.make_signature(fields, instructions)
         self.input_fields, self.output_field = list(input_fields), output_field
-        self.agent = dspy.ReAct(sig, tools=list(tools) + [run_python], max_iters=max_iters)
+        self.agent = dspy.ReAct(_signature(input_fields, {}, output_field, instructions),
+                                tools=list(tools) + [run_python], max_iters=max_iters)
 
     def forward(self, **kw):
         r = self.agent(**{k: kw[k] for k in self.input_fields})
@@ -109,17 +172,16 @@ class Liquid(dspy.Module):
 
 
 class Assembled(dspy.Module):
+    """The program's draft, then a ReAct reviewer that checks it and changes it only on a found defect."""
+
     def __init__(self, program: dspy.Module, input_fields: Sequence[str], output_field: str, instructions: str,
                  tools: Sequence[Callable] = (), max_iters: int = 8):
         super().__init__()
-        fields = {k: (str, dspy.InputField()) for k in input_fields}
-        fields["draft_reasoning"] = (str, dspy.InputField(desc="reasoning of the fixed pipeline"))
-        fields["draft_answer"] = (str, dspy.InputField(desc="output of the fixed pipeline"))
-        fields[output_field] = (str, dspy.OutputField(desc="the final output in the required format"))
-        sig = dspy.make_signature(fields, instructions)
         self.program = program
         self.input_fields, self.output_field = list(input_fields), output_field
-        self.agent = dspy.ReAct(sig, tools=list(tools) + [run_python], max_iters=max_iters)
+        extra = {"draft_reasoning": "reasoning of the fixed pipeline", "draft_answer": "output of the fixed pipeline"}
+        self.agent = dspy.ReAct(_signature(input_fields, extra, output_field, instructions),
+                                tools=list(tools) + [run_python], max_iters=max_iters)
 
     def forward(self, **kw):
         inputs = {k: kw[k] for k in self.input_fields}

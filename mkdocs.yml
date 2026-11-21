@@ -1,8 +1,8 @@
-site_name: PeachTrees
+site_name: TRIBES
 site_description: Inference-time answer selection for optimized DSPy programs.
-site_url: https://daglar-dragomirov.github.io/PeachTrees/
-repo_url: https://github.com/daglar-dragomirov/PeachTrees
-repo_name: daglar-dragomirov/PeachTrees
+site_url: https://daglar-dragomirov.github.io/tribes/
+repo_url: https://github.com/daglar-dragomirov/tribes
+repo_name: daglar-dragomirov/tribes
 edit_uri: edit/main/docs/
 copyright: MIT License · Daglar Dragomirov
 
@@ -10,6 +10,8 @@ theme:
   name: material
   logo: assets/logo-header.png
   favicon: assets/favicon-32.png
+  icon:
+    repo: fontawesome/brands/github
   font:
     text: Inter
     code: JetBrains Mono
@@ -19,14 +21,14 @@ theme:
       primary: custom
       accent: custom
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-4
         name: Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: custom
       accent: custom
       toggle:
-        icon: material/weather-sunny
+        icon: material/brightness-7
         name: Light mode
   features:
     - navigation.tabs
@@ -40,14 +42,14 @@ theme:
     - toc.follow
 
 extra_css:
-  - stylesheets/extra.css?v=10
+  - stylesheets/extra.css?v=20
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/daglar-dragomirov/PeachTrees
+      link: https://github.com/daglar-dragomirov/tribes
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/peachtrees/
+      link: https://pypi.org/project/tribes/
 
 markdown_extensions:
   - admonition

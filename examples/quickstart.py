@@ -1,4 +1,4 @@
-"""PeachTrees quickstart: wrap an (optimized) DSPy program, decide on labeled data, then answer.
+"""TRIBES quickstart: wrap an (optimized) DSPy program, decide on labeled data, then answer.
 
 Run:  OPENROUTER_API_KEY=... python examples/quickstart.py
 Any LM that DSPy supports works; the model below is only an example.
@@ -7,7 +7,7 @@ import os
 
 import dspy
 
-from peachtrees import PeachTrees
+from tribes import TRIBES
 
 lm = dspy.LM(os.environ.get("PEACHTREES_MODEL", "openrouter/z-ai/glm-5.3-flash"), max_tokens=4096)
 dspy.configure(lm=lm)
@@ -32,7 +32,7 @@ def metric(example, pred, trace=None):
 
 
 # 3. Wrap, decide once per task, use.
-pt = PeachTrees(program, mode="lite", examples=selection)
+pt = Tribes(program, mode="lite", examples=selection)
 pt.fit(selection, metric, num_threads=4)
 print({k: v for k, v in pt.report.items() if k != "items"})
 print(pt(question="What is 2**10 + 24?").answer)
