@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from tribes import Ledger, replay
+from tribes import Ledger, __version__, replay
 from tribes.cli import main
 from tribes.replay import bootstrap_ci, load_rows
 from tribes.usage import price
@@ -82,7 +82,7 @@ def test_cli_replay_report_pick_info(tmp_path, capsys):
     assert main(["pick", "--rigid", "1", "--assembled", "-"]) == 0
     assert capsys.readouterr().out.strip() == "rigid (fallback)"
     assert main(["info"]) == 0
-    assert "tribes 1.1.0" in capsys.readouterr().out
+    assert f"tribes {__version__}" in capsys.readouterr().out
 
 
 def test_ledger_prices_and_ratio():
