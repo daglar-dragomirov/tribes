@@ -83,6 +83,10 @@ class Tribes(dspy.Module):
     ``verifier=True`` adds the evidence-gated verifier on contested items; ``fit`` enables it per task only if it pays.
     ``fit`` decides once per task whether the layer is used at all (non-inferiority on the selection data, ``z``
     standard errors); if not, the wrapped object behaves exactly like the program.
+
+    TRIBES 1.2 settings: ``agent_lm`` gives the layer's own agents (reviewer and agent) their own LM, typically the task
+    model at a higher reasoning effort, while the program and the reviewer's draft keep the task LM; for tool tasks
+    ``max_iters=16`` and ``agent_retry=True`` (one fresh run when an agent's output is empty or an abstention).
     """
 
     def __init__(self, program: dspy.Module, *, input_fields: Sequence[str] | None = None,
@@ -96,7 +100,8 @@ class Tribes(dspy.Module):
                  max_iters: int = 8, retries: int = 3, examples: Sequence[dspy.Example] | None = None,
                  forms: Mapping[str, Callable[..., Any]] | None = None, parallel: bool = True,
                  callbacks: Iterable[Callback] = (), prices: Prices | None = None, independent: bool = True,
-                 combine: Callable[[Mapping[str, Any], Mapping[str, Any]], Any] | None = None):
+                 combine: Callable[[Mapping[str, Any], Mapping[str, Any]], Any] | None = None,
+                 agent_lm: Any = None, agent_retry: bool = False):
         super().__init__()
         if mode not in ("full", "lite"):
             raise ValueError("mode must be 'full' or 'lite'")
@@ -115,9 +120,10 @@ class Tribes(dspy.Module):
         if forms is None:  # ReAct modules hold no state until called
             forms = {"rigid": program,
                      "assembled": Assembled(program, self.input_fields, output_field,
-                                            head + "\n\n" + ASSEMBLED_TEMPLATE, all_tools, max_iters),
+                                            head + "\n\n" + ASSEMBLED_TEMPLATE, all_tools, max_iters,
+                                            lm=agent_lm, retry=agent_retry),
                      "liquid": Liquid(self.input_fields, output_field, head + "\n\n" + LIQUID_TEMPLATE, all_tools,
-                                      max_iters)}
+                                      max_iters, lm=agent_lm, retry=agent_retry)}
         self.forms = dict(forms)
         if verifier is True:
             verifier = Verifier(self.input_fields, output_field, head, all_tools, verifier_iters, verifier_votes,
