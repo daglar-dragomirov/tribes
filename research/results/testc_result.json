@@ -1,0 +1,2525 @@
+{
+ "primary": {
+  "cells": 21,
+  "mean_pp": 14.32,
+  "ci95_pp": [
+   11.92,
+   16.76
+  ],
+  "p_one_sided": 0.0001,
+  "claim": true
+ },
+ "secondary_sequence": [
+  {
+   "cells": 21,
+   "mean_pp": 2.77,
+   "ci95_pp": [
+    1.26,
+    4.32
+   ],
+   "p_one_sided": 0.0002,
+   "claim": true,
+   "label": "S1 1.2 - 1.1, all cells",
+   "tested": true
+  },
+  {
+   "cells": 21,
+   "mean_pp": 6.4,
+   "ci95_pp": [
+    4.34,
+    8.46
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "label": "S2 1.2 - the program at the same effort (compute-matched control), all cells",
+   "tested": true
+  },
+  {
+   "cells": 3,
+   "mean_pp": 4.06,
+   "ci95_pp": [
+    1.01,
+    7.45
+   ],
+   "p_one_sided": 0.0068,
+   "claim": true,
+   "label": "S3 ToolHop: 1.2 - 1.1",
+   "tested": true
+  },
+  {
+   "cells": 3,
+   "mean_pp": 5.33,
+   "ci95_pp": [
+    2.33,
+    8.33
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "label": "S4 HoVer: 1.2 - 1.1",
+   "tested": true
+  }
+ ],
+ "descriptive": {
+  "1.1 - program": {
+   "cells": 21,
+   "mean_pp": 11.54,
+   "ci95_pp": [
+    9.1,
+    14.02
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "control (program at the 1.2 effort) - program": {
+   "cells": 21,
+   "mean_pp": 7.92,
+   "ci95_pp": [
+    5.33,
+    10.54
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "1.2 agent alone - program": {
+   "cells": 21,
+   "mean_pp": 12.37,
+   "ci95_pp": [
+    9.69,
+    15.02
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "1.2 reviewer alone - program": {
+   "cells": 21,
+   "mean_pp": 12.38,
+   "ci95_pp": [
+    9.9,
+    14.89
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  }
+ },
+ "per_benchmark_holm": {
+  "bird": {
+   "cells": 3,
+   "mean_pp": 4.67,
+   "ci95_pp": [
+    1.33,
+    8.0
+   ],
+   "p_one_sided": 0.005,
+   "claim": true,
+   "holm_claim": true
+  },
+  "toolhop": {
+   "cells": 3,
+   "mean_pp": 8.46,
+   "ci95_pp": [
+    4.72,
+    12.5
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "holm_claim": true
+  },
+  "gpqa": {
+   "cells": 3,
+   "mean_pp": 9.19,
+   "ci95_pp": [
+    2.05,
+    16.38
+   ],
+   "p_one_sided": 0.004,
+   "claim": true,
+   "holm_claim": true
+  },
+  "hover": {
+   "cells": 3,
+   "mean_pp": 20.33,
+   "ci95_pp": [
+    16.0,
+    25.0
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "holm_claim": true
+  },
+  "natplan": {
+   "cells": 3,
+   "mean_pp": 19.33,
+   "ci95_pp": [
+    13.33,
+    26.0
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "holm_claim": true
+  },
+  "aime": {
+   "cells": 3,
+   "mean_pp": 35.56,
+   "ci95_pp": [
+    24.44,
+    47.78
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true,
+   "holm_claim": true
+  },
+  "ifbench": {
+   "cells": 3,
+   "mean_pp": 2.69,
+   "ci95_pp": [
+    -0.2,
+    5.93
+   ],
+   "p_one_sided": 0.0348,
+   "claim": false,
+   "holm_claim": false
+  }
+ },
+ "per_benchmark_v11": {
+  "bird": {
+   "cells": 3,
+   "mean_pp": 4.0,
+   "ci95_pp": [
+    1.0,
+    7.0
+   ],
+   "p_one_sided": 0.0052,
+   "claim": true
+  },
+  "toolhop": {
+   "cells": 3,
+   "mean_pp": 4.4,
+   "ci95_pp": [
+    1.01,
+    8.11
+   ],
+   "p_one_sided": 0.0074,
+   "claim": true
+  },
+  "gpqa": {
+   "cells": 3,
+   "mean_pp": 5.05,
+   "ci95_pp": [
+    -3.09,
+    13.19
+   ],
+   "p_one_sided": 0.12559,
+   "claim": false
+  },
+  "hover": {
+   "cells": 3,
+   "mean_pp": 15.0,
+   "ci95_pp": [
+    11.0,
+    19.33
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "natplan": {
+   "cells": 3,
+   "mean_pp": 18.0,
+   "ci95_pp": [
+    11.33,
+    24.67
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "aime": {
+   "cells": 3,
+   "mean_pp": 33.33,
+   "ci95_pp": [
+    21.11,
+    45.56
+   ],
+   "p_one_sided": 0.0001,
+   "claim": true
+  },
+  "ifbench": {
+   "cells": 3,
+   "mean_pp": 1.02,
+   "ci95_pp": [
+    -2.2,
+    4.33
+   ],
+   "p_one_sided": 0.26657,
+   "claim": false
+  }
+ },
+ "per_benchmark_ctrl": {
+  "bird": {
+   "cells": 3,
+   "mean_pp": 1.67,
+   "ci95_pp": [
+    -1.0,
+    4.33
+   ],
+   "p_one_sided": 0.12429,
+   "claim": false
+  },
+  "toolhop": {
+   "cells": 3,
+   "mean_pp": 1.7,
+   "ci95_pp": [
+    -2.36,
+    5.78
+   ],
+   "p_one_sided": 0.19558,
+   "claim": false
+  },
+  "gpqa": {
+   "cells": 3,
+   "mean_pp": 14.36,
+   "ci95_pp": [
+    6.19,
+    22.57
+   ],
+   "p_one_sided": 0.0006,
+   "claim": true
+  },
+  "hover": {
+   "cells": 3,
+   "mean_pp": 0.67,
+   "ci95_pp": [
+    -3.33,
+    4.67
+   ],
+   "p_one_sided": 0.39736,
+   "claim": false
+  },
+  "natplan": {
+   "cells": 3,
+   "mean_pp": 10.67,
+   "ci95_pp": [
+    2.67,
+    18.0
+   ],
+   "p_one_sided": 0.0036,
+   "claim": true
+  },
+  "aime": {
+   "cells": 3,
+   "mean_pp": 22.22,
+   "ci95_pp": [
+    10.0,
+    34.44
+   ],
+   "p_one_sided": 0.0002,
+   "claim": true
+  },
+  "ifbench": {
+   "cells": 3,
+   "mean_pp": 4.13,
+   "ci95_pp": [
+    0.84,
+    7.78
+   ],
+   "p_one_sided": 0.0064,
+   "claim": true
+  }
+ },
+ "cells": [
+  {
+   "key": "gepa:toolhop",
+   "opt": "gepa",
+   "ds": "toolhop",
+   "name": "ptth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 99,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.676768,
+         0.848485
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.767677
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.69697,
+         0.858586
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.777778
+       },
+       "liquid": {
+        "ci95": [
+         0.585859,
+         0.777778
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.686869
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.717172,
+         0.868687
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.79798
+       },
+       "rigid": {
+        "ci95": [
+         0.626263,
+         0.808081
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.717172
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.616162,
+         0.79798
+        ],
+        "errors": 0,
+        "n": 99,
+        "score_mean": 0.707071
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0028362,
+       "assembled_v12": 0.0054454,
+       "liquid": 0.001723,
+       "liquid_v12": 0.0050578,
+       "rigid": 0.0016558,
+       "rigid_hi": 0.0027189
+      }
+     }
+    },
+    "prog": 71.72,
+    "ctrl": 70.71,
+    "v11": 78.79,
+    "v12": 83.84,
+    "agent12": 79.8,
+    "reviewer12": 77.78,
+    "gain_v12_pp": 12.12,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:toolhop",
+   "opt": "mipro",
+   "ds": "toolhop",
+   "name": "ptmth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 98,
+    "repaired_rows": {
+     "assembled": 1
+    },
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.540816,
+         0.734694
+        ],
+        "errors": 1,
+        "n": 98,
+        "score_mean": 0.642857
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.602041,
+         0.785714
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.693878
+       },
+       "liquid": {
+        "ci95": [
+         0.520408,
+         0.714286
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.622449
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.612245,
+         0.795918
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.704082
+       },
+       "rigid": {
+        "ci95": [
+         0.520408,
+         0.714286
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.622449
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.540816,
+         0.734694
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.642857
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0033686,
+       "assembled_v12": 0.0060471,
+       "liquid": 0.0016062,
+       "liquid_v12": 0.0043245,
+       "rigid": 0.0024866,
+       "rigid_hi": 0.0034709
+      }
+     }
+    },
+    "prog": 62.24,
+    "ctrl": 64.29,
+    "v11": 64.29,
+    "v12": 68.37,
+    "agent12": 70.41,
+    "reviewer12": 69.39,
+    "gain_v12_pp": 6.13,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:toolhop",
+   "opt": "simba",
+   "ds": "toolhop",
+   "name": "ptsth",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 98,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.653061,
+         0.826531
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.744898
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.714286,
+         0.877551
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.795918
+       },
+       "liquid": {
+        "ci95": [
+         0.622449,
+         0.795918
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.714286
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.632653,
+         0.806122
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.72449
+       },
+       "rigid": {
+        "ci95": [
+         0.612245,
+         0.795918
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.704082
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.653061,
+         0.826531
+        ],
+        "errors": 0,
+        "n": 98,
+        "score_mean": 0.744898
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0030281,
+       "assembled_v12": 0.005213,
+       "liquid": 0.0013135,
+       "liquid_v12": 0.0045231,
+       "rigid": 0.0020035,
+       "rigid_hi": 0.0027305
+      }
+     }
+    },
+    "prog": 70.41,
+    "ctrl": 74.49,
+    "v11": 74.49,
+    "v12": 77.55,
+    "agent12": 72.45,
+    "reviewer12": 79.59,
+    "gain_v12_pp": 7.14,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:hover",
+   "opt": "gepa",
+   "ds": "hover",
+   "name": "j6v",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {
+     "rigid": 1,
+     "assembled": 22,
+     "liquid_v12": 2,
+     "rigid_hi": 10
+    },
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.48,
+         0.68
+        ],
+        "errors": 22,
+        "n": 100,
+        "score_mean": 0.58
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.67,
+         0.84
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.76
+       },
+       "liquid": {
+        "ci95": [
+         0.55,
+         0.73
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.64
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.63,
+         0.81
+        ],
+        "errors": 2,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "rigid": {
+        "ci95": [
+         0.53,
+         0.72
+        ],
+        "errors": 1,
+        "n": 100,
+        "score_mean": 0.63
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.52,
+         0.72
+        ],
+        "errors": 10,
+        "n": 100,
+        "score_mean": 0.62
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0015177,
+       "assembled_v12": 0.0022163,
+       "liquid": 0.0009793,
+       "liquid_v12": 0.0021991,
+       "rigid": 0.0006679,
+       "rigid_hi": 0.0011377
+      }
+     }
+    },
+    "prog": 64.0,
+    "ctrl": 67.0,
+    "v11": 83.0,
+    "v12": 87.0,
+    "agent12": 72.0,
+    "reviewer12": 76.0,
+    "gain_v12_pp": 23.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:hover",
+   "opt": "mipro",
+   "ds": "hover",
+   "name": "ptmv",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.65,
+         0.82
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.74
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.7,
+         0.86
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.78
+       },
+       "liquid": {
+        "ci95": [
+         0.47,
+         0.67
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.57
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.64,
+         0.81
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.73
+       },
+       "rigid": {
+        "ci95": [
+         0.61,
+         0.79
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.7
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.64,
+         0.82
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.73
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0016417,
+       "assembled_v12": 0.0061068,
+       "liquid": 0.0009964,
+       "liquid_v12": 0.0104021,
+       "rigid": 0.000703,
+       "rigid_hi": 0.0010175
+      }
+     }
+    },
+    "prog": 70.0,
+    "ctrl": 73.0,
+    "v11": 84.0,
+    "v12": 89.0,
+    "agent12": 73.0,
+    "reviewer12": 78.0,
+    "gain_v12_pp": 19.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:hover",
+   "opt": "simba",
+   "ds": "hover",
+   "name": "ptsv",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.71,
+         0.87
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.79
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.74,
+         0.89
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.82
+       },
+       "liquid": {
+        "ci95": [
+         0.52,
+         0.71
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.62
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.73,
+         0.88
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.81
+       },
+       "rigid": {
+        "ci95": [
+         0.63,
+         0.8
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.59,
+         0.77
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.68
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0014572,
+       "assembled_v12": 0.003451,
+       "liquid": 0.0009726,
+       "liquid_v12": 0.0045885,
+       "rigid": 0.0006184,
+       "rigid_hi": 0.0008108
+      }
+     }
+    },
+    "prog": 72.0,
+    "ctrl": 68.0,
+    "v11": 84.0,
+    "v12": 91.0,
+    "agent12": 81.0,
+    "reviewer12": 82.0,
+    "gain_v12_pp": 19.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:aime",
+   "opt": "gepa",
+   "ds": "aime",
+   "name": "j6a",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 30,
+    "repaired_rows": {
+     "liquid": 2
+    },
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.9,
+         1.0
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.966667
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.9,
+         1.0
+        ],
+        "errors": 1,
+        "n": 30,
+        "score_mean": 0.966667
+       },
+       "liquid": {
+        "ci95": [
+         0.666667,
+         0.933333
+        ],
+        "errors": 2,
+        "n": 30,
+        "score_mean": 0.8
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.9,
+         1.0
+        ],
+        "errors": 1,
+        "n": 30,
+        "score_mean": 0.966667
+       },
+       "rigid": {
+        "ci95": [
+         0.433333,
+         0.766667
+        ],
+        "errors": 1,
+        "n": 30,
+        "score_mean": 0.6
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.833333,
+         1.0
+        ],
+        "errors": 1,
+        "n": 30,
+        "score_mean": 0.933333
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0095387,
+       "assembled_v12": 0.0291854,
+       "liquid": 0.0028909,
+       "liquid_v12": 0.0301787,
+       "rigid": 0.0138601,
+       "rigid_hi": 0.0176218
+      }
+     }
+    },
+    "prog": 60.0,
+    "ctrl": 93.33,
+    "v11": 100.0,
+    "v12": 96.67,
+    "agent12": 96.67,
+    "reviewer12": 96.67,
+    "gain_v12_pp": 36.67,
+    "dead": {
+     "rigid": 1,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 1,
+     "assembled_v12": 1,
+     "rigid_hi": 1
+    }
+   }
+  },
+  {
+   "key": "mipro:aime",
+   "opt": "mipro",
+   "ds": "aime",
+   "name": "ptma",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 30,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.766667,
+         1.0
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.9
+       },
+       "assembled_v12": {
+        "ci95": [
+         1.0,
+         1.0
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 1.0
+       },
+       "liquid": {
+        "ci95": [
+         0.733333,
+         0.966667
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.866667
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.9,
+         1.0
+        ],
+        "errors": 1,
+        "n": 30,
+        "score_mean": 0.966667
+       },
+       "rigid": {
+        "ci95": [
+         0.4,
+         0.733333
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.566667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.666667,
+         0.933333
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.8
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0128377,
+       "assembled_v12": 0.021757,
+       "liquid": 0.0044248,
+       "liquid_v12": 0.0318018,
+       "rigid": 0.0041788,
+       "rigid_hi": 0.0299436
+      }
+     }
+    },
+    "prog": 56.67,
+    "ctrl": 80.0,
+    "v11": 93.33,
+    "v12": 100.0,
+    "agent12": 96.67,
+    "reviewer12": 100.0,
+    "gain_v12_pp": 43.33,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 1,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:aime",
+   "opt": "simba",
+   "ds": "aime",
+   "name": "ptsa",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 30,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.7,
+         0.966667
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.833333
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.833333,
+         1.0
+        ],
+        "errors": 2,
+        "n": 30,
+        "score_mean": 0.933333
+       },
+       "liquid": {
+        "ci95": [
+         0.833333,
+         1.0
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.933333
+       },
+       "liquid_v12": {
+        "ci95": [
+         1.0,
+         1.0
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 1.0
+       },
+       "rigid": {
+        "ci95": [
+         0.5,
+         0.833333
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.666667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.6,
+         0.9
+        ],
+        "errors": 0,
+        "n": 30,
+        "score_mean": 0.766667
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0115341,
+       "assembled_v12": 0.0494706,
+       "liquid": 0.0045235,
+       "liquid_v12": 0.0327652,
+       "rigid": 0.0048232,
+       "rigid_hi": 0.0197602
+      }
+     }
+    },
+    "prog": 66.67,
+    "ctrl": 76.67,
+    "v11": 90.0,
+    "v12": 93.33,
+    "agent12": 100.0,
+    "reviewer12": 93.33,
+    "gain_v12_pp": 26.66,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 2,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:natplan",
+   "opt": "gepa",
+   "ds": "natplan",
+   "name": "ptnp",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.8,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.9
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.84,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.92
+       },
+       "liquid": {
+        "ci95": [
+         0.84,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.92
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.86,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.94
+       },
+       "rigid": {
+        "ci95": [
+         0.66,
+         0.88
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.78
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.74,
+         0.94
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.84
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0058263,
+       "assembled_v12": 0.0101332,
+       "liquid": 0.0033095,
+       "liquid_v12": 0.005707,
+       "rigid": 0.0020516,
+       "rigid_hi": 0.0032819
+      }
+     }
+    },
+    "prog": 78.0,
+    "ctrl": 84.0,
+    "v11": 94.0,
+    "v12": 96.0,
+    "agent12": 94.0,
+    "reviewer12": 92.0,
+    "gain_v12_pp": 18.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:natplan",
+   "opt": "mipro",
+   "ds": "natplan",
+   "name": "ptmnp",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.86,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.94
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.94,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.98
+       },
+       "liquid": {
+        "ci95": [
+         0.86,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.94
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.94,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.98
+       },
+       "rigid": {
+        "ci95": [
+         0.66,
+         0.88
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.78
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.78,
+         0.96
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.88
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0027637,
+       "assembled_v12": 0.0039002,
+       "liquid": 0.0024572,
+       "liquid_v12": 0.0033141,
+       "rigid": 0.0016787,
+       "rigid_hi": 0.0030224
+      }
+     }
+    },
+    "prog": 78.0,
+    "ctrl": 88.0,
+    "v11": 100.0,
+    "v12": 100.0,
+    "agent12": 98.0,
+    "reviewer12": 98.0,
+    "gain_v12_pp": 22.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:natplan",
+   "opt": "simba",
+   "ds": "natplan",
+   "name": "ptsnp",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "full",
+     "v12": "full"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.82,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.9
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.94,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.98
+       },
+       "liquid": {
+        "ci95": [
+         0.84,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.92
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.9,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.96
+       },
+       "rigid": {
+        "ci95": [
+         0.7,
+         0.92
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.82
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.94,
+         1.0
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.98
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0035079,
+       "assembled_v12": 0.0046501,
+       "liquid": 0.0036393,
+       "liquid_v12": 0.0050842,
+       "rigid": 0.0023226,
+       "rigid_hi": 0.0022212
+      }
+     }
+    },
+    "prog": 82.0,
+    "ctrl": 98.0,
+    "v11": 98.0,
+    "v12": 100.0,
+    "agent12": 96.0,
+    "reviewer12": 98.0,
+    "gain_v12_pp": 18.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:ifbench",
+   "opt": "gepa",
+   "ds": "ifbench",
+   "name": "j6i",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {
+     "assembled_v12": 5
+    },
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.856,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.926
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.796,
+         0.96
+        ],
+        "errors": 5,
+        "n": 50,
+        "score_mean": 0.886
+       },
+       "liquid": {
+        "ci95": [
+         0.782667,
+         0.942667
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.869333
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.832667,
+         0.972
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.909333
+       },
+       "rigid": {
+        "ci95": [
+         0.814,
+         0.96
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.892
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.913333,
+         0.99
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.956
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0021706,
+       "assembled_v12": 0.0023494,
+       "liquid": 0.0014765,
+       "liquid_v12": 0.0054977,
+       "rigid": 0.0008589,
+       "rigid_hi": 0.0018181
+      }
+     }
+    },
+    "prog": 89.2,
+    "ctrl": 95.6,
+    "v11": 92.6,
+    "v12": 96.93,
+    "agent12": 90.93,
+    "reviewer12": 96.93,
+    "gain_v12_pp": 7.73,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:ifbench",
+   "opt": "mipro",
+   "ds": "ifbench",
+   "name": "ptmi",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": false,
+     "v12": false
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.833333,
+         0.96
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.9
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.88,
+         0.976667
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.93
+       },
+       "liquid": {
+        "ci95": [
+         0.813333,
+         0.95
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.886667
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.89,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.94
+       },
+       "rigid": {
+        "ci95": [
+         0.816667,
+         0.95
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.886667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.89,
+         0.98
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.94
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0016969,
+       "assembled_v12": 0.0030148,
+       "liquid": 0.0010707,
+       "liquid_v12": 0.0027537,
+       "rigid": 0.00094,
+       "rigid_hi": 0.0015373
+      }
+     }
+    },
+    "prog": 88.67,
+    "ctrl": 94.0,
+    "v11": 88.67,
+    "v12": 88.67,
+    "agent12": 94.0,
+    "reviewer12": 93.0,
+    "gain_v12_pp": 0.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:ifbench",
+   "opt": "simba",
+   "ds": "ifbench",
+   "name": "ptsi",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 50,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.875333,
+         0.97
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.925333
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.884,
+         0.974
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.932
+       },
+       "liquid": {
+        "ci95": [
+         0.808667,
+         0.948667
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.882
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.916667,
+         0.99
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.955333
+       },
+       "rigid": {
+        "ci95": [
+         0.872,
+         0.975333
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.928667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.888,
+         0.975333
+        ],
+        "errors": 0,
+        "n": 50,
+        "score_mean": 0.935333
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0016396,
+       "assembled_v12": 0.0020851,
+       "liquid": 0.0008439,
+       "liquid_v12": 0.0020357,
+       "rigid": 0.0006919,
+       "rigid_hi": 0.0012428
+      }
+     }
+    },
+    "prog": 92.87,
+    "ctrl": 93.53,
+    "v11": 92.53,
+    "v12": 93.2,
+    "agent12": 95.53,
+    "reviewer12": 93.2,
+    "gain_v12_pp": 0.33,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:bird",
+   "opt": "gepa",
+   "ds": "bird",
+   "name": "ptbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.63,
+         0.8
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.63,
+         0.8
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "liquid": {
+        "ci95": [
+         0.58,
+         0.76
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.67
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.63,
+         0.81
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "rigid": {
+        "ci95": [
+         0.58,
+         0.76
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.67
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.58,
+         0.76
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.67
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0009667,
+       "assembled_v12": 0.0015285,
+       "liquid": 0.0007533,
+       "liquid_v12": 0.0012207,
+       "rigid": 0.0001853,
+       "rigid_hi": 0.0002532
+      }
+     }
+    },
+    "prog": 67.0,
+    "ctrl": 67.0,
+    "v11": 72.0,
+    "v12": 72.0,
+    "agent12": 72.0,
+    "reviewer12": 72.0,
+    "gain_v12_pp": 5.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "mipro:bird",
+   "opt": "mipro",
+   "ds": "bird",
+   "name": "ptmbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.7,
+         0.86
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.78
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.72,
+         0.88
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.8
+       },
+       "liquid": {
+        "ci95": [
+         0.7,
+         0.86
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.78
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.69,
+         0.85
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.77
+       },
+       "rigid": {
+        "ci95": [
+         0.66,
+         0.83
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.75
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.72,
+         0.88
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.8
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0012249,
+       "assembled_v12": 0.0014496,
+       "liquid": 0.0007177,
+       "liquid_v12": 0.0009666,
+       "rigid": 0.000581,
+       "rigid_hi": 0.000645
+      }
+     }
+    },
+    "prog": 75.0,
+    "ctrl": 80.0,
+    "v11": 78.0,
+    "v12": 80.0,
+    "agent12": 77.0,
+    "reviewer12": 80.0,
+    "gain_v12_pp": 5.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:bird",
+   "opt": "simba",
+   "ds": "bird",
+   "name": "ptsbr",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 100,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.63,
+         0.8
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.63,
+         0.8
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.72
+       },
+       "liquid": {
+        "ci95": [
+         0.59,
+         0.78
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.69
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.64,
+         0.81
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.73
+       },
+       "rigid": {
+        "ci95": [
+         0.59,
+         0.77
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.68
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.59,
+         0.77
+        ],
+        "errors": 0,
+        "n": 100,
+        "score_mean": 0.68
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.001001,
+       "assembled_v12": 0.001319,
+       "liquid": 0.0006429,
+       "liquid_v12": 0.0008818,
+       "rigid": 0.0003443,
+       "rigid_hi": 0.0003506
+      }
+     }
+    },
+    "prog": 68.0,
+    "ctrl": 68.0,
+    "v11": 72.0,
+    "v12": 72.0,
+    "agent12": 73.0,
+    "reviewer12": 72.0,
+    "gain_v12_pp": 4.0,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "gepa:gpqa",
+   "opt": "gepa",
+   "ds": "gpqa",
+   "name": "j6g",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 33,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.636364,
+         0.909091
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.787879
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.636364,
+         0.909091
+        ],
+        "errors": 1,
+        "n": 33,
+        "score_mean": 0.787879
+       },
+       "liquid": {
+        "ci95": [
+         0.666667,
+         0.939394
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.818182
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.666667,
+         0.939394
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.818182
+       },
+       "rigid": {
+        "ci95": [
+         0.515152,
+         0.818182
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.666667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.606061,
+         0.878788
+        ],
+        "errors": 1,
+        "n": 33,
+        "score_mean": 0.757576
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0011656,
+       "assembled_v12": 0.0264343,
+       "liquid": 0.0014292,
+       "liquid_v12": 0.0171898,
+       "rigid": 0.0003642,
+       "rigid_hi": 0.0113029
+      }
+     }
+    },
+    "prog": 66.67,
+    "ctrl": 75.76,
+    "v11": 78.79,
+    "v12": 78.79,
+    "agent12": 81.82,
+    "reviewer12": 78.79,
+    "gain_v12_pp": 12.12,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 1,
+     "rigid_hi": 1
+    }
+   }
+  },
+  {
+   "key": "mipro:gpqa",
+   "opt": "mipro",
+   "ds": "gpqa",
+   "name": "ptmg",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 33,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.545455,
+         0.848485
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.69697
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.575758,
+         0.878788
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.727273
+       },
+       "liquid": {
+        "ci95": [
+         0.484848,
+         0.787879
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.636364
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.636364,
+         0.909091
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.787879
+       },
+       "rigid": {
+        "ci95": [
+         0.515152,
+         0.818182
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.666667
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.636364,
+         0.909091
+        ],
+        "errors": 0,
+        "n": 33,
+        "score_mean": 0.787879
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0024443,
+       "assembled_v12": 0.009082,
+       "liquid": 0.0013458,
+       "liquid_v12": 0.0138029,
+       "rigid": 0.0009034,
+       "rigid_hi": 0.0028913
+      }
+     }
+    },
+    "prog": 66.67,
+    "ctrl": 78.79,
+    "v11": 69.7,
+    "v12": 72.73,
+    "agent12": 78.79,
+    "reviewer12": 72.73,
+    "gain_v12_pp": 6.06,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 0,
+     "assembled_v12": 0,
+     "rigid_hi": 0
+    }
+   }
+  },
+  {
+   "key": "simba:gpqa",
+   "opt": "simba",
+   "ds": "gpqa",
+   "name": "ptsg",
+   "ok": true,
+   "info": {
+    "status": "ok",
+    "n": 32,
+    "repaired_rows": {},
+    "modes": {
+     "v11": "lite",
+     "v12": "lite"
+    },
+    "use": {
+     "v11": true,
+     "v12": true
+    },
+    "cost": {
+     "select": {
+      "forms_only": true,
+      "states": {
+       "assembled": {
+        "ci95": [
+         0.4375,
+         0.75
+        ],
+        "errors": 0,
+        "n": 32,
+        "score_mean": 0.59375
+       },
+       "assembled_v12": {
+        "ci95": [
+         0.5,
+         0.8125
+        ],
+        "errors": 2,
+        "n": 32,
+        "score_mean": 0.65625
+       },
+       "liquid": {
+        "ci95": [
+         0.46875,
+         0.78125
+        ],
+        "errors": 0,
+        "n": 32,
+        "score_mean": 0.625
+       },
+       "liquid_v12": {
+        "ci95": [
+         0.5625,
+         0.875
+        ],
+        "errors": 2,
+        "n": 32,
+        "score_mean": 0.71875
+       },
+       "rigid": {
+        "ci95": [
+         0.4375,
+         0.75
+        ],
+        "errors": 0,
+        "n": 32,
+        "score_mean": 0.59375
+       },
+       "rigid_hi": {
+        "ci95": [
+         0.65625,
+         0.9375
+        ],
+        "errors": 0,
+        "n": 32,
+        "score_mean": 0.8125
+       }
+      },
+      "usd_per_item_marginal": {
+       "assembled": 0.0048566,
+       "assembled_v12": 0.0308945,
+       "liquid": 0.0008614,
+       "liquid_v12": 0.0262298,
+       "rigid": 0.0002708,
+       "rigid_hi": 0.0083238
+      }
+     }
+    },
+    "prog": 59.38,
+    "ctrl": 81.25,
+    "v11": 59.38,
+    "v12": 68.75,
+    "agent12": 71.88,
+    "reviewer12": 65.62,
+    "gain_v12_pp": 9.37,
+    "dead": {
+     "rigid": 0,
+     "liquid": 0,
+     "assembled": 0,
+     "liquid_v12": 2,
+     "assembled_v12": 2,
+     "rigid_hi": 0
+    }
+   }
+  }
+ ],
+ "missing_cells": []
+}

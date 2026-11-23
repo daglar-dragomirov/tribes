@@ -22,4 +22,5 @@
 ??? question "Why is the test gain lower than the development gain?"
     The 1.0 rule was designed after the development outputs were seen. The sealed test, opened once after everything was
     frozen, is the honest number: +7.1 pp on 15 cells. TRIBES 1.1 was then confirmed on 1,010 fresh items
-    (TEST-B, pre-registered): +4.7 pp over the programs. See the [results](../results.md).
+    (TEST-B, pre-registered): +4.7 pp over the programs, and TRIBES 1.2 on 1,323 more (TEST-C): +14.3 pp. See the
+    [results](../results.md).

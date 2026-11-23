@@ -10,6 +10,7 @@ They get ``run_python`` and any task tools you pass.
 """
 from __future__ import annotations
 
+import contextlib
 import os
 import re
 import shutil
@@ -156,18 +157,40 @@ def _signature(input_fields: Sequence[str], extra: Mapping[str, str], output_fie
     return dspy.make_signature(fields, instructions)
 
 
+def _empty_or_refusal(value: Any) -> bool:
+    from .tasks import is_refusal
+    t = str(value if value is not None else "").strip()
+    return not t or t in ("[]", "{}", "None", "null") or is_refusal(t)
+
+
+def _run_agent(agent: dspy.Module, lm: Any, retry: bool, output_field: str, **kw):
+    """One agent call, with its own LM if given (the program keeps the task LM), and one fresh run when the output
+    is empty or an abstention (``retry``)."""
+    ctx = dspy.context(lm=lm) if lm is not None else contextlib.nullcontext()
+    with ctx:
+        r = agent(**kw)
+        if retry and _empty_or_refusal(getattr(r, output_field, None)):
+            r = agent(**kw)
+    return r
+
+
 class Liquid(dspy.Module):
-    """A ReAct agent that solves the task from scratch with the task's instructions and tools."""
+    """A ReAct agent that solves the task from scratch with the task's instructions and tools.
+
+    ``lm``: the agent's own LM (e.g. the task model at a higher reasoning effort); ``retry``: one fresh run when the
+    output is empty or an abstention."""
 
     def __init__(self, input_fields: Sequence[str], output_field: str, instructions: str,
-                 tools: Sequence[Callable] = (), max_iters: int = 8):
+                 tools: Sequence[Callable] = (), max_iters: int = 8, lm: Any = None, retry: bool = False):
         super().__init__()
         self.input_fields, self.output_field = list(input_fields), output_field
         self.agent = dspy.ReAct(_signature(input_fields, {}, output_field, instructions),
                                 tools=list(tools) + [run_python], max_iters=max_iters)
+        self.lm_override, self.retry = lm, retry
 
     def forward(self, **kw):
-        r = self.agent(**{k: kw[k] for k in self.input_fields})
+        r = _run_agent(self.agent, self.lm_override, self.retry, self.output_field,
+                       **{k: kw[k] for k in self.input_fields})
         return dspy.Prediction(**{self.output_field: clean(getattr(r, self.output_field))}, reasoning=react_text(r))
 
 
@@ -175,9 +198,10 @@ class Assembled(dspy.Module):
     """The program's draft, then a ReAct reviewer that checks it and changes it only on a found defect."""
 
     def __init__(self, program: dspy.Module, input_fields: Sequence[str], output_field: str, instructions: str,
-                 tools: Sequence[Callable] = (), max_iters: int = 8):
+                 tools: Sequence[Callable] = (), max_iters: int = 8, lm: Any = None, retry: bool = False):
         super().__init__()
         self.program = program
+        self.lm_override, self.retry = lm, retry
         self.input_fields, self.output_field = list(input_fields), output_field
         extra = {"draft_reasoning": "reasoning of the fixed pipeline", "draft_answer": "output of the fixed pipeline"}
         self.agent = dspy.ReAct(_signature(input_fields, extra, output_field, instructions),
@@ -187,6 +211,7 @@ class Assembled(dspy.Module):
         inputs = {k: kw[k] for k in self.input_fields}
         d = self.program(**inputs)
         draft = getattr(d, self.output_field, None)
-        o = self.agent(**inputs, draft_reasoning=str(getattr(d, "reasoning", "") or "")[:6000], draft_answer=str(draft))
+        o = _run_agent(self.agent, self.lm_override, self.retry, self.output_field, **inputs,
+                       draft_reasoning=str(getattr(d, "reasoning", "") or "")[:6000], draft_answer=str(draft))
         return dspy.Prediction(**{self.output_field: clean(getattr(o, self.output_field))}, draft=draft,
                                draft_prediction=d, reasoning="Draft answer: " + str(draft) + "\n" + react_text(o))

@@ -1,0 +1,846 @@
+{
+ "base": "TRIBES 1.1 (docs/tribes-11/frozen_decisions_11.json): forms, item rule, ladder modes, HoVer set merge (cap 24), ToolHop abstention checker, BIRD run_sql agents and the do-no-harm switch decisions, unchanged except below",
+ "benchmarks": {
+  "aime": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "full",
+   "verifier": false,
+   "why": "N1 passed ([5.6, 1.94, 108]); the verifier is dropped: it was gated on effort-low forms"
+  },
+  "bfcl": {
+   "effort": "low",
+   "max_tokens": 16384,
+   "mode": "lite",
+   "why": "no agent named for v93 form settings; layer off as in 1.1"
+  },
+  "bird": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "lite",
+   "why": "N1 passed"
+  },
+  "gpqa": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "lite",
+   "why": "N1 passed"
+  },
+  "hotpotqa": {
+   "effort": "low",
+   "max_tokens": 16384,
+   "mode": "lite",
+   "why": "N1 and N2 failed: unchanged from 1.1"
+  },
+  "hover": {
+   "effort": "high",
+   "max_iters": 16,
+   "max_tokens": 32768,
+   "mode": "full",
+   "retry": true,
+   "why": "N12 passed and beat N1 alone on PARETO + FIT"
+  },
+  "ifbench": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "lite",
+   "why": "N1 passed"
+  },
+  "lcb": {
+   "effort": "low",
+   "max_tokens": 16384,
+   "mode": "fullv",
+   "verifier": true,
+   "why": "N1 stopped at its node cap (cost); unchanged from 1.1"
+  },
+  "livebench": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "full",
+   "verifier": false,
+   "why": "N1 passed; verifier dropped as for AIME"
+  },
+  "natplan": {
+   "effort": "high",
+   "max_tokens": 32768,
+   "mode": "full",
+   "why": "N1 passed"
+  },
+  "pupa": {
+   "effort": "low",
+   "max_tokens": 16384,
+   "mode": "lite",
+   "why": "N1 failed: unchanged from 1.1"
+  },
+  "tau2": {
+   "effort": "low",
+   "max_tokens": 16384,
+   "mode": "program",
+   "why": "unchanged (ceiling)"
+  },
+  "toolhop": {
+   "effort": "high",
+   "max_iters": 16,
+   "max_tokens": 32768,
+   "mode": "full",
+   "retry": true,
+   "why": "N1, N2 and N12 (both together) passed; N12 deployed"
+  }
+ },
+ "cells": {
+  "gepa:aime": {
+   "name": "j6a",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:bfcl": {
+   "name": "j7b",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": false
+  },
+  "gepa:bird": {
+   "name": "ptbr",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:gpqa": {
+   "name": "j6g",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:hotpotqa": {
+   "name": "j6h",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:hover": {
+   "name": "j6v",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:ifbench": {
+   "name": "j6i",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:lcb": {
+   "name": "j6c",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:livebench": {
+   "name": "j6l",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:natplan": {
+   "name": "ptnp",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:pupa": {
+   "name": "j6p",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "gepa:tau2": {
+   "name": "tau2",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": false
+  },
+  "gepa:toolhop": {
+   "name": "ptth",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:aime": {
+   "name": "ptma",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:bird": {
+   "name": "ptmbr",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:gpqa": {
+   "name": "ptmg",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:hotpotqa": {
+   "name": "ptmh",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:hover": {
+   "name": "ptmv",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:ifbench": {
+   "name": "ptmi",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": false
+  },
+  "mipro:lcb": {
+   "name": "ptmc",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:livebench": {
+   "name": "ptml",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:natplan": {
+   "name": "ptmnp",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "mipro:pupa": {
+   "name": "ptmp",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": false
+  },
+  "mipro:toolhop": {
+   "name": "ptmth",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:aime": {
+   "name": "ptsa",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:bfcl": {
+   "name": "ptsb",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": false
+  },
+  "simba:bird": {
+   "name": "ptsbr",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:gpqa": {
+   "name": "ptsg",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:hotpotqa": {
+   "name": "ptsh",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:hover": {
+   "name": "ptsv",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:ifbench": {
+   "name": "ptsi",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:lcb": {
+   "name": "ptsc",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:livebench": {
+   "name": "ptsl2",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:natplan": {
+   "name": "ptsnp",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:pupa": {
+   "name": "ptsp",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  },
+  "simba:toolhop": {
+   "name": "ptsth",
+   "note": "do-no-harm switch decision of 1.1 (PARETO + FIT), unchanged",
+   "use_layer": true
+  }
+ },
+ "components": {
+  "C4": "the agent with 3 bootstrapped demonstrations: NOT adopted (ToolHop: +0.49 +- 0.49 on 1 item, the agent itself worse, 74.3 vs 76.2 %); not run elsewhere (it builds on N2, which failed on HotpotQA and HoVer)",
+  "N1": "more thinking in the layer's own agents: the agent (liquid) and the reviewer (assembled) at reasoning effort high, max_tokens 32768; the program inside the reviewer (its draft) and the program form keep the task model",
+  "N12": "N1 and N2 together",
+  "N2": "tool agents: step limit 16 (was 8) and one fresh run when the output is empty or an abstention"
+ },
+ "screens": {
+  "C4:hover": {
+   "agent_with_demos": 61.9,
+   "agent_without": 64.06,
+   "cells": [
+    "j6v",
+    "ptmv",
+    "ptsv"
+   ],
+   "gate": true,
+   "lost": 0,
+   "new_minus_n2": [
+    2.41,
+    1.25,
+    108
+   ],
+   "won": 4
+  },
+  "C4:toolhop": {
+   "agent_with_demos": 74.31,
+   "agent_without": 76.19,
+   "cells": [
+    "ptth",
+    "ptmth",
+    "ptsth"
+   ],
+   "gate": true,
+   "lost": 0,
+   "new_minus_n2": [
+    0.49,
+    0.49,
+    108
+   ],
+   "won": 1
+  },
+  "N12:hover": {
+   "PF": {
+    "assembled": [
+     78.31,
+     82.46
+    ],
+    "liquid": [
+     51.13,
+     75.24
+    ],
+    "lost": 2,
+    "new_minus_old": [
+     6.25,
+     2.41,
+     108
+    ],
+    "rule_new": 91.38,
+    "rule_old": 85.13,
+    "won": 11
+   },
+   "cells": [
+    "j6v",
+    "ptmv",
+    "ptsv"
+   ],
+   "gate": true
+  },
+  "N12:toolhop": {
+   "PF": {
+    "assembled": [
+     70.56,
+     76.6
+    ],
+    "liquid": [
+     59.9,
+     79.66
+    ],
+    "lost": 5,
+    "new_minus_old": [
+     7.64,
+     2.77,
+     108
+    ],
+    "rule_new": 81.49,
+    "rule_old": 73.85,
+    "won": 18
+   },
+   "cells": [
+    "ptth",
+    "ptmth",
+    "ptsth"
+   ],
+   "gate": true
+  },
+  "N1:aime": {
+   "PF": {
+    "assembled": [
+     88.76,
+     95.89
+    ],
+    "liquid": [
+     86.2,
+     96.92
+    ],
+    "lost": 1,
+    "new_minus_old": [
+     5.6,
+     1.94,
+     108
+    ],
+    "rule_new": 96.88,
+    "rule_old": 91.28,
+    "won": 12
+   },
+   "cells": [
+    "j6a",
+    "ptma",
+    "ptsa"
+   ],
+   "gate": true
+  },
+  "N1:bird": {
+   "PF": {
+    "assembled": [
+     63.92,
+     78.71
+    ],
+    "liquid": [
+     63.94,
+     73.62
+    ],
+    "lost": 5,
+    "new_minus_old": [
+     12.57,
+     3.78,
+     108
+    ],
+    "rule_new": 78.71,
+    "rule_old": 66.14,
+    "won": 22
+   },
+   "cells": [
+    "ptbr",
+    "ptmbr",
+    "ptsbr"
+   ],
+   "gate": true
+  },
+  "N1:gpqa": {
+   "PF": {
+    "assembled": [
+     74.92,
+     79.74
+    ],
+    "liquid": [
+     72.82,
+     81.47
+    ],
+    "lost": 5,
+    "new_minus_old": [
+     4.33,
+     4.03,
+     108
+    ],
+    "rule_new": 79.74,
+    "rule_old": 75.41,
+    "won": 19
+   },
+   "cells": [
+    "j6g",
+    "ptmg",
+    "ptsg"
+   ],
+   "gate": true
+  },
+  "N1:hotpotqa": {
+   "PF": {
+    "assembled": [
+     78.71,
+     78.65
+    ],
+    "liquid": [
+     75.87,
+     77.68
+    ],
+    "lost": 5,
+    "new_minus_old": [
+     -0.06,
+     1.02,
+     108
+    ],
+    "rule_new": 78.65,
+    "rule_old": 78.71,
+    "won": 5
+   },
+   "cells": [
+    "j6h",
+    "ptmh",
+    "ptsh"
+   ],
+   "gate": false
+  },
+  "N1:hover": {
+   "PF": {
+    "assembled": [
+     78.31,
+     82.5
+    ],
+    "liquid": [
+     51.13,
+     72.95
+    ],
+    "lost": 3,
+    "new_minus_old": [
+     4.01,
+     2.17,
+     108
+    ],
+    "rule_new": 89.14,
+    "rule_old": 85.13,
+    "won": 9
+   },
+   "cells": [
+    "j6v",
+    "ptmv",
+    "ptsv"
+   ],
+   "gate": true
+  },
+  "N1:ifbench": {
+   "PF": {
+    "assembled": [
+     94.06,
+     96.34
+    ],
+    "liquid": [
+     89.09,
+     93.18
+    ],
+    "lost": 3,
+    "new_minus_old": [
+     2.28,
+     1.03,
+     93
+    ],
+    "rule_new": 96.34,
+    "rule_old": 94.06,
+    "won": 14
+   },
+   "cells": [
+    "j6i",
+    "ptmi",
+    "ptsi"
+   ],
+   "gate": true
+  },
+  "N1:livebench": {
+   "PF": {
+    "assembled": [
+     85.96,
+     89.54
+    ],
+    "liquid": [
+     84.38,
+     87.76
+    ],
+    "lost": 9,
+    "new_minus_old": [
+     2.04,
+     1.24,
+     108
+    ],
+    "rule_new": 89.74,
+    "rule_old": 87.7,
+    "won": 22
+   },
+   "cells": [
+    "j6l",
+    "ptml",
+    "ptsl2"
+   ],
+   "gate": true
+  },
+  "N1:natplan": {
+   "PF": {
+    "assembled": [
+     90.0,
+     89.44
+    ],
+    "liquid": [
+     92.0,
+     98.33
+    ],
+    "lost": 0,
+    "new_minus_old": [
+     1.67,
+     0.79,
+     101
+    ],
+    "rule_new": 100.0,
+    "rule_old": 98.33,
+    "won": 5
+   },
+   "cells": [
+    "ptnp",
+    "ptmnp",
+    "ptsnp"
+   ],
+   "gate": true
+  },
+  "N1:pupa": {
+   "PF": {
+    "assembled": [
+     94.05,
+     94.01
+    ],
+    "liquid": [
+     87.98,
+     93.78
+    ],
+    "lost": 8,
+    "new_minus_old": [
+     -0.04,
+     1.78,
+     93
+    ],
+    "rule_new": 94.01,
+    "rule_old": 94.05,
+    "won": 18
+   },
+   "cells": [
+    "j6p",
+    "ptmp",
+    "ptsp"
+   ],
+   "gate": false
+  },
+  "N1:toolhop": {
+   "PF": {
+    "assembled": [
+     70.56,
+     74.76
+    ],
+    "liquid": [
+     59.9,
+     73.15
+    ],
+    "lost": 5,
+    "new_minus_old": [
+     5.09,
+     2.5,
+     108
+    ],
+    "rule_new": 78.94,
+    "rule_old": 73.85,
+    "won": 13
+   },
+   "cells": [
+    "ptth",
+    "ptmth",
+    "ptsth"
+   ],
+   "gate": true
+  },
+  "N2:hotpotqa": {
+   "PF": {
+    "assembled": [
+     78.71,
+     73.92
+    ],
+    "liquid": [
+     75.87,
+     77.75
+    ],
+    "lost": 7,
+    "new_minus_old": [
+     -1.02,
+     1.08,
+     108
+    ],
+    "rule_new": 77.7,
+    "rule_old": 78.71,
+    "won": 4
+   },
+   "cells": [
+    "j6h",
+    "ptmh",
+    "ptsh"
+   ],
+   "gate": false
+  },
+  "N2:hover": {
+   "PF": {
+    "assembled": [
+     78.31,
+     80.0
+    ],
+    "liquid": [
+     51.13,
+     64.06
+    ],
+    "lost": 3,
+    "new_minus_old": [
+     1.66,
+     1.77,
+     108
+    ],
+    "rule_new": 86.79,
+    "rule_old": 85.13,
+    "won": 5
+   },
+   "cells": [
+    "j6v",
+    "ptmv",
+    "ptsv"
+   ],
+   "gate": false
+  },
+  "N2:toolhop": {
+   "PF": {
+    "assembled": [
+     71.0,
+     79.27
+    ],
+    "liquid": [
+     59.96,
+     78.0
+    ],
+    "lost": 6,
+    "new_minus_old": [
+     4.73,
+     2.05,
+     172
+    ],
+    "rule_new": 80.13,
+    "rule_old": 75.4,
+    "won": 20
+   },
+   "cells": [
+    "ptth",
+    "ptmth",
+    "ptsth"
+   ],
+   "gate": true
+  }
+ },
+ "testc": {
+  "benchmarks": [
+   "toolhop",
+   "hover",
+   "aime",
+   "natplan",
+   "ifbench",
+   "bird",
+   "gpqa"
+  ],
+  "cells": [
+   {
+    "benchmark": "toolhop",
+    "name": "ptth",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "toolhop",
+    "name": "ptmth",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "toolhop",
+    "name": "ptsth",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "hover",
+    "name": "j6v",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "hover",
+    "name": "ptmv",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "hover",
+    "name": "ptsv",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "aime",
+    "name": "j6a",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "aime",
+    "name": "ptma",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "aime",
+    "name": "ptsa",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "natplan",
+    "name": "ptnp",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "natplan",
+    "name": "ptmnp",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "natplan",
+    "name": "ptsnp",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "ifbench",
+    "name": "j6i",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "ifbench",
+    "name": "ptmi",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "ifbench",
+    "name": "ptsi",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "bird",
+    "name": "ptbr",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "bird",
+    "name": "ptmbr",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "bird",
+    "name": "ptsbr",
+    "optimizer": "simba"
+   },
+   {
+    "benchmark": "gpqa",
+    "name": "j6g",
+    "optimizer": "gepa"
+   },
+   {
+    "benchmark": "gpqa",
+    "name": "ptmg",
+    "optimizer": "mipro"
+   },
+   {
+    "benchmark": "gpqa",
+    "name": "ptsg",
+    "optimizer": "simba"
+   }
+  ],
+  "not_in_testc": {
+   "bfcl": "layer off",
+   "hotpotqa": "unchanged from 1.1",
+   "lcb": "no fresh items; unchanged",
+   "livebench": "no fresh items (the cached release is the newest)",
+   "pupa": "unchanged",
+   "tau2": "ceiling"
+  }
+ },
+ "version": "TRIBES 1.2 freeze, 2026-11-23 (Fable 5.2 plan FABLE-V12-PLAN-20261122; components screened on PARETO + FIT, stratified; every decision by the pre-fixed gate: pooled weighted mean > 0 and >= 1 se)"
+}

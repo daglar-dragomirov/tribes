@@ -20,11 +20,16 @@ hide:
 </div>
 
 <div class="tb-stats" markdown>
-<div class="tb-stat"><b>+11.6 pp</b><span>development · 36 cells</span></div>
-<div class="tb-stat"><b>+4.7 pp</b><span>fresh test · 1,010 items</span></div>
-<div class="tb-stat"><b>+7.1 pp</b><span>sealed test · 15 cells</span></div>
+<div class="tb-stat"><b>+14.3 pp</b><span>fresh test · TRIBES 1.2 · 1,323 items</span></div>
+<div class="tb-stat"><b>+35.6 pp</b><span>AIME 2026 · fresh test</span></div>
+<div class="tb-stat"><b>+20.3 pp</b><span>HoVer · fresh test</span></div>
 <div class="tb-stat"><b>0</b><span>extra optimization cost</span></div>
 </div>
+
+<figure class="tb-figure" markdown>
+![TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red)](assets/chart-testc-light.png#only-light)
+![TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red)](assets/chart-testc-dark.png#only-dark)
+</figure>
 
 TRIBES is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
 adds a reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches
@@ -106,7 +111,7 @@ pip install tribes
 
     ---
 
-    36 development cells, a sealed test opened once and a pre-registered test on fresh items, every number per cell.
+    36 development cells, a sealed test opened once and two pre-registered tests on fresh items, every number per cell.
 
     [:octicons-arrow-right-24: Results](results.md)
 
