@@ -28,23 +28,23 @@ hide:
 
 === "GEPA"
 
-    ![GEPA vs GEPA + TRIBES 1.2](assets/chart-testc-gepa-light.png#only-light)
-    ![GEPA vs GEPA + TRIBES 1.2](assets/chart-testc-gepa-dark.png#only-dark)
+    ![GEPA vs GEPA + TRIBES](assets/chart-testc-gepa-light.png#only-light)
+    ![GEPA vs GEPA + TRIBES](assets/chart-testc-gepa-dark.png#only-dark)
 
 === "MIPROv2"
 
-    ![MIPROv2 vs MIPROv2 + TRIBES 1.2](assets/chart-testc-mipro-light.png#only-light)
-    ![MIPROv2 vs MIPROv2 + TRIBES 1.2](assets/chart-testc-mipro-dark.png#only-dark)
+    ![MIPROv2 vs MIPROv2 + TRIBES](assets/chart-testc-mipro-light.png#only-light)
+    ![MIPROv2 vs MIPROv2 + TRIBES](assets/chart-testc-mipro-dark.png#only-dark)
 
 === "SIMBA"
 
-    ![SIMBA vs SIMBA + TRIBES 1.2](assets/chart-testc-simba-light.png#only-light)
-    ![SIMBA vs SIMBA + TRIBES 1.2](assets/chart-testc-simba-dark.png#only-dark)
+    ![SIMBA vs SIMBA + TRIBES](assets/chart-testc-simba-light.png#only-light)
+    ![SIMBA vs SIMBA + TRIBES](assets/chart-testc-simba-dark.png#only-dark)
 
 === "Mean of the three"
 
-    ![program vs program + TRIBES 1.2](assets/chart-testc-light.png#only-light)
-    ![program vs program + TRIBES 1.2](assets/chart-testc-dark.png#only-dark)
+    ![program vs program + TRIBES](assets/chart-testc-light.png#only-light)
+    ![program vs program + TRIBES](assets/chart-testc-dark.png#only-dark)
 
 TRIBES is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
 adds a reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches

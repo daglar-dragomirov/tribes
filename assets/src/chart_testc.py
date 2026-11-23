@@ -1,4 +1,4 @@
-"""TEST-C charts: the optimizer's own program (grey) and the same program with TRIBES 1.2 (red), accuracy in %; the gain
+"""TEST-C charts: the optimizer's own program (grey) and the same program with TRIBES (red), accuracy in %; the gain
 in percentage points is printed at the end of the red bar.
   chart-testc-*      per benchmark, mean over GEPA, MIPROv2 and SIMBA
   chart-testc-opt-*  per optimizer (GEPA vs GEPA + TRIBES, ...), mean over the seven benchmarks
@@ -137,11 +137,11 @@ def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar, ns_n
         plt.close(fig)
 
 
-draw(bench, "chart-testc", "TRIBES 1.2  ·  FRESH TEST (TEST-C)",
+draw(bench, "chart-testc", "TRIBES  ·  FRESH TEST (TEST-C)",
      "1,323 new items  ·  21 cells  ·  pre-registered, opened once  ·  GLM 5.3 Flash",
-     ("PROGRAM  (GEPA · MIPROv2 · SIMBA)", "PROGRAM + TRIBES 1.2"),
+     ("PROGRAM  (GEPA · MIPROv2 · SIMBA)", "PROGRAM + TRIBES"),
      "accuracy, %  ·  mean over GEPA, MIPROv2 and SIMBA  ·  gain in percentage points", (10, 7.4), 0.165, False)
-draw(opt, "chart-testc-opt", "EVERY OPTIMIZER, PLUS TRIBES 1.2  ·  TEST-C",
+draw(opt, "chart-testc-opt", "EVERY OPTIMIZER, PLUS TRIBES  ·  TEST-C",
      "accuracy, %, mean over the seven benchmarks of each optimizer  ·  1,323 new items  ·  GLM 5.3 Flash", None,
      "accuracy, %  ·  gain in percentage points", (10, 4.1), 0.2, True)
 order = [r[0] for r in bench[:-1]]
@@ -154,8 +154,8 @@ for o, lab in OPTS.items():
     pr, tr = sum(r[3] for r in rows) / len(rows), sum(r[4] for r in rows) / len(rows)
     rows.append(("ALL 7 BENCHMARKS", None, None, pr, tr, tr - pr, True))
     n = sum(c["info"]["n"] for c in cells if c["opt"] == o)
-    draw(rows, f"chart-testc-{o}", f"{lab}  vs  {lab} + TRIBES 1.2  ·  TEST-C",
+    draw(rows, f"chart-testc-{o}", f"{lab}  vs  {lab} + TRIBES  ·  TEST-C",
          f"{n} new items  ·  7 benchmarks  ·  pre-registered, opened once  ·  GLM 5.3 Flash",
-         (lab, f"{lab} + TRIBES 1.2"), "accuracy, %  ·  gain in percentage points  ·  per-benchmark gains of one optimizer are descriptive",
+         (lab, f"{lab} + TRIBES"), "accuracy, %  ·  gain in percentage points  ·  per-benchmark gains of one optimizer are descriptive",
          (10, 7.4), 0.19, False, ns_note=False)
     print(lab, [(r[0], round(r[3], 1), round(r[4], 1), round(r[5], 1)) for r in rows])
