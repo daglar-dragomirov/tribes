@@ -5,26 +5,56 @@ optimizer's own program on the same items, in percentage points.
 
 ## At a glance
 
-| benchmark | development · 1.1 | sealed test · 1.0-lite | fresh test · 1.1 |
-|---|---|---|---|
-| AIME | +31.1 | — | — |
-| BIRD | +23.2 | +5.0 | +3.2 |
-| NATURAL PLAN | +21.0 | +13.7 | — |
-| LiveCodeBench | +20.0 | +13.0 | — |
-| LiveBench | +17.4 | — | — |
-| HoVer | +12.6 | — | +12.4 |
-| ToolHop | +4.7 | +1.3 | +2.2 |
-| GPQA | +3.6 | +2.5 | +1.7 |
-| HotpotQA | +3.4 | — | +4.2 |
-| IFBench | +1.6 | — | — |
-| PUPA | +1.2 | — | — |
-| BFCL | 0.0 | — | — |
-| τ²-bench | 0.0 | — | — |
-| **all cells** | **+11.6** (36 cells) | **+7.1** (15 cells) | **+4.7** (15 cells) |
+| benchmark | fresh test · 1.2 | fresh test · 1.1 | sealed test · 1.0-lite | development · 1.1 |
+|---|---|---|---|---|
+| AIME | **+35.6** (2026) | — | — | +31.1 |
+| HoVer | **+20.3** | +12.4 | — | +12.6 |
+| NATURAL PLAN | **+19.3** | — | +13.7 | +21.0 |
+| GPQA | **+9.2** (extended) | +1.7 | +2.5 | +3.6 |
+| ToolHop | **+8.5** | +2.2 | +1.3 | +4.7 |
+| BIRD | **+4.7** (simple) | +3.2 | +5.0 | +23.2 |
+| IFBench | +2.7 | — | — | +1.6 |
+| LiveCodeBench | — | — | +13.0 | +20.0 |
+| LiveBench | — | — | — | +17.4 |
+| HotpotQA | — | +4.2 | — | +3.4 |
+| PUPA | — | — | — | +1.2 |
+| BFCL | — | — | — | 0.0 |
+| τ²-bench | — | — | — | 0.0 |
+| **all cells** | **+14.3** (21 cells) | **+4.7** (15 cells) | **+7.1** (15 cells) | **+11.6** (36 cells) |
 
-Mean over GEPA, MIPROv2 and SIMBA, in percentage points over each optimizer's own program. Development numbers are post
-hoc: the 1.1 components were designed while these outputs were visible, so read them as an upper bound. The two tests
-were frozen before they were opened and are the numbers to quote. — : no held-out items for that benchmark in that test.
+Mean over GEPA, MIPROv2 and SIMBA, in percentage points over each optimizer's own program. The three tests were frozen
+before they were opened and are the numbers to quote; they are separate tests on different items and are never pooled.
+Development numbers are post hoc (the components were designed while these outputs were visible): read them as an upper
+bound. — : no held-out items for that benchmark in that test. Bold in the 1.2 column: significant after Holm.
+
+## Fresh test (TEST-C, TRIBES 1.2)
+
+1,323 new items, used nowhere in development or in the earlier tests. TRIBES 1.2 is 1.1 plus what passed a pre-fixed
+gate on selection data: the layer's agents at a higher reasoning effort (AIME, LiveBench, GPQA, BIRD, NATURAL PLAN,
+IFBench), and on the tool tasks also 16 steps and one fresh run on an empty or abstained output (ToolHop, HoVer). The
+settings and the analysis were pre-registered before any model saw the items, and the items were opened once.
+
+<figure class="tb-figure" markdown>
+![TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red)](assets/chart-testc-light.png#only-light)
+![TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red)](assets/chart-testc-dark.png#only-dark)
+</figure>
+
+| benchmark (test items per cell) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+|---|---|---|---|---|
+| AIME 2026 (30, shared) | +36.7 | +43.3 | +26.7 | **+35.6** [+24.4, +47.8] |
+| HoVer (100) | +23.0 | +19.0 | +19.0 | **+20.3** [+16.0, +25.0] |
+| NATURAL PLAN (50) | +18.0 | +22.0 | +18.0 | **+19.3** [+13.3, +26.0] |
+| GPQA-extended (33) | +12.1 | +6.1 | +9.4 | **+9.2** [+2.1, +16.4] |
+| ToolHop (98) | +12.1 | +6.1 | +7.1 | **+8.5** [+4.7, +12.5] |
+| BIRD simple (100) | +5.0 | +5.0 | +4.0 | **+4.7** [+1.3, +8.0] |
+| IFBench (50) | +7.7 | 0.0 | +0.3 | +2.7 [−0.2, +5.9] |
+| **mean** | +16.4 | +14.5 | +12.1 | **+14.3** [+11.9, +16.8] |
+
+Every pre-registered claim holds, in order: 1.2 beats the program (+14.3, p = 0.0001); 1.2 beats 1.1 on the same items
+(**+2.8** [+1.3, +4.3]); and 1.2 beats the program run at the same high reasoning effort (**+6.4** [+4.3, +8.5]), so
+the gain is the layer, not just more thinking: on HoVer, ToolHop and BIRD that compute-matched control gains under two
+points. The exception, reported as is: on GPQA-extended (+14.4) and IFBench (+4.1) the program at high effort alone
+beats 1.2, whose program form keeps the task model's effort; those two reward thinking more than extra forms.
 
 ## Fresh test (TEST-B, TRIBES 1.1)
 

@@ -50,6 +50,16 @@ print(prediction.answer)
 
 The call signature is the program's. The returned object is the prediction of the chosen form.
 
+!!! tip "TRIBES 1.2: let the agents think longer"
+    Give the layer's own agents their own LM, e.g. the task model at a higher reasoning effort; the program keeps your
+    task LM. On tool tasks add `max_iters=16, agent_retry=True`. On the pre-registered TEST-C this is +14.3 pp over the
+    programs.
+
+    ```python
+    agent_lm = dspy.LM("openrouter/z-ai/glm-5.3-flash", reasoning_effort="high", max_tokens=32768)
+    pt = Tribes(program, agent_lm=agent_lm, examples=train).fit(train + val, metric)
+    ```
+
 !!! tip "Make it stronger on your task"
     If answers can be compared better than as plain text (numbers, option letters, SQL result sets), pass an
     `answer_key`. If there is a cheap check that needs no labels (public unit tests, "the query runs"), pass a `checker`.
