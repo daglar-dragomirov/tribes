@@ -20,15 +20,41 @@ hide:
 </div>
 
 <div class="tb-stats" markdown>
-<div class="tb-stat"><b>+11.6 pp</b><span>development · 36 cells</span></div>
-<div class="tb-stat"><b>+4.7 pp</b><span>fresh test · 1,010 items</span></div>
-<div class="tb-stat"><b>+7.1 pp</b><span>sealed test · 15 cells</span></div>
+<div class="tb-stat"><b>+43 pp</b><span>up to · AIME 2026</span></div>
+<div class="tb-stat"><b>−50 %</b><span>errors</span></div>
+<div class="tb-stat"><b>87.3 %</b><span>GEPA + TRIBES · GEPA 70.9 %</span></div>
 <div class="tb-stat"><b>0</b><span>extra optimization cost</span></div>
 </div>
 
 TRIBES is an inference-time layer for optimized DSPy programs. It keeps the program a prompt optimizer produced,
 adds a reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches
 itself off on any task where it is not at least as good as the program.
+
+
+=== "GEPA"
+
+    ![GEPA vs GEPA + TRIBES](assets/chart-testc-gepa-light.png#only-light)
+    ![GEPA vs GEPA + TRIBES](assets/chart-testc-gepa-dark.png#only-dark)
+
+=== "MIPROv2"
+
+    ![MIPROv2 vs MIPROv2 + TRIBES](assets/chart-testc-mipro-light.png#only-light)
+    ![MIPROv2 vs MIPROv2 + TRIBES](assets/chart-testc-mipro-dark.png#only-dark)
+
+=== "SIMBA"
+
+    ![SIMBA vs SIMBA + TRIBES](assets/chart-testc-simba-light.png#only-light)
+    ![SIMBA vs SIMBA + TRIBES](assets/chart-testc-simba-dark.png#only-dark)
+
+=== "Mean of the three"
+
+    ![program vs program + TRIBES](assets/chart-testc-light.png#only-light)
+    ![program vs program + TRIBES](assets/chart-testc-dark.png#only-dark)
+
+=== "13 benchmarks (development)"
+
+    ![development, 13 benchmarks](assets/chart-dev-light.png#only-light)
+    ![development, 13 benchmarks](assets/chart-dev-dark.png#only-dark)
 
 ## Get started
 
@@ -81,7 +107,8 @@ pip install tribes
 
     ---
 
-    The optimized program, a ReAct reviewer of its draft, and an independent ReAct agent. No task-specific prompt text.
+    The optimized program, a ReAct reviewer of its draft, and an independent ReAct agent that can think longer than
+    the program. No task-specific prompt text.
 
     [:octicons-arrow-right-24: How it works](guides/how-it-works.md)
 
@@ -106,7 +133,7 @@ pip install tribes
 
     ---
 
-    36 development cells, a sealed test opened once and a pre-registered test on fresh items, every number per cell.
+    36 development cells, a sealed test opened once and two pre-registered tests on fresh items, every number per cell.
 
     [:octicons-arrow-right-24: Results](results.md)
 

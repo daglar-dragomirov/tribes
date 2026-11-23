@@ -210,7 +210,7 @@ lk = render(lockup_layers(WHITE, RED_D), int(LW * 1.85), int(LH * 1.85), 1.85)
 img.alpha_composite(lk, (96, 104))
 d.text((100, 104 + lk.size[1] + 22), "INFERENCE-TIME ANSWER SELECTION", font=font(30, "SemiBold"), fill=WHITE)
 d.text((100, 104 + lk.size[1] + 62), "FOR OPTIMIZED DSPY PROGRAMS  ·  GEPA  ·  MIPROv2  ·  SIMBA", font=font(22, "SemiBold"), fill=ASH)
-stats = (("+4.7 pp", "FRESH TEST  ·  1,010 ITEMS"), ("+7.1 pp", "SEALED TEST  ·  15 CELLS"), ("+11.6 pp", "DEVELOPMENT  ·  36 CELLS"))
+stats = (("+43 pp", "UP TO  ·  AIME 2026"), ("-50 %", "ERRORS"), ("87.3 %", "GEPA + TRIBES"))
 for i, (big, small) in enumerate(stats):
     x, y = 100 + 262 * i, 450
     d.polygon([(x, y), (x + 6, y), (x + 6, y + 96), (x, y + 96)], fill=RED_D)

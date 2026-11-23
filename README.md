@@ -24,6 +24,10 @@ Inference-time answer selection for optimized DSPy programs
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-A0000C?labelColor=0A0A0B" alt="License MIT"></a>
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/hero.jpg" alt="Baseline, GEPA, GEPA + TRIBES" width="880">
+</p>
+
 ---
 
 ## What is TRIBES?
@@ -32,7 +36,25 @@ A prompt optimizer such as GEPA, MIPROv2 or SIMBA turns your data into one fixed
 program. That program is good, but it is also brittle: it cannot look anything up, cannot run code to check itself, and
 every answer is a single sample. TRIBES does not touch the optimization. It wraps the finished program with a
 reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches itself
-off on any task where it is not at least as good as the program.
+off on any task where it is not at least as good as the program. The reviewer and the agent can think longer than the
+program (their own LM at a higher reasoning effort), which is where most of the gain comes from.
+
+On fresh test items it takes GEPA from 70.9 % to **87.3 % accuracy**: **up to +43 pp** on a single benchmark and
+**half the errors** on average, with similar gains over MIPROv2 and SIMBA.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-light.png" alt="TEST-C: GEPA (grey) and GEPA + TRIBES 1.2 (red) per benchmark" width="820">
+  </picture>
+</p>
+
+| | GEPA | **GEPA + TRIBES** | MIPROv2 | **MIPROv2 + TRIBES** | SIMBA | **SIMBA + TRIBES** |
+|---|---|---|---|---|---|---|
+| accuracy, % | 70.9 | **87.3** | 71.0 | **85.5** | 73.0 | **85.1** |
+| gain | | **+16.4 pp** | | **+14.5 pp** | | **+12.1 pp** |
+
+More charts, every benchmark and every test: [Results](#results).
 
 ## Install
 
@@ -59,6 +81,18 @@ print(pt.report["use_layer"], pt.report["mean_gain"])
 
 prediction = pt(question="...")    # same call signature as your program
 ```
+
+TRIBES 1.2 lets the layer's own agents think longer than the program: give them their own LM. On tool tasks (multi-hop
+QA, retrieval) also give them more steps and one fresh run when they return nothing or abstain:
+
+```python
+agent_lm = dspy.LM("openrouter/z-ai/glm-5.3-flash", reasoning_effort="high", max_tokens=32768)
+pt = Tribes(program, agent_lm=agent_lm, examples=train)                       # reasoning tasks
+pt = Tribes(program, agent_lm=agent_lm, max_iters=16, agent_retry=True,       # tool tasks
+            task=tribes.tasks.tool_qa(), examples=train)
+```
+
+The program itself keeps your task LM; so does the program's draft inside the reviewer.
 
 `fit` only needs labeled data the optimizer already saw; nothing is tuned per dataset.
 
@@ -87,6 +121,13 @@ and any task tools you pass. There is no task-specific prompt text anywhere.
 In `full` mode the program and the reviewer run concurrently, and the agent only when they disagree. `lite` mode runs
 the reviewer only. Every form and every retry is an independent request (its own cache entry), so the vote never
 compares a form with a cached copy of itself.
+
+### Agents that think longer (1.2)
+
+`agent_lm` gives the reviewer and the agent their own LM, typically the task model at a higher reasoning effort; the
+program and its draft keep your task LM. On tool tasks `max_iters=16` and `agent_retry=True` add steps and one fresh run
+when an agent returns nothing or abstains. On TEST-C this took the layer from +11.5 to +14.3 pp over the programs on the
+same items, and beat the program run at the same high effort by +6.4 pp.
 
 ### Contested inputs: the verifier
 
@@ -119,38 +160,110 @@ program, at exactly its cost.
 GLM 5.3 Flash as the task model; each optimizer run with its official settings; every number is TRIBES minus that
 optimizer's own program on the same items.
 
+### Every optimizer, fresh test items
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-light.png" alt="TEST-C: GEPA (grey) and GEPA + TRIBES 1.2 (red) per benchmark" width="820">
+  </picture>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-mipro-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-mipro-light.png" alt="TEST-C: MIPROv2 (grey) and MIPROv2 + TRIBES 1.2 (red) per benchmark" width="820">
+  </picture>
+</p>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-simba-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-simba-light.png" alt="TEST-C: SIMBA (grey) and SIMBA + TRIBES 1.2 (red) per benchmark" width="820">
+  </picture>
+</p>
+
+Mean of the three optimizers:
+
+| | AIME 2026 | HoVer | NATURAL PLAN | GPQA-ext. | ToolHop | BIRD | IFBench | **all** |
+|---|---|---|---|---|---|---|---|---|
+| program | 61.1 | 68.7 | 79.3 | 64.2 | 68.1 | 70.0 | 90.2 | **71.7** |
+| **program + TRIBES** | **96.7** | **89.0** | **98.7** | **73.4** | **76.6** | **74.7** | 92.9 | **86.0** |
+| gain | **+35.6 pp** | **+20.3 pp** | **+19.3 pp** | **+9.2 pp** | **+8.5 pp** | **+4.7 pp** | +2.7 pp | **+14.3 pp** |
+
+### All 13 benchmarks (development)
+
+Measured while the method was being built, so read it as an upper bound; the tests above are the numbers to quote.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-dev-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-dev-light.png" alt="Development, all 13 benchmarks: the program (grey) and the program with TRIBES (red)" width="820">
+  </picture>
+</p>
+
+### Every number
+
 **At a glance**
 
-| benchmark | development · 1.1 | sealed test · 1.0-lite | fresh test · 1.1 |
-|---|---|---|---|
-| AIME | +31.1 | — | — |
-| BIRD | +23.2 | +5.0 | +3.2 |
-| NATURAL PLAN | +21.0 | +13.7 | — |
-| LiveCodeBench | +20.0 | +13.0 | — |
-| LiveBench | +17.4 | — | — |
-| HoVer | +12.6 | — | +12.4 |
-| ToolHop | +4.7 | +1.3 | +2.2 |
-| GPQA | +3.6 | +2.5 | +1.7 |
-| HotpotQA | +3.4 | — | +4.2 |
-| IFBench | +1.6 | — | — |
-| PUPA | +1.2 | — | — |
-| BFCL | 0.0 | — | — |
-| τ²-bench | 0.0 | — | — |
-| **all cells** | **+11.6** (36 cells) | **+7.1** (15 cells) | **+4.7** (15 cells) |
+| benchmark | fresh test · 1.2 | fresh test · 1.1 | sealed test · 1.0-lite | development · 1.1 |
+|---|---|---|---|---|
+| AIME | **+35.6** (2026) | — | — | +31.1 |
+| HoVer | **+20.3** | +12.4 | — | +12.6 |
+| NATURAL PLAN | **+19.3** | — | +13.7 | +21.0 |
+| GPQA | **+9.2** (extended) | +1.7 | +2.5 | +3.6 |
+| ToolHop | **+8.5** | +2.2 | +1.3 | +4.7 |
+| BIRD | **+4.7** (simple) | +3.2 | +5.0 | +23.2 |
+| IFBench | +2.7 | — | — | +1.6 |
+| LiveCodeBench | — | — | +13.0 | +20.0 |
+| LiveBench | — | — | — | +17.4 |
+| HotpotQA | — | +4.2 | — | +3.4 |
+| PUPA | — | — | — | +1.2 |
+| BFCL | — | — | — | 0.0 |
+| τ²-bench | — | — | — | 0.0 |
+| **all cells** | **+14.3** (21 cells) | **+4.7** (15 cells) | **+7.1** (15 cells) | **+11.6** (36 cells) |
 
-Mean over GEPA, MIPROv2 and SIMBA, in percentage points over each optimizer's own program. Development numbers are post
-hoc: the 1.1 components were designed while these outputs were visible, so read them as an upper bound. The two tests
-were frozen before they were opened and are the numbers to quote. — : no held-out items for that benchmark in that test.
+Mean over GEPA, MIPROv2 and SIMBA, in percentage points over each optimizer's own program. The three tests were frozen
+before they were opened and are the numbers to quote; they are separate tests on different items and are never pooled.
+Development numbers are post hoc (the components were designed while these outputs were visible): read them as an upper
+bound. — : no held-out items for that benchmark in that test. Bold in the 1.2 column: significant after Holm.
+
+**Fresh test (TEST-C, TRIBES 1.2)** — 1,323 new items, used nowhere in development or in the earlier tests; the 1.2
+settings and the analysis were pre-registered before any model saw them (per-optimizer charts at the top of this page):
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-light.png" alt="TEST-C: the program (grey) and the program with TRIBES 1.2 (red), mean over the three optimizers" width="760">
+  </picture>
+</p>
+
+| benchmark (test items per cell) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
+|---|---|---|---|---|
+| AIME 2026 (30, shared) | +36.7 | +43.3 | +26.7 | **+35.6** [+24.4, +47.8] |
+| HoVer (100) | +23.0 | +19.0 | +19.0 | **+20.3** [+16.0, +25.0] |
+| NATURAL PLAN (50) | +18.0 | +22.0 | +18.0 | **+19.3** [+13.3, +26.0] |
+| GPQA-extended (33) | +12.1 | +6.1 | +9.4 | **+9.2** [+2.1, +16.4] |
+| ToolHop (98) | +12.1 | +6.1 | +7.1 | **+8.5** [+4.7, +12.5] |
+| BIRD simple (100) | +5.0 | +5.0 | +4.0 | **+4.7** [+1.3, +8.0] |
+| IFBench (50) | +7.7 | 0.0 | +0.3 | +2.7 [−0.2, +5.9] |
+| **mean** | +16.4 | +14.5 | +12.1 | **+14.3** [+11.9, +16.8] |
+
+Every pre-registered claim holds, in order: 1.2 beats the program (+14.3, p = 0.0001); 1.2 beats 1.1 on the same items
+(**+2.8** [+1.3, +4.3]); and 1.2 beats the program run at the same high reasoning effort (**+6.4** [+4.3, +8.5]), so
+the gain is the layer, not just more thinking: on HoVer, ToolHop and BIRD that compute-matched control gains under two
+points. The exception, reported as is: on GPQA-extended (+14.4) and IFBench (+4.1) the program at high effort alone
+beats 1.2, whose program form keeps the task model's effort; those two reward thinking more than extra forms.
 
 **Fresh test (TEST-B, TRIBES 1.1)** — 1,010 new items, used nowhere in development or in the sealed test; the 1.1
 policy and the analysis were pre-registered before any model saw them:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-dark.png">
-  <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-light.png" alt="TEST-B: TRIBES 1.1 minus the program per benchmark, 95 % CI" width="760">
+  <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-light.png" alt="TEST-B: the program (grey) and the program with TRIBES 1.1 (red), mean over the three optimizers" width="760">
 </picture>
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | HoVer (150) | +12.7 | +8.0 | +16.7 | **+12.4** [+8.9, +16.4] |
 | HotpotQA (200) | +7.0 | +3.0 | +2.5 | **+4.2** [+1.8, +6.8] |
@@ -166,7 +279,7 @@ more sampling.
 
 **Sealed test (TEST-A)** — opened once, after the rule and every per-task decision were frozen (TRIBES 1.0-lite):
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | NATURAL PLAN (200) | **+13.5** | **+17.0** | **+10.5** |
 | LiveCodeBench (82) | **+11.0** | **+14.6** | **+13.4** |
@@ -179,7 +292,7 @@ Bold: 95 % confidence interval above zero. No cell has its interval below zero.
 
 **Development (TRIBES 1.1)** — 13 benchmarks × 3 optimizers = 36 cells, post hoc:
 
-| benchmark | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | AIME | +38.0 | +23.3 | +32.0 |
 | BIRD | +28.5 | +15.0 | +26.0 |
@@ -197,9 +310,9 @@ Bold: 95 % confidence interval above zero. No cell has its interval below zero.
 
 | | TRIBES 1.1 | 1.0 full | 1.0 lite |
 |---|---|---|---|
-| over GEPA | +11.9 | +10.1 | +9.3 |
-| over MIPROv2 | +10.8 | +8.7 | +8.4 |
-| over SIMBA | +12.1 | +9.6 | +8.9 |
+| GEPA + TRIBES | +11.9 | +10.1 | +9.3 |
+| MIPROv2 + TRIBES | +10.8 | +8.7 | +8.4 |
+| SIMBA + TRIBES | +12.1 | +9.6 | +8.9 |
 | **all 36 cells** | **+11.6** | **+9.5** | **+8.9** |
 
 No cell below the program. What 1.1 adds over 1.0 here: BIRD agents that can run SQL, the set merge on HoVer, the
@@ -209,15 +322,34 @@ abstention check on ToolHop, the verifier on AIME, LiveBench and LiveCodeBench, 
 
 **Research record**: how the rule was found, frozen and tested, with every number per cell, is in [`research/`](research/).
 
-**Cost**: about 2.6× the program's inference cost in `lite` mode and 4.6× in `full` mode. There is no optimization
-cost.
+**Settings per task type** used in the tests (each decided on selection data by a gate fixed in advance):
+
+| task type (benchmarks) | mode | agents' reasoning effort | agent steps · retry | extra |
+|---|---|---|---|---|
+| math (AIME, LiveBench) | `full` | high | 8 · no | — |
+| multiple choice (GPQA) | `lite` | high | 8 · no | — |
+| text-to-SQL (BIRD) | `lite` | high | 8 · no | agents get `run_sql` |
+| planning (NATURAL PLAN) | `full` | high | 8 · no | the plan validator as checker |
+| instruction following (IFBench) | `lite` | high | 8 · no | — |
+| tool QA (ToolHop) | `full` | high | 16 · yes | an abstention is not an answer |
+| retrieval sets (HoVer) | `full` | high | 16 · yes | `doc_set()` merge |
+| code (LiveCodeBench) | `full` + verifier | task model | 8 · no | public tests as checker |
+| multi-hop QA, privacy rewrite (HotpotQA, PUPA) | `lite` | task model | 8 · no | — |
+| function calling, agents (BFCL, τ²-bench) | layer off | — | — | the switch keeps the program |
+
+Every entry was decided on the optimizer's own selection data (PARETO + FIT) by a gate fixed in advance, before the
+tests were opened; "high" means `agent_lm` set to the task model at reasoning effort high (max_tokens 32,768).
+
+**Cost**: about 2.6× the program's inference cost in `lite` mode and 4.6× in `full` mode with the agents on the task
+model (1.1); with `agent_lm` at a higher reasoning effort (1.2) the agents cost more. There is no optimization cost.
 
 ## API
 
 ```python
 Tribes(program, *, mode="full", task=None, tools=(), answer_key=None, checker=None, examples=None,
            verifier=None, switch="do_no_harm", z=None, margin=0.02, parallel=True, independent=True,
-           callbacks=(), prices=None, input_fields=None, output_field=None, max_iters=8, retries=3)
+           callbacks=(), prices=None, input_fields=None, output_field=None, max_iters=8, retries=3,
+           agent_lm=None, agent_retry=False)
 ```
 
 | argument | meaning |
@@ -232,6 +364,8 @@ Tribes(program, *, mode="full", task=None, tools=(), answer_key=None, checker=No
 | `switch`, `z`, `margin` | the task switch: `"do_no_harm"` (1.0) or `"non_inferiority"` |
 | `parallel`, `independent` | run forms concurrently; give each form and retry its own cache entry |
 | `callbacks`, `prices` | events (`LoggingCallback`, `JSONLCallback`, your own); `{model: (usd/M in, usd/M out)}` |
+| `agent_lm` | the LM of the layer's own agents (reviewer and agent), e.g. the task model at a higher reasoning effort; the program keeps the task LM |
+| `max_iters`, `agent_retry` | the agents' step limit; one fresh agent run when its output is empty or an abstention (1.2 on tool tasks: 16, `True`) |
 
 | method | what it does |
 |---|---|
@@ -251,6 +385,9 @@ calls; `tribes report fit.json` prints a saved decision.
 removed. Agreement between independent forms and cheap deterministic checks do the job.
 
 **Which optimizers?** Anything that produces a DSPy program. It was evaluated on GEPA, MIPROv2 and SIMBA.
+
+**Is the 1.2 gain just more reasoning effort?** No. The program run at the same high effort gains +7.9 pp on TEST-C;
+1.2 gains +14.3 and beats it by +6.4. On GPQA and IFBench, though, the program at high effort alone does better.
 
 **Is `run_python` a sandbox?** No. It runs code in a subprocess with a 10-second limit. Run untrusted workloads in an
 isolated environment.

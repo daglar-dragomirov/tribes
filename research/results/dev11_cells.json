@@ -1,0 +1,257 @@
+{
+ "source": "development (DEV split), TRIBES 1.1, post hoc: program accuracy = the cell's rigid form on DEV (p2_repaired.json); gain = the published 1.1 development table (README), 36 cells",
+ "cells": [
+  {
+   "opt": "gepa",
+   "ds": "aime",
+   "cell": "j6a",
+   "program": 57.33,
+   "gain_v11_pp": 38.0
+  },
+  {
+   "opt": "mipro",
+   "ds": "aime",
+   "cell": "ptma",
+   "program": 65.33,
+   "gain_v11_pp": 23.3
+  },
+  {
+   "opt": "simba",
+   "ds": "aime",
+   "cell": "ptsa",
+   "program": 62.0,
+   "gain_v11_pp": 32.0
+  },
+  {
+   "opt": "gepa",
+   "ds": "bird",
+   "cell": "ptbr",
+   "program": 40.0,
+   "gain_v11_pp": 28.5
+  },
+  {
+   "opt": "mipro",
+   "ds": "bird",
+   "cell": "ptmbr",
+   "program": 47.5,
+   "gain_v11_pp": 15.0
+  },
+  {
+   "opt": "simba",
+   "ds": "bird",
+   "cell": "ptsbr",
+   "program": 42.0,
+   "gain_v11_pp": 26.0
+  },
+  {
+   "opt": "gepa",
+   "ds": "natplan",
+   "cell": "ptnp",
+   "program": 73.0,
+   "gain_v11_pp": 24.0
+  },
+  {
+   "opt": "mipro",
+   "ds": "natplan",
+   "cell": "ptmnp",
+   "program": 79.0,
+   "gain_v11_pp": 18.0
+  },
+  {
+   "opt": "simba",
+   "ds": "natplan",
+   "cell": "ptsnp",
+   "program": 77.5,
+   "gain_v11_pp": 21.0
+  },
+  {
+   "opt": "gepa",
+   "ds": "lcb",
+   "cell": "j6c",
+   "program": 54.0,
+   "gain_v11_pp": 20.0
+  },
+  {
+   "opt": "mipro",
+   "ds": "lcb",
+   "cell": "ptmc",
+   "program": 56.0,
+   "gain_v11_pp": 20.0
+  },
+  {
+   "opt": "simba",
+   "ds": "lcb",
+   "cell": "ptsc",
+   "program": 59.0,
+   "gain_v11_pp": 20.0
+  },
+  {
+   "opt": "gepa",
+   "ds": "livebench",
+   "cell": "j6l",
+   "program": 61.29,
+   "gain_v11_pp": 15.3
+  },
+  {
+   "opt": "mipro",
+   "ds": "livebench",
+   "cell": "ptml",
+   "program": 57.63,
+   "gain_v11_pp": 21.4
+  },
+  {
+   "opt": "simba",
+   "ds": "livebench",
+   "cell": "ptsl2",
+   "program": 61.18,
+   "gain_v11_pp": 15.6
+  },
+  {
+   "opt": "gepa",
+   "ds": "hover",
+   "cell": "j6v",
+   "program": 70.67,
+   "gain_v11_pp": 12.3
+  },
+  {
+   "opt": "mipro",
+   "ds": "hover",
+   "cell": "ptmv",
+   "program": 71.33,
+   "gain_v11_pp": 9.7
+  },
+  {
+   "opt": "simba",
+   "ds": "hover",
+   "cell": "ptsv",
+   "program": 69.33,
+   "gain_v11_pp": 15.7
+  },
+  {
+   "opt": "gepa",
+   "ds": "toolhop",
+   "cell": "ptth",
+   "program": 51.5,
+   "gain_v11_pp": 9.0
+  },
+  {
+   "opt": "mipro",
+   "ds": "toolhop",
+   "cell": "ptmth",
+   "program": 73.5,
+   "gain_v11_pp": 0.5
+  },
+  {
+   "opt": "simba",
+   "ds": "toolhop",
+   "cell": "ptsth",
+   "program": 73.0,
+   "gain_v11_pp": 4.5
+  },
+  {
+   "opt": "gepa",
+   "ds": "hotpotqa",
+   "cell": "j6h",
+   "program": 75.67,
+   "gain_v11_pp": 2.7
+  },
+  {
+   "opt": "mipro",
+   "ds": "hotpotqa",
+   "cell": "ptmh",
+   "program": 77.33,
+   "gain_v11_pp": 1.7
+  },
+  {
+   "opt": "simba",
+   "ds": "hotpotqa",
+   "cell": "ptsh",
+   "program": 74.33,
+   "gain_v11_pp": 5.7
+  },
+  {
+   "opt": "gepa",
+   "ds": "gpqa",
+   "cell": "j6g",
+   "program": 81.36,
+   "gain_v11_pp": 0.8
+  },
+  {
+   "opt": "mipro",
+   "ds": "gpqa",
+   "cell": "ptmg",
+   "program": 73.73,
+   "gain_v11_pp": 9.3
+  },
+  {
+   "opt": "simba",
+   "ds": "gpqa",
+   "cell": "ptsg",
+   "program": 76.27,
+   "gain_v11_pp": 0.8
+  },
+  {
+   "opt": "gepa",
+   "ds": "ifbench",
+   "cell": "j6i",
+   "program": 89.98,
+   "gain_v11_pp": 2.2
+  },
+  {
+   "opt": "mipro",
+   "ds": "ifbench",
+   "cell": "ptmi",
+   "program": 90.74,
+   "gain_v11_pp": 0.0
+  },
+  {
+   "opt": "simba",
+   "ds": "ifbench",
+   "cell": "ptsi",
+   "program": 88.71,
+   "gain_v11_pp": 2.6
+  },
+  {
+   "opt": "gepa",
+   "ds": "pupa",
+   "cell": "j6p",
+   "program": 97.03,
+   "gain_v11_pp": 1.7
+  },
+  {
+   "opt": "mipro",
+   "ds": "pupa",
+   "cell": "ptmp",
+   "program": 88.1,
+   "gain_v11_pp": 0.0
+  },
+  {
+   "opt": "simba",
+   "ds": "pupa",
+   "cell": "ptsp",
+   "program": 96.96,
+   "gain_v11_pp": 1.8
+  },
+  {
+   "opt": "gepa",
+   "ds": "tau2",
+   "cell": "u8j",
+   "program": 99.33,
+   "gain_v11_pp": 0.0
+  },
+  {
+   "opt": "gepa",
+   "ds": "bfcl",
+   "cell": "j7b",
+   "program": 75.51,
+   "gain_v11_pp": 0.0
+  },
+  {
+   "opt": "simba",
+   "ds": "bfcl",
+   "cell": "ptsb",
+   "program": 79.59,
+   "gain_v11_pp": 0.0
+  }
+ ]
+}

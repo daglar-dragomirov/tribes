@@ -1,8 +1,9 @@
-# PeachTrees — research record
+# TRIBES — research record
 
-This folder is the evidence behind the numbers in the main README: how the 1.0 rule was found, how it was frozen, and
-how it was tested once on held-out data. The installable package lives in `src/peachtrees`; this folder is for
-transparency, not for import.
+This folder is the evidence behind the numbers in the main README: how the 1.0 rule was found, how it was frozen, how
+it was tested once on held-out data, and how 1.1 and 1.2 were confirmed on fresh items. TRIBES was called PeachTrees
+until 1.0, which is why the older files keep that name. The installable package lives in `src/tribes`; this folder is
+for transparency, not for import.
 
 ## Setup in one paragraph
 
@@ -10,7 +11,7 @@ Task model GLM 5.3 Flash. Three prompt optimizers with their official settings: 
 Thirteen benchmarks: AIME, GPQA, LiveBench, LiveCodeBench, HotpotQA, HoVer, IFBench, PUPA, BFCL, τ²-bench, NATURAL PLAN,
 BIRD, ToolHop. Each benchmark has fixed splits: FIT (the optimizer's train set), PARETO (its validation set), DEV
 (development) and, where one exists, a sealed TEST. A *cell* is one benchmark × one optimizer; 36 cells in all. For every
-cell the three PeachTrees forms were run on FIT, PARETO and DEV, and every number is PeachTrees minus that optimizer's own
+cell the three forms were run on FIT, PARETO and DEV, and every number is TRIBES minus that optimizer's own
 program on the same items.
 
 ## Timeline
@@ -25,6 +26,8 @@ program on the same items.
 | FNXL | GEPA vs GEPA + PeachTrees 1.0 on financial token labeling: item score 0.600 → 0.605, apo macro-F1 0.376 → 0.437 | `analysis/fnxl_v1.py`, `results/fnxl_result.json` |
 | 1.1 development | the 1.1 components (BIRD agents with `run_sql`, HoVer set merge, ToolHop abstention check, the verifier, a per-task `lite` / `full` choice), every decision on selection data: **+11.6 pp** over the programs on 36 cells (post hoc; 1.0: +9.5) | `reports/FABLE-FREEZE-TESTB-20261120.md` |
 | TEST-B (1.1) | 1,010 fresh items (BIRD dev minus Mini-Dev, unused ToolHop, GPQA-main minus Diamond, unused HoVer and HotpotQA test pools), 15 cells, design and analysis pre-registered: **+4.73 pp** [+3.43, +6.07] over the programs; every secondary step confirmed (1.1 − 1.0-lite +2.24; BIRD 1.1 − 1.0-lite +2.56; HoVer merge − reviewer +7.33, − program × 3 +7.11); significant alone: HoVer +12.4, HotpotQA +4.2, BIRD +3.2 | `reports/PREREG-TESTB-20261121.md`, `reports/RESULT-TRIBES11-TESTB-20261121.md`, `results/testb_result.json` |
+| 1.2 screens | candidates screened on PARETO + FIT (stratified by whether the 1.1 forms were already right), each adopted only by a pre-fixed gate (pooled weighted gain > 0 and >= 1 se): the agents at reasoning effort high (8 benchmarks), plus 16 steps and one retry for the tool agents (ToolHop, HoVer); the agent with demonstrations was not adopted | `results/frozen_decisions_12.json` |
+| TEST-C (1.2) | 1,323 fresh items (unused ToolHop, HoVer, NATURAL PLAN, IFBench and BIRD simple pools, GPQA-extended minus GPQA-main, AIME 2026), 21 cells, design and analysis pre-registered: **+14.32 pp** [+11.92, +16.76] over the programs; every secondary step confirmed (1.2 − 1.1 +2.77; 1.2 − the program at the same reasoning effort +6.40; ToolHop 1.2 − 1.1 +4.06; HoVer 1.2 − 1.1 +5.33); significant alone: AIME 2026 +35.6, HoVer +20.3, NATURAL PLAN +19.3, GPQA-extended +9.2, ToolHop +8.5, BIRD +4.7 (IFBench +2.7 not) | `reports/PREREG-TESTC-20261123.md`, `reports/RESULT-TRIBES12-TESTC-20261123.md`, `results/testc_result.json` |
 
 ## Why the test number is lower than the development number
 

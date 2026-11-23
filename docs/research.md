@@ -1,6 +1,6 @@
 # Research record
 
-How the 1.0 rule was found, frozen and tested, and how 1.1 was confirmed on fresh items. The files are in
+How the 1.0 rule was found, frozen and tested, and how 1.1 and 1.2 were confirmed on fresh items. The files are in
 [`research/`](https://github.com/daglar-dragomirov/tribes/tree/main/research) on GitHub.
 
 | step | what happened |
@@ -13,6 +13,8 @@ How the 1.0 rule was found, frozen and tested, and how 1.1 was confirmed on fres
 | FNXL | GEPA vs GEPA + TRIBES: macro-F1 0.376 → 0.437 |
 | 1.1 development | the 1.1 components (BIRD agents with `run_sql`, HoVer set merge, ToolHop abstention check, the verifier, a per-task `lite` / `full` choice), every decision on selection data: **+11.6 pp** over the programs on 36 cells (post hoc; 1.0: +9.5) |
 | TEST-B (1.1) | 1,010 fresh items, 15 cells, pre-registered: **+4.7 pp** [+3.4, +6.1] over the programs, +2.2 pp over 1.0-lite; HoVer, HotpotQA and BIRD significant on their own |
+| 1.2 screens | candidate components screened on PARETO + FIT (stratified), each adopted only by a pre-fixed gate: the agents at a higher reasoning effort, and more steps plus one retry for tool agents; demonstrations for the agent not adopted |
+| TEST-C (1.2) | 1,323 fresh items, 21 cells, pre-registered: **+14.3 pp** [+11.9, +16.8] over the programs, +2.8 pp over 1.1, +6.4 pp over the program at the same reasoning effort; 6 of 7 benchmarks significant |
 
 ## Reproduce the development table
 
