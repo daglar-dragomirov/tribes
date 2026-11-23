@@ -150,6 +150,7 @@ for o, lab in OPTS.items():
     by = {c["ds"]: c["info"] for c in cells if c["opt"] == o}
     rows = [(b, None, None, by[key[b]]["prog"], by[key[b]]["v12"], by[key[b]]["v12"] - by[key[b]]["prog"],
              by[key[b]]["v12"] - by[key[b]]["prog"] >= 0.05) for b in order]
+    rows.sort(key=lambda r: -r[5])  # each chart: largest gain first
     pr, tr = sum(r[3] for r in rows) / len(rows), sum(r[4] for r in rows) / len(rows)
     rows.append(("ALL 7 BENCHMARKS", None, None, pr, tr, tr - pr, True))
     n = sum(c["info"]["n"] for c in cells if c["opt"] == o)
