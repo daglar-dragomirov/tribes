@@ -40,12 +40,25 @@ Inference-time answer selection for optimized DSPy programs
 
 | | AIME 2026 | HoVer | NATURAL PLAN | GPQA-ext. | ToolHop | BIRD | IFBench | **all 21 cells** |
 |---|---|---|---|---|---|---|---|---|
-| optimized program | 61.1 | 68.7 | 79.3 | 64.2 | 68.1 | 70.0 | 90.2 | **71.7** |
-| **+ TRIBES 1.2** | **96.7** | **89.0** | **98.7** | **73.4** | **76.6** | **74.7** | 92.9 | **86.0** |
-| gain, pp | **+35.6** | **+20.3** | **+19.3** | **+9.2** | **+8.5** | **+4.7** | +2.7 | **+14.3** |
+| program (GEPA · MIPROv2 · SIMBA) | 61.1 | 68.7 | 79.3 | 64.2 | 68.1 | 70.0 | 90.2 | **71.7** |
+| **program + TRIBES 1.2** | **96.7** | **89.0** | **98.7** | **73.4** | **76.6** | **74.7** | 92.9 | **86.0** |
+| gain | **+35.6 pp** | **+20.3 pp** | **+19.3 pp** | **+9.2 pp** | **+8.5 pp** | **+4.7 pp** | +2.7 pp | **+14.3 pp** |
 
-Accuracy in %, mean over the three optimizers; bold gains are significant (one-sided α = 0.025, Holm over the seven
-benchmarks; all cells: 95 % CI [+11.9, +16.8]). Details, every cell and the earlier tests: [Results](#results).
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-opt-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-opt-light.png" alt="TEST-C per optimizer: GEPA vs GEPA + TRIBES, MIPROv2 vs MIPROv2 + TRIBES, SIMBA vs SIMBA + TRIBES" width="820">
+  </picture>
+</p>
+
+| | GEPA | **GEPA + TRIBES** | MIPROv2 | **MIPROv2 + TRIBES** | SIMBA | **SIMBA + TRIBES** |
+|---|---|---|---|---|---|---|
+| accuracy, % (7 benchmarks) | 70.9 | **87.3** | 71.0 | **85.5** | 73.0 | **85.1** |
+| gain | | **+16.4 pp** | | **+14.5 pp** | | **+12.1 pp** |
+
+Accuracy in %; gains in percentage points (pp) over the same optimizer's own program on the same items. Bold gains in
+the benchmark table are significant (one-sided α = 0.025, Holm over the seven benchmarks; all cells: 95 % CI
+[+11.9, +16.8]); the per-optimizer rows are descriptive. Details, every cell and the earlier tests: [Results](#results).
 
 ---
 
@@ -189,7 +202,7 @@ bound. — : no held-out items for that benchmark in that test. Bold in the 1.2 
 **Fresh test (TEST-C, TRIBES 1.2)** — 1,323 new items, used nowhere in development or in the earlier tests; the 1.2
 settings and the analysis were pre-registered before any model saw them (chart at the top of this page):
 
-| benchmark (test items per cell) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+| benchmark (test items per cell) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | AIME 2026 (30, shared) | +36.7 | +43.3 | +26.7 | **+35.6** [+24.4, +47.8] |
 | HoVer (100) | +23.0 | +19.0 | +19.0 | **+20.3** [+16.0, +25.0] |
@@ -214,7 +227,7 @@ policy and the analysis were pre-registered before any model saw them:
   <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testb-light.png" alt="TEST-B: TRIBES 1.1 minus the program per benchmark, 95 % CI" width="760">
 </picture>
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | HoVer (150) | +12.7 | +8.0 | +16.7 | **+12.4** [+8.9, +16.4] |
 | HotpotQA (200) | +7.0 | +3.0 | +2.5 | **+4.2** [+1.8, +6.8] |
@@ -230,7 +243,7 @@ more sampling.
 
 **Sealed test (TEST-A)** — opened once, after the rule and every per-task decision were frozen (TRIBES 1.0-lite):
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | NATURAL PLAN (200) | **+13.5** | **+17.0** | **+10.5** |
 | LiveCodeBench (82) | **+11.0** | **+14.6** | **+13.4** |
@@ -243,7 +256,7 @@ Bold: 95 % confidence interval above zero. No cell has its interval below zero.
 
 **Development (TRIBES 1.1)** — 13 benchmarks × 3 optimizers = 36 cells, post hoc:
 
-| benchmark | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | AIME | +38.0 | +23.3 | +32.0 |
 | BIRD | +28.5 | +15.0 | +26.0 |
@@ -261,9 +274,9 @@ Bold: 95 % confidence interval above zero. No cell has its interval below zero.
 
 | | TRIBES 1.1 | 1.0 full | 1.0 lite |
 |---|---|---|---|
-| over GEPA | +11.9 | +10.1 | +9.3 |
-| over MIPROv2 | +10.8 | +8.7 | +8.4 |
-| over SIMBA | +12.1 | +9.6 | +8.9 |
+| GEPA + TRIBES | +11.9 | +10.1 | +9.3 |
+| MIPROv2 + TRIBES | +10.8 | +8.7 | +8.4 |
+| SIMBA + TRIBES | +12.1 | +9.6 | +8.9 |
 | **all 36 cells** | **+11.6** | **+9.5** | **+8.9** |
 
 No cell below the program. What 1.1 adds over 1.0 here: BIRD agents that can run SQL, the set merge on HoVer, the

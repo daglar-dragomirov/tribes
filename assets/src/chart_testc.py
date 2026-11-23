@@ -1,5 +1,7 @@
-"""TEST-C chart: per benchmark, the optimizer's own program (grey) and the same program with TRIBES 1.2 (red),
-accuracy in %, mean over GEPA, MIPROv2 and SIMBA; the gain is printed at the end of the red bar.
+"""TEST-C charts: the optimizer's own program (grey) and the same program with TRIBES 1.2 (red), accuracy in %; the gain
+in percentage points is printed at the end of the red bar.
+  chart-testc-*      per benchmark, mean over GEPA, MIPROv2 and SIMBA
+  chart-testc-opt-*  per optimizer (GEPA vs GEPA + TRIBES, ...), mean over the seven benchmarks
 Source: research/results/testc_result.json. Usage: python chart_testc.py OUT_DIR"""
 import json
 import sys
@@ -9,7 +11,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib import font_manager  # noqa: E402
+from matplotlib import font_manager, patheffects  # noqa: E402
 from matplotlib.patches import Polygon  # noqa: E402
 
 OUT = Path(sys.argv[1])
@@ -17,19 +19,35 @@ SRC = Path(__file__).resolve().parents[2] / "research/results/testc_result.json"
 font_manager.fontManager.addfont("C:/Windows/Fonts/bahnschrift.ttf")
 plt.rcParams["font.family"] = "Bahnschrift"
 
+
+def heavy(color, w=0.9):
+    """Bahnschrift is a variable font matplotlib reads at one weight: thicken the strokes instead."""
+    return [patheffects.withStroke(linewidth=w, foreground=color)]
+
+
 NAMES = {"aime": "AIME 2026", "hover": "HoVer", "natplan": "NATURAL PLAN", "gpqa": "GPQA-extended",
          "toolhop": "ToolHop", "bird": "BIRD", "ifbench": "IFBench"}
+OPTS = {"gepa": "GEPA", "mipro": "MIPROv2", "simba": "SIMBA"}
 res = json.load(open(SRC))
 cells = [c for c in res["cells"] if c["ok"]]
-rows = []
+P = res["primary"]
+
+# per benchmark: (label, grey label, red label, program, tribes, gain, significant)
+bench = []
 for ds, e in res["per_benchmark_holm"].items():
     cs = [c["info"] for c in cells if c["ds"] == ds]
     prog = sum(c["prog"] for c in cs) / len(cs)
-    rows.append((NAMES[ds], prog, prog + e["mean_pp"], e["mean_pp"], e["holm_claim"]))
-rows.sort(key=lambda r: -r[3])
-P = res["primary"]
-prog_all = sum(r[1] for r in rows) / len(rows)  # every benchmark has three cells: the cell mean equals this
-rows.append((f"ALL {P['cells']} CELLS", prog_all, prog_all + P["mean_pp"], P["mean_pp"], P["claim"]))
+    bench.append((NAMES[ds].upper(), None, None, prog, prog + e["mean_pp"], e["mean_pp"], e["holm_claim"]))
+bench.sort(key=lambda r: -r[5])
+prog_all = sum(r[3] for r in bench) / len(bench)  # every benchmark has three cells: the cell mean equals this
+bench.append((f"ALL {P['cells']} CELLS", None, None, prog_all, prog_all + P["mean_pp"], P["mean_pp"], P["claim"]))
+
+# per optimizer: mean over its seven cells (descriptive)
+opt = []
+for o, lab in OPTS.items():
+    cs = [c["info"] for c in cells if c["opt"] == o]
+    pr, tr = sum(c["prog"] for c in cs) / len(cs), sum(c["v12"] for c in cs) / len(cs)
+    opt.append((lab, lab, f"{lab} + TRIBES", pr, tr, tr - pr, True))
 
 THEMES = {
     "light": dict(bg="#FFFFFF", ink="#0A0A0B", muted="#5C5C62", grid="#E9E9EB", red="#A0000C", grey="#B9B9BE",
@@ -45,57 +63,81 @@ def bar(ax, y, v, color, h, cut=0.11):
     ax.add_patch(Polygon(pts, closed=True, facecolor=color, edgecolor="none", zorder=3))
 
 
-for name, t in THEMES.items():
-    fig, ax = plt.subplots(figsize=(10, 7.4), dpi=200)
-    fig.patch.set_facecolor(t["bg"])
-    ax.set_facecolor(t["bg"])
-    step, h, gap = 1.0, 0.34, 0.04
-    ys, y = [], 0.0
-    for i, r in enumerate(rows):
-        if i == len(rows) - 1:
-            y += 0.35  # a gap before the overall row
-        ys.append(y)
-        y += step
-    ys = [max(ys) - v for v in ys]
-    for (lab, prog, tri, gain, sig), yc in zip(rows, ys):
-        last = lab.startswith("ALL")
-        hh = h * (1.12 if last else 1.0)
-        yp, yt = yc + hh / 2 + gap / 2, yc - hh / 2 - gap / 2
-        bar(ax, yp, prog, t["grey"], hh)
-        bar(ax, yt, tri, t["red"] if sig else t["ns"], hh)
-        ax.text(prog + 0.9, yp, f"{prog:.1f}", va="center", ha="left", fontsize=10, color=t["muted"])
-        ax.text(tri + 0.9, yt, f"{tri:.1f}", va="center", ha="left", fontsize=10.5, color=t["ink"])
-        ax.text(tri + 7.2, yt, f"+{gain:.1f}", va="center", ha="left", fontsize=15 if last else 13.5,
-                color=t["red"] if sig else t["muted"], fontweight="bold")
-        if not sig:
-            ax.text(tri + 16.2, yt, "not significant", va="center", ha="left", fontsize=9, color=t["muted"])
-    ax.set_xlim(0, 124)
-    ax.set_ylim(min(ys) - 0.62, max(ys) + 0.62)
-    ax.set_yticks(ys, [r[0].upper() for r in rows])
-    for lbl, r in zip(ax.get_yticklabels(), rows):
-        lbl.set_color(t["ink"])
-        lbl.set_fontsize(12.5 if r[0].startswith("ALL") else 11.5)
-        lbl.set_fontweight("bold" if r[0].startswith("ALL") else "normal")
-    ax.tick_params(axis="y", length=0, pad=10)
-    ax.set_xticks(range(0, 101, 20))
-    ax.tick_params(axis="x", colors=t["muted"], labelsize=10, length=0)
-    ax.grid(axis="x", color=t["grid"], lw=0.8, zorder=0)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    ax.axvline(0, color=t["ink"], lw=1.2, zorder=4)
-    ax.set_xlabel("accuracy, %  ·  mean over GEPA, MIPROv2 and SIMBA  ·  gain in percentage points",
-                  color=t["muted"], fontsize=10, labelpad=8)
-    fig.text(0.015, 0.955, "TRIBES 1.2  ·  FRESH TEST (TEST-C)", fontsize=16, fontweight="bold", color=t["ink"],
-             va="top")
-    fig.text(0.015, 0.912, "1,323 new items  ·  21 cells  ·  pre-registered, opened once  ·  GLM 5.3 Flash",
-             fontsize=10.5, color=t["muted"], va="top")
-    fig.add_artist(Polygon([(0.015, 0.977), (0.075, 0.977), (0.071, 0.985), (0.015, 0.985)], closed=True,
-                           transform=fig.transFigure, facecolor=t["red"], edgecolor="none"))
-    for x0, col, txt in ((0.015, t["grey"], "OPTIMIZED PROGRAM"), (0.235, t["red"], "PROGRAM + TRIBES 1.2")):
-        fig.add_artist(Polygon([(x0, 0.862), (x0 + 0.024, 0.862), (x0 + 0.024, 0.872), (x0 + 0.019, 0.879), (x0, 0.879)],
-                               closed=True, transform=fig.transFigure, facecolor=col, edgecolor="none"))
-        fig.text(x0 + 0.032, 0.8705, txt, fontsize=10, color=t["ink"], va="center", fontweight="bold")
-    fig.subplots_adjust(left=0.165, right=0.985, top=0.835, bottom=0.085)
-    fig.savefig(OUT / f"chart-testc-{name}.png", facecolor=t["bg"])
-    plt.close(fig)
-print("ok", [(r[0], round(r[1], 1), round(r[2], 1), r[3]) for r in rows])
+def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar):
+    for name, t in THEMES.items():
+        fig, ax = plt.subplots(figsize=size, dpi=200)
+        fig.patch.set_facecolor(t["bg"])
+        ax.set_facecolor(t["bg"])
+        h, gap = 0.34, 0.04
+        ys, y = [], 0.0
+        for i, r in enumerate(rows):
+            if r[0].startswith("ALL"):
+                y += 0.35  # a gap before the overall row
+            ys.append(y)
+            y += 1.0
+        ys = [max(ys) - v for v in ys]
+        ticks, labels, colors = [], [], []
+        for (lab, gl, rl, prog, tri, gain, sig), yc in zip(rows, ys):
+            last = lab.startswith("ALL")
+            hh = h * (1.12 if last else 1.0)
+            yp, yt = yc + hh / 2 + gap / 2, yc - hh / 2 - gap / 2
+            bar(ax, yp, prog, t["grey"], hh)
+            bar(ax, yt, tri, t["red"] if sig else t["ns"], hh)
+            ax.text(prog + 0.9, yp, f"{prog:.1f}", va="center", ha="left", fontsize=10, color=t["muted"])
+            ax.text(tri + 0.9, yt, f"{tri:.1f}", va="center", ha="left", fontsize=10.5, color=t["ink"])
+            c = t["red"] if sig else t["muted"]
+            ax.text(tri + 7.2, yt, f"+{gain:.1f} pp", va="center", ha="left", fontsize=15 if last else 13.5, color=c,
+                    path_effects=heavy(c, 0.5))
+            if not sig:
+                ax.text(tri + 21.5, yt, "not significant", va="center", ha="left", fontsize=9, color=t["muted"])
+            if per_bar:
+                ticks += [yp, yt]
+                labels += [gl, rl]
+                colors += [t["muted"], t["red"]]
+            else:
+                ticks.append(yc)
+                labels.append(lab)
+                colors.append(t["ink"])
+        ax.set_xlim(0, 128)
+        ax.set_ylim(min(ys) - 0.62, max(ys) + 0.62)
+        ax.set_yticks(ticks, labels)
+        for lbl, col in zip(ax.get_yticklabels(), colors):
+            lbl.set_color(col)
+            lbl.set_fontsize(12.5 if per_bar else 11.5)
+            if per_bar and col == t["red"] or lbl.get_text().startswith("ALL"):
+                lbl.set_path_effects(heavy(col, 0.5))
+        ax.tick_params(axis="y", length=0, pad=10)
+        ax.set_xticks(range(0, 101, 20))
+        ax.tick_params(axis="x", colors=t["muted"], labelsize=10, length=0)
+        ax.grid(axis="x", color=t["grid"], lw=0.8, zorder=0)
+        for s in ax.spines.values():
+            s.set_visible(False)
+        ax.axvline(0, color=t["ink"], lw=1.2, zorder=4)
+        ax.set_xlabel(xlabel, color=t["muted"], fontsize=10, labelpad=8)
+        H = size[1]
+        top = 1 - 0.33 / H
+        fig.text(0.015, top, title, fontsize=16, color=t["ink"], va="top", path_effects=heavy(t["ink"], 0.6))
+        fig.text(0.015, top - 0.32 / H, subtitle, fontsize=10.5, color=t["muted"], va="top")
+        yb = 1 - 0.22 / H
+        fig.add_artist(Polygon([(0.015, yb), (0.075, yb), (0.071, yb + 0.06 / H), (0.015, yb + 0.06 / H)], closed=True,
+                               transform=fig.transFigure, facecolor=t["red"], edgecolor="none"))
+        if legend:
+            yl = top - 0.72 / H
+            for x0, col, txt in ((0.015, t["grey"], legend[0]), (0.36, t["red"], legend[1])):
+                fig.add_artist(Polygon([(x0, yl - 0.06 / H), (x0 + 0.024, yl - 0.06 / H), (x0 + 0.024, yl + 0.015 / H),
+                                        (x0 + 0.019, yl + 0.06 / H), (x0, yl + 0.06 / H)],
+                                       closed=True, transform=fig.transFigure, facecolor=col, edgecolor="none"))
+                fig.text(x0 + 0.032, yl, txt, fontsize=10, color=t["ink"], va="center", path_effects=heavy(t["ink"], 0.5))
+        fig.subplots_adjust(left=left, right=0.985, top=1 - (1.22 if legend else 0.95) / H, bottom=0.62 / H)
+        fig.savefig(OUT / f"{fname}-{name}.png", facecolor=t["bg"])
+        plt.close(fig)
+
+
+draw(bench, "chart-testc", "TRIBES 1.2  ·  FRESH TEST (TEST-C)",
+     "1,323 new items  ·  21 cells  ·  pre-registered, opened once  ·  GLM 5.3 Flash",
+     ("PROGRAM  (GEPA · MIPROv2 · SIMBA)", "PROGRAM + TRIBES 1.2"),
+     "accuracy, %  ·  mean over GEPA, MIPROv2 and SIMBA  ·  gain in percentage points", (10, 7.4), 0.165, False)
+draw(opt, "chart-testc-opt", "EVERY OPTIMIZER, PLUS TRIBES 1.2  ·  TEST-C",
+     "accuracy, %, mean over the seven benchmarks of each optimizer  ·  1,323 new items  ·  GLM 5.3 Flash", None,
+     "accuracy, %  ·  gain in percentage points", (10, 4.1), 0.2, True)
+print("ok", [(r[0], round(r[3], 1), round(r[4], 1), round(r[5], 2)) for r in bench + opt])

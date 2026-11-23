@@ -1,7 +1,7 @@
 # Results
 
 GLM 5.3 Flash as the task model; each optimizer with its official settings; every number is TRIBES minus that
-optimizer's own program on the same items, in percentage points.
+optimizer's own program on the same items, in percentage points (pp).
 
 ## At a glance
 
@@ -39,7 +39,12 @@ settings and the analysis were pre-registered before any model saw the items, an
 ![TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red)](assets/chart-testc-dark.png#only-dark)
 </figure>
 
-| benchmark (test items per cell) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+<figure class="tb-figure" markdown>
+![TEST-C per optimizer: GEPA vs GEPA + TRIBES and so on](assets/chart-testc-opt-light.png#only-light)
+![TEST-C per optimizer: GEPA vs GEPA + TRIBES and so on](assets/chart-testc-opt-dark.png#only-dark)
+</figure>
+
+| benchmark (test items per cell) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | AIME 2026 (30, shared) | +36.7 | +43.3 | +26.7 | **+35.6** [+24.4, +47.8] |
 | HoVer (100) | +23.0 | +19.0 | +19.0 | **+20.3** [+16.0, +25.0] |
@@ -67,7 +72,7 @@ any model saw them, and the items were opened once.
 ![TEST-B: TRIBES 1.1 minus the program per benchmark](assets/chart-testb-dark.png#only-dark)
 </figure>
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA | benchmark mean, 95 % CI |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
 | HoVer (150) | +12.7 | +8.0 | +16.7 | **+12.4** [+8.9, +16.4] |
 | HotpotQA (200) | +7.0 | +3.0 | +2.5 | **+4.2** [+1.8, +6.8] |
@@ -96,7 +101,7 @@ The pre-registration and the full report are in `research/reports/` (`PREREG-TES
 
 Opened once, after the rule and every per-task decision were frozen.
 
-| benchmark (test items) | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark (test items) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | NATURAL PLAN (200) | **+13.5** | **+17.0** | **+10.5** |
 | LiveCodeBench (82) | **+11.0** | **+14.6** | **+13.4** |
@@ -112,7 +117,7 @@ Bold: 95 % confidence interval above zero. No cell has its interval below zero. 
 13 benchmarks (AIME, GPQA, LiveBench, LiveCodeBench, HotpotQA, HoVer, IFBench, PUPA, BFCL, τ²-bench, NATURAL PLAN,
 BIRD, ToolHop) × 3 optimizers = 36 cells, post hoc.
 
-| benchmark | over GEPA | over MIPROv2 | over SIMBA |
+| benchmark | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES |
 |---|---|---|---|
 | AIME | +38.0 | +23.3 | +32.0 |
 | BIRD | +28.5 | +15.0 | +26.0 |
@@ -130,9 +135,9 @@ BIRD, ToolHop) × 3 optimizers = 36 cells, post hoc.
 
 | | TRIBES 1.1 | 1.0 full | 1.0 lite |
 |---|---|---|---|
-| over GEPA | +11.9 | +10.1 | +9.3 |
-| over MIPROv2 | +10.8 | +8.7 | +8.4 |
-| over SIMBA | +12.1 | +9.6 | +8.9 |
+| GEPA + TRIBES | +11.9 | +10.1 | +9.3 |
+| MIPROv2 + TRIBES | +10.8 | +8.7 | +8.4 |
+| SIMBA + TRIBES | +12.1 | +9.6 | +8.9 |
 | **all 36 cells** | **+11.6** | **+9.5** | **+8.9** |
 
 No cell below the program. What 1.1 adds over 1.0 here: BIRD agents that can run SQL, the set merge on HoVer, the
