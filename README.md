@@ -55,7 +55,8 @@ A prompt optimizer such as GEPA, MIPROv2 or SIMBA turns your data into one fixed
 program. That program is good, but it is also brittle: it cannot look anything up, cannot run code to check itself, and
 every answer is a single sample. TRIBES does not touch the optimization. It wraps the finished program with a
 reviewer of its draft and an independent agent, picks one answer per input with a label-free rule, and switches itself
-off on any task where it is not at least as good as the program.
+off on any task where it is not at least as good as the program. Since 1.2 the reviewer and the agent can think longer
+than the program (their own LM at a higher reasoning effort), which is where most of the new gain comes from.
 
 ## Install
 
@@ -122,6 +123,13 @@ and any task tools you pass. There is no task-specific prompt text anywhere.
 In `full` mode the program and the reviewer run concurrently, and the agent only when they disagree. `lite` mode runs
 the reviewer only. Every form and every retry is an independent request (its own cache entry), so the vote never
 compares a form with a cached copy of itself.
+
+### Agents that think longer (1.2)
+
+`agent_lm` gives the reviewer and the agent their own LM, typically the task model at a higher reasoning effort; the
+program and its draft keep your task LM. On tool tasks `max_iters=16` and `agent_retry=True` add steps and one fresh run
+when an agent returns nothing or abstains. On TEST-C this took the layer from +11.5 to +14.3 pp over the programs on the
+same items, and beat the program run at the same high effort by +6.4 pp.
 
 ### Contested inputs: the verifier
 
@@ -265,8 +273,26 @@ abstention check on ToolHop, the verifier on AIME, LiveBench and LiveCodeBench, 
 
 **Research record**: how the rule was found, frozen and tested, with every number per cell, is in [`research/`](research/).
 
-**Cost**: about 2.6× the program's inference cost in `lite` mode and 4.6× in `full` mode. There is no optimization
-cost.
+**Settings per task type** used in the tests (each decided on selection data by a gate fixed in advance):
+
+| task type (benchmarks) | mode | agents' reasoning effort | agent steps · retry | extra |
+|---|---|---|---|---|
+| math (AIME, LiveBench) | `full` | high | 8 · no | — |
+| multiple choice (GPQA) | `lite` | high | 8 · no | — |
+| text-to-SQL (BIRD) | `lite` | high | 8 · no | agents get `run_sql` |
+| planning (NATURAL PLAN) | `full` | high | 8 · no | the plan validator as checker |
+| instruction following (IFBench) | `lite` | high | 8 · no | — |
+| tool QA (ToolHop) | `full` | high | 16 · yes | an abstention is not an answer |
+| retrieval sets (HoVer) | `full` | high | 16 · yes | `doc_set()` merge |
+| code (LiveCodeBench) | `full` + verifier | task model | 8 · no | public tests as checker |
+| multi-hop QA, privacy rewrite (HotpotQA, PUPA) | `lite` | task model | 8 · no | — |
+| function calling, agents (BFCL, τ²-bench) | layer off | — | — | the switch keeps the program |
+
+Every entry was decided on the optimizer's own selection data (PARETO + FIT) by a gate fixed in advance, before the
+tests were opened; "high" means `agent_lm` set to the task model at reasoning effort high (max_tokens 32,768).
+
+**Cost**: about 2.6× the program's inference cost in `lite` mode and 4.6× in `full` mode with the agents on the task
+model (1.1); with `agent_lm` at a higher reasoning effort (1.2) the agents cost more. There is no optimization cost.
 
 ## API
 
@@ -310,6 +336,9 @@ calls; `tribes report fit.json` prints a saved decision.
 removed. Agreement between independent forms and cheap deterministic checks do the job.
 
 **Which optimizers?** Anything that produces a DSPy program. It was evaluated on GEPA, MIPROv2 and SIMBA.
+
+**Is the 1.2 gain just more reasoning effort?** No. The program run at the same high effort gains +7.9 pp on TEST-C;
+1.2 gains +14.3 and beats it by +6.4. On GPQA and IFBench, though, the program at high effort alone does better.
 
 **Is `run_python` a sandbox?** No. It runs code in a subprocess with a 10-second limit. Run untrusted workloads in an
 isolated environment.

@@ -5,7 +5,7 @@ ReAct agent are added, and a label-free rule picks one output per input. An evid
 contested inputs. A task-level non-inferiority test on labeled selection data switches the layer off where it does not
 help, so the program is never replaced by something worse on that data.
 """
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 from . import tasks  # noqa: E402
 from .callbacks import Callback, JSONLCallback, LoggingCallback  # noqa: E402

@@ -1,8 +1,9 @@
-# PeachTrees — research record
+# TRIBES — research record
 
-This folder is the evidence behind the numbers in the main README: how the 1.0 rule was found, how it was frozen, and
-how it was tested once on held-out data. The installable package lives in `src/peachtrees`; this folder is for
-transparency, not for import.
+This folder is the evidence behind the numbers in the main README: how the 1.0 rule was found, how it was frozen, how
+it was tested once on held-out data, and how 1.1 and 1.2 were confirmed on fresh items. TRIBES was called PeachTrees
+until 1.0, which is why the older files keep that name. The installable package lives in `src/tribes`; this folder is
+for transparency, not for import.
 
 ## Setup in one paragraph
 
@@ -10,7 +11,7 @@ Task model GLM 5.3 Flash. Three prompt optimizers with their official settings: 
 Thirteen benchmarks: AIME, GPQA, LiveBench, LiveCodeBench, HotpotQA, HoVer, IFBench, PUPA, BFCL, τ²-bench, NATURAL PLAN,
 BIRD, ToolHop. Each benchmark has fixed splits: FIT (the optimizer's train set), PARETO (its validation set), DEV
 (development) and, where one exists, a sealed TEST. A *cell* is one benchmark × one optimizer; 36 cells in all. For every
-cell the three PeachTrees forms were run on FIT, PARETO and DEV, and every number is PeachTrees minus that optimizer's own
+cell the three forms were run on FIT, PARETO and DEV, and every number is TRIBES minus that optimizer's own
 program on the same items.
 
 ## Timeline

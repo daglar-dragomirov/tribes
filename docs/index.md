@@ -86,7 +86,8 @@ pip install tribes
 
     ---
 
-    The optimized program, a ReAct reviewer of its draft, and an independent ReAct agent. No task-specific prompt text.
+    The optimized program, a ReAct reviewer of its draft, and an independent ReAct agent that can think longer than
+    the program. No task-specific prompt text.
 
     [:octicons-arrow-right-24: How it works](guides/how-it-works.md)
 
