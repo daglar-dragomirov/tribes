@@ -63,7 +63,11 @@ def bar(ax, y, v, color, h, cut=0.11):
     ax.add_patch(Polygon(pts, closed=True, facecolor=color, edgecolor="none", zorder=3))
 
 
-def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar):
+def gtxt(g):
+    return f"+{g:.1f}" if g >= 0.05 else ("0.0" if g > -0.05 else f"−{-g:.1f}")
+
+
+def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar, ns_note=True):
     for name, t in THEMES.items():
         fig, ax = plt.subplots(figsize=size, dpi=200)
         fig.patch.set_facecolor(t["bg"])
@@ -86,9 +90,9 @@ def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar):
             ax.text(prog + 0.9, yp, f"{prog:.1f}", va="center", ha="left", fontsize=10, color=t["muted"])
             ax.text(tri + 0.9, yt, f"{tri:.1f}", va="center", ha="left", fontsize=10.5, color=t["ink"])
             c = t["red"] if sig else t["muted"]
-            ax.text(tri + 7.2, yt, f"+{gain:.1f} pp", va="center", ha="left", fontsize=15 if last else 13.5, color=c,
+            ax.text(tri + 7.2, yt, f"{gtxt(gain)} pp", va="center", ha="left", fontsize=15 if last else 13.5, color=c,
                     path_effects=heavy(c, 0.5))
-            if not sig:
+            if not sig and ns_note:
                 ax.text(tri + 21.5, yt, "not significant", va="center", ha="left", fontsize=9, color=t["muted"])
             if per_bar:
                 ticks += [yp, yt]
@@ -123,7 +127,7 @@ def draw(rows, fname, title, subtitle, legend, xlabel, size, left, per_bar):
                                transform=fig.transFigure, facecolor=t["red"], edgecolor="none"))
         if legend:
             yl = top - 0.72 / H
-            for x0, col, txt in ((0.015, t["grey"], legend[0]), (0.36, t["red"], legend[1])):
+            for x0, col, txt in ((0.015, t["grey"], legend[0]), (0.36 if len(legend[0]) > 20 else 0.2, t["red"], legend[1])):
                 fig.add_artist(Polygon([(x0, yl - 0.06 / H), (x0 + 0.024, yl - 0.06 / H), (x0 + 0.024, yl + 0.015 / H),
                                         (x0 + 0.019, yl + 0.06 / H), (x0, yl + 0.06 / H)],
                                        closed=True, transform=fig.transFigure, facecolor=col, edgecolor="none"))
@@ -140,4 +144,17 @@ draw(bench, "chart-testc", "TRIBES 1.2  ·  FRESH TEST (TEST-C)",
 draw(opt, "chart-testc-opt", "EVERY OPTIMIZER, PLUS TRIBES 1.2  ·  TEST-C",
      "accuracy, %, mean over the seven benchmarks of each optimizer  ·  1,323 new items  ·  GLM 5.3 Flash", None,
      "accuracy, %  ·  gain in percentage points", (10, 4.1), 0.2, True)
-print("ok", [(r[0], round(r[3], 1), round(r[4], 1), round(r[5], 2)) for r in bench + opt])
+order = [r[0] for r in bench[:-1]]
+key = {NAMES[k].upper(): k for k in NAMES}
+for o, lab in OPTS.items():
+    by = {c["ds"]: c["info"] for c in cells if c["opt"] == o}
+    rows = [(b, None, None, by[key[b]]["prog"], by[key[b]]["v12"], by[key[b]]["v12"] - by[key[b]]["prog"],
+             by[key[b]]["v12"] - by[key[b]]["prog"] >= 0.05) for b in order]
+    pr, tr = sum(r[3] for r in rows) / len(rows), sum(r[4] for r in rows) / len(rows)
+    rows.append(("ALL 7 BENCHMARKS", None, None, pr, tr, tr - pr, True))
+    n = sum(c["info"]["n"] for c in cells if c["opt"] == o)
+    draw(rows, f"chart-testc-{o}", f"{lab}  vs  {lab} + TRIBES 1.2  ·  TEST-C",
+         f"{n} new items  ·  7 benchmarks  ·  pre-registered, opened once  ·  GLM 5.3 Flash",
+         (lab, f"{lab} + TRIBES 1.2"), "accuracy, %  ·  gain in percentage points  ·  per-benchmark gains of one optimizer are descriptive",
+         (10, 7.4), 0.19, False, ns_note=False)
+    print(lab, [(r[0], round(r[3], 1), round(r[4], 1), round(r[5], 1)) for r in rows])

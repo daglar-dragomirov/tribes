@@ -33,21 +33,22 @@ Inference-time answer selection for optimized DSPy programs
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-dark.png">
-    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-light.png" alt="TEST-C: the optimized program (grey) and the program with TRIBES 1.2 (red) per benchmark" width="820">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-gepa-light.png" alt="TEST-C: GEPA (grey) and GEPA + TRIBES 1.2 (red) per benchmark" width="820">
   </picture>
 </p>
 
-| | AIME 2026 | HoVer | NATURAL PLAN | GPQA-ext. | ToolHop | BIRD | IFBench | **all 21 cells** |
-|---|---|---|---|---|---|---|---|---|
-| program (GEPA · MIPROv2 · SIMBA) | 61.1 | 68.7 | 79.3 | 64.2 | 68.1 | 70.0 | 90.2 | **71.7** |
-| **program + TRIBES 1.2** | **96.7** | **89.0** | **98.7** | **73.4** | **76.6** | **74.7** | 92.9 | **86.0** |
-| gain | **+35.6 pp** | **+20.3 pp** | **+19.3 pp** | **+9.2 pp** | **+8.5 pp** | **+4.7 pp** | +2.7 pp | **+14.3 pp** |
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-mipro-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-mipro-light.png" alt="TEST-C: MIPROv2 (grey) and MIPROv2 + TRIBES 1.2 (red) per benchmark" width="820">
+  </picture>
+</p>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-opt-dark.png">
-    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-opt-light.png" alt="TEST-C per optimizer: GEPA vs GEPA + TRIBES, MIPROv2 vs MIPROv2 + TRIBES, SIMBA vs SIMBA + TRIBES" width="820">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-simba-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-simba-light.png" alt="TEST-C: SIMBA (grey) and SIMBA + TRIBES 1.2 (red) per benchmark" width="820">
   </picture>
 </p>
 
@@ -55,6 +56,14 @@ Inference-time answer selection for optimized DSPy programs
 |---|---|---|---|---|---|---|
 | accuracy, % (7 benchmarks) | 70.9 | **87.3** | 71.0 | **85.5** | 73.0 | **85.1** |
 | gain | | **+16.4 pp** | | **+14.5 pp** | | **+12.1 pp** |
+
+Mean over the three optimizers, per benchmark:
+
+| | AIME 2026 | HoVer | NATURAL PLAN | GPQA-ext. | ToolHop | BIRD | IFBench | **all 21 cells** |
+|---|---|---|---|---|---|---|---|---|
+| program (GEPA · MIPROv2 · SIMBA) | 61.1 | 68.7 | 79.3 | 64.2 | 68.1 | 70.0 | 90.2 | **71.7** |
+| **program + TRIBES 1.2** | **96.7** | **89.0** | **98.7** | **73.4** | **76.6** | **74.7** | 92.9 | **86.0** |
+| gain | **+35.6 pp** | **+20.3 pp** | **+19.3 pp** | **+9.2 pp** | **+8.5 pp** | **+4.7 pp** | +2.7 pp | **+14.3 pp** |
 
 Accuracy in %; gains in percentage points (pp) over the same optimizer's own program on the same items. Bold gains in
 the benchmark table are significant (one-sided α = 0.025, Holm over the seven benchmarks; all cells: 95 % CI
@@ -200,7 +209,14 @@ Development numbers are post hoc (the components were designed while these outpu
 bound. — : no held-out items for that benchmark in that test. Bold in the 1.2 column: significant after Holm.
 
 **Fresh test (TEST-C, TRIBES 1.2)** — 1,323 new items, used nowhere in development or in the earlier tests; the 1.2
-settings and the analysis were pre-registered before any model saw them (chart at the top of this page):
+settings and the analysis were pre-registered before any model saw them (per-optimizer charts at the top of this page):
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-dark.png">
+    <img src="https://raw.githubusercontent.com/daglar-dragomirov/tribes/main/assets/chart-testc-light.png" alt="TEST-C: the program (grey) and the program with TRIBES 1.2 (red), mean over the three optimizers" width="760">
+  </picture>
+</p>
 
 | benchmark (test items per cell) | GEPA + TRIBES | MIPROv2 + TRIBES | SIMBA + TRIBES | benchmark mean, 95 % CI |
 |---|---|---|---|---|
